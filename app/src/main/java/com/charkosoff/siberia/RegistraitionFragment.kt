@@ -7,13 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 class RegistraitionFragment: Fragment() {
+
+    private val model = Model(this.requireContext())
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = LayoutInflater.from(this.requireContext()).inflate(R.layout.fragment_registraition, container)
-
+        model.getCurrent()
         return view
     }
 }

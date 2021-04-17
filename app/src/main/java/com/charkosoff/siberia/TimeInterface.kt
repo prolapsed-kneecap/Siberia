@@ -2,5 +2,5 @@ package com.charkosoff.siberia
 
 interface TimeInterface {
     fun getCurrent():Long
-    fun timeTable():Map<String, IntRange>
+    fun timeTable():Map<LongRange, String>
 }

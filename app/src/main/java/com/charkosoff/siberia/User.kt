@@ -1,6 +1,3 @@
 package com.charkosoff.siberia
 
-class User(name:String, group:String){
-    var name = name
-    var group = group
-}
+class User(var name: String, var group: String)

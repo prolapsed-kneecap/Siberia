@@ -18,27 +18,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_view_pager)
-        var viewPager = findViewById<ViewPager2>(R.id.viewPager2)
-
-
-        viewPager.adapter = AdapterViewPager()
-
-
-        var tabTitle = findViewById<TabItem>(R.id.Tab_title)
-
-        var TabLayot = findViewById<TabLayout>(R.id.Tab_Layout)
-
-        TabLayoutMediator(TabLayot, viewPager,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                when (position) {
-                    0 -> { tab.text = "1"}
-                    1 -> { tab.text = "2"}
-                    2 -> { tab.text = "3"}
-                    3 -> { tab.text = "4"}
-                }
-            }).attach()
-
+        setContentView(R.layout.activity_main)
+        /*
+*/
     }
 }
 

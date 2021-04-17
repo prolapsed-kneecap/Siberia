@@ -4,11 +4,11 @@ import android.content.Context
 import android.os.CountDownTimer
 import android.widget.Toast
 
-class Model(context:Context):TimeInterface {
+class Model():TimeInterface {
     private var time:Long = 0
-    private val timeTable = mapOf<String, IntRange>(
-        "Посев" to 5000..15000,
-        "Сбор" to 30000..45000
+    private val timeTable = mapOf<LongRange, String>(
+        0..5000L to "Март",
+        5000..10000L to "Апрель"
     )
     var countDownTimer = object:CountDownTimer(50000, 0) {
         override fun onTick(millisUntilFinished: Long) {
@@ -16,7 +16,6 @@ class Model(context:Context):TimeInterface {
         }
 
         override fun onFinish() {
-            Toast.makeText(context, "Timer is over!", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -25,7 +24,11 @@ class Model(context:Context):TimeInterface {
         return time
     }
 
-    override fun timeTable(): Map<String, IntRange> {
+    override fun timeTable(): Map<LongRange, String> {
         return timeTable
+    }
+
+    fun dad(){
+        timeTable.entries.find { time in it.key }?.value ?: throw Exception("Выход за календарные границы")
     }
 }

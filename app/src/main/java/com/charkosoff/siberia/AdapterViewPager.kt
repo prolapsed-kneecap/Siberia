@@ -35,8 +35,16 @@ class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView){
     var chemicalsFab:FloatingActionButton = itemView.findViewById(R.id.chemicalsFab)
     fun onBing(position: Int){
         moreFab.setOnClickListener {
-            techFab.visibility = View.VISIBLE
-            chemicalsFab.visibility = View.VISIBLE
+            if (techFab.visibility==View.GONE && chemicalsFab.visibility==View.GONE){
+                moreFab.setImageResource(R.drawable.ic_baseline_close_24)
+                techFab.visibility = View.VISIBLE
+                chemicalsFab.visibility = View.VISIBLE
+            }
+            else{
+                moreFab.setImageResource(R.drawable.ic_baseline_more_horiz_24)
+                techFab.visibility = View.GONE
+                chemicalsFab.visibility = View.GONE
+            }
         }
     }
 }

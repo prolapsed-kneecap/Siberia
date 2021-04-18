@@ -15,4 +15,6 @@
     <color name="green">#00FF00</color>
     <color name="blue">#4DABFF</color>
     <color name="trans">#004DABFF</color>
+    <color name="FieldBackground">#A8D6FC</color>
+    <color name="rewindButton">#2D6DA2</color>
 </resources>

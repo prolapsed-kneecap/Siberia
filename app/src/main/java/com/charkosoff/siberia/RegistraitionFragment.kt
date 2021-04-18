@@ -12,7 +12,6 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 
 class RegistraitionFragment : Fragment() {
 
-    private val model = Model()
 
 
     override fun onCreateView(
@@ -22,8 +21,7 @@ class RegistraitionFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_registraition, container, false)
 
-        var currentTime = model.getCurrent()
-        var timeTable = model.timeTable()
+
 
         val nameEditText: EditText = view.findViewById(R.id.editTextName)
         val groupEditText: EditText = view.findViewById(R.id.editTextGroup)
@@ -38,7 +36,7 @@ class RegistraitionFragment : Fragment() {
             user.group = text.toString()
         }
         inButton.setOnClickListener {
-            findNavController(this).navigate(R.id.action_navigation_registration_fragment_to_navigation_viewpager_fragment)
+            findNavController(this).navigate(R.id.action_navigation_registration_fragment_to_navigation_main_fragment)
         }
 
         return view

@@ -9,9 +9,19 @@
         android:name="com.charkosoff.siberia.RegistraitionFragment"
         tools:layout="@layout/fragment_registraition">
         <action
-            android:id="@+id/action_navigation_registration_fragment_to_navigation_viewpager_fragment"
+            android:id="@+id/action_navigation_registration_fragment_to_navigation_main_fragment"
+            app:destination="@id/navigation_main_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_main_fragment"
+        android:name="com.charkosoff.siberia.MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_navigation_main_fragment_to_navigation_viewpager_fragment"
             app:destination="@id/navigation_viewpager_fragment" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_viewpager_fragment"
         android:name="com.charkosoff.siberia.ViewPager"

@@ -1,12 +1,10 @@
 package com.charkosoff.siberia
 
-import android.icu.text.CaseMap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
 
@@ -18,16 +16,27 @@ class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerVH =
-        PagerVH(LayoutInflater.from(parent.context).inflate(R.layout.item_viewpager, parent, false))
+        PagerVH(LayoutInflater.from(parent.context).inflate(R.layout.field_item, parent, false))
 
     override fun getItemCount(): Int = colors.size
 
     override fun onBindViewHolder(holder: PagerVH, position: Int) = holder.itemView.run {
-        var tvTitle = findViewById<AppCompatTextView>(R.id.tvTitle)
-        var Relitive_contenier = findViewById<RelativeLayout>(R.id.container)
-        tvTitle.text = "item $position"
-        Relitive_contenier.setBackgroundResource(colors[position])
+        var moreFab:FloatingActionButton = findViewById(R.id.moreFab)
+        var techFab:FloatingActionButton = findViewById(R.id.techFab)
+        var chemicalsFab:FloatingActionButton = findViewById(R.id.chemicalsFab)
+        holder.onBing(position)
     }
+
 }
 
-class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView)
+class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView){
+    var moreFab:FloatingActionButton = itemView.findViewById(R.id.moreFab)
+    var techFab:FloatingActionButton = itemView.findViewById(R.id.techFab)
+    var chemicalsFab:FloatingActionButton = itemView.findViewById(R.id.chemicalsFab)
+    fun onBing(position: Int){
+        moreFab.setOnClickListener {
+            techFab.visibility = View.VISIBLE
+            chemicalsFab.visibility = View.VISIBLE
+        }
+    }
+}

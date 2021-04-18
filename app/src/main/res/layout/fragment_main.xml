@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/FieldBackground">
+
+    <ImageView
+        android:src="@drawable/field"
+        android:id="@+id/field4"
+        android:layout_width="168dp"
+        android:layout_height="219dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field2" />
+
+    <ImageView
+        android:src="@drawable/field"
+        android:id="@+id/field3"
+        android:layout_width="168dp"
+        android:layout_height="219dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field1" />
+
+    <ImageView
+        android:src="@drawable/field"
+        android:id="@+id/field1"
+        android:layout_width="168dp"
+        android:layout_height="219dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:src="@drawable/field"
+        android:id="@+id/field2"
+        android:layout_width="168dp"
+        android:layout_height="219dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*Месяц не указан*"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field3"
+        app:layout_constraintVertical_bias="0.536" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="41dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/rewindButton"
+        android:clickable="true"
+        app:fabCustomSize="42dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.786"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field4"
+        app:layout_constraintVertical_bias="0.549"
+        app:srcCompat="@drawable/ic_baseline_fast_forward_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

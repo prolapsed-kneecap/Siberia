@@ -14,10 +14,8 @@ class Model():TimeInterface {
         override fun onTick(millisUntilFinished: Long) {
             time = millisUntilFinished
         }
-
         override fun onFinish() {
         }
-
     }
 
     override fun getCurrent(): Long {
@@ -28,7 +26,7 @@ class Model():TimeInterface {
         return timeTable
     }
 
-    fun dad(){
-        timeTable.entries.find { time in it.key }?.value ?: throw Exception("Выход за календарные границы")
+    fun getMonth(time:Long, timeTable:Map<LongRange, String>):String{
+        return timeTable.entries.find { time in it.key }?.value ?: throw Exception("Выход за календарные границы")
     }
 }

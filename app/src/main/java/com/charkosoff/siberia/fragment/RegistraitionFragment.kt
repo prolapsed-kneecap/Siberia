@@ -1,4 +1,4 @@
-package com.charkosoff.siberia
+package com.charkosoff.siberia.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.charkosoff.siberia.R
+import com.charkosoff.siberia.User
 
 class RegistraitionFragment : Fragment() {
 

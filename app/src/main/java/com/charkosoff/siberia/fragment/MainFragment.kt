@@ -1,6 +1,5 @@
-package com.charkosoff.siberia
+package com.charkosoff.siberia.fragment
 
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigator
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabItem
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.charkosoff.siberia.Model
+import com.charkosoff.siberia.R
+import com.charkosoff.siberia.data.Data
 
 class MainFragment: Fragment() {
 
@@ -48,9 +43,10 @@ class MainFragment: Fragment() {
 
         return view
     }
-    fun moveToField(view:View, id:Int){
+    private fun moveToField(view:View, id:Int){
         val bundle = Bundle()
         bundle.putInt("idKey", id)
+        Data.id = id
         view.findNavController().navigate(R.id.action_navigation_main_fragment_to_navigation_viewpager_fragment, bundle)
     }
 }

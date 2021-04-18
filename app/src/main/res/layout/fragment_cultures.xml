@@ -4,29 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.ViewPagerFragment">
+    tools:context=".fragment.CulturesFragment">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager2"
+        android:id="@+id/viewPagerCultures"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </androidx.viewpager2.widget.ViewPager2>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/Tab_Layout"
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/rewindButton"
         app:tabIndicatorColor="@color/tabIndicatorColor"
+
         app:tabTextColor="@color/black">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/Tab_title"
+            android:id="@+id/tabTitle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-             />
-
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.tabs.TabLayout>
 

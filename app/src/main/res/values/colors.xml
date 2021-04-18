@@ -17,4 +17,5 @@
     <color name="trans">#004DABFF</color>
     <color name="FieldBackground">#A8D6FC</color>
     <color name="rewindButton">#2D6DA2</color>
+    <color name="tabIndicatorColor">#122B40</color>
 </resources>

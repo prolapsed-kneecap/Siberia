@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.CountDownTimer
 import android.widget.Toast
 
-class Model():TimeInterface {
+class Model():TimeInterface{
     private var time:Long = 0
     private val timeTable = mapOf<LongRange, String>(
         0..5000L to "Март",

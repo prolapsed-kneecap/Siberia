@@ -1,15 +1,20 @@
 package com.charkosoff.siberia.fragment.allPlaces
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.adapters.AdapterViewPager
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.utils.Resource
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -25,13 +30,13 @@ class AllPLlacesFragment : Fragment() {
 
         val viewModel: AllPlacesViewModel by viewModel()
 
-        viewModel.loadData()
         var id = Data.currentId
         val view = inflater.inflate(R.layout.fragment_view_pager, container, false)
 
-        var moreFab: FloatingActionButton = view.findViewById(R.id.moreFab)
-        var techFab: FloatingActionButton = view.findViewById(R.id.techFab)
-        var chemicalsFab: FloatingActionButton = view.findViewById(R.id.chemicalsFab)
+        val moreFab: FloatingActionButton = view.findViewById(R.id.moreFab)
+        val techFab: FloatingActionButton = view.findViewById(R.id.techFab)
+        val chemicalsFab: FloatingActionButton = view.findViewById(R.id.chemicalsFab)
+        val timerTextView: TextView = view.findViewById(R.id.timerTextView)
 
         moreFab.setOnClickListener {
             if (techFab.visibility == View.GONE && chemicalsFab.visibility == View.GONE) {
@@ -46,6 +51,23 @@ class AllPLlacesFragment : Fragment() {
         }
         techFab.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_tech_viewpager_fragment)
+        }
+
+        viewModel.times.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Success -> {
+                    Toast.makeText(view.context, "таймер кончился", Toast.LENGTH_SHORT).show()
+                }
+                is Resource.Loading -> {
+                    timerTextView.text = (it.data?.div(1000)).toString()
+
+                }
+            }
+        }
+
+        timerTextView.setOnClickListener {
+            viewModel.loadTime()
+
         }
         var viewPager = view.findViewById<ViewPager2>(R.id.viewPager2)
         viewPager.adapter = AdapterViewPager()

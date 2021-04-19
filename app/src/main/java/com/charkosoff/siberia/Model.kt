@@ -10,11 +10,12 @@ class Model():TimeInterface{
         0..5000L to "Март",
         5000..10000L to "Апрель"
     )
-    var countDownTimer = object:CountDownTimer(50000, 0) {
+    var countDownTimer = object:CountDownTimer(50000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             time = millisUntilFinished
         }
         override fun onFinish() {
+
         }
     }
 

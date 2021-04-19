@@ -25,7 +25,6 @@ class AdapterViewPagerCultures(names:Array<String>): RecyclerView.Adapter<PagerV
     override fun onBindViewHolder(holder: PagerVHCultures, position: Int)=holder.itemView.run {
         holder.onBing(position, cultureNames)
     }
-
 }
 
 class PagerVHCultures(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -33,9 +32,10 @@ class PagerVHCultures(itemView: View) : RecyclerView.ViewHolder(itemView){
     fun onBing(position: Int, names:Array<String>){
         var cultureNames = names
         when(position){
-            0->{cultureNames = arrayOf("Зерновые","Овёс","Пшеница","Ячмень")}
-            1->{cultureNames = arrayOf("Бобовые","Горох","Фасоль")}
+            0->{cultureNames = arrayOf("Овёс","Пшеница","Ячмень")}
+            1->{cultureNames = arrayOf("Горох","Фасоль")}
         }
+
         recyclerView.adapter = RecyclerViewAdapterCultures(cultureNames)
         recyclerView.layoutManager = LinearLayoutManager(itemView.context)
     }

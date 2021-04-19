@@ -3,6 +3,7 @@ package com.charkosoff.siberia.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -37,26 +38,18 @@ class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
 }
 
 class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView){
-    var moreFab:FloatingActionButton = itemView.findViewById(R.id.moreFab)
-    var techFab:FloatingActionButton = itemView.findViewById(R.id.techFab)
-    var chemicalsFab:FloatingActionButton = itemView.findViewById(R.id.chemicalsFab)
+
     var currentCulture: TextView = itemView.findViewById(R.id.currentCulture)
+    var currentCultureImage: ImageView = itemView.findViewById(R.id.imageView)
+
     fun onBing(position: Int){
-        currentCulture.text = Data.currentCulture
-        moreFab.setOnClickListener {
-            if (techFab.visibility==View.GONE && chemicalsFab.visibility==View.GONE){
-                moreFab.setImageResource(R.drawable.ic_baseline_close_24)
-                techFab.visibility = View.VISIBLE
-                chemicalsFab.visibility = View.VISIBLE
-            }
-            else{
-                moreFab.setImageResource(R.drawable.ic_baseline_more_horiz_24)
-                techFab.visibility = View.GONE
-                chemicalsFab.visibility = View.GONE
-            }
-        }
-        techFab.setOnClickListener {
-            itemView.findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_tech_viewpager_fragment)
+        currentCulture.text = Data.currentCulture[position]
+        when (Data.currentCulture[position]){
+            "Овёс" ->  currentCultureImage.setImageResource(R.drawable.oves)
+            "Пшеница" -> currentCultureImage.setImageResource(R.drawable.pshenitsa)
+            "Ячмень" -> currentCultureImage.setImageResource(R.drawable.yachmen)
+            "Горох" -> currentCultureImage.setImageResource(R.drawable.goroh)
+            "Фасоль" -> currentCultureImage.setImageResource(R.drawable.fasol)
         }
     }
 }

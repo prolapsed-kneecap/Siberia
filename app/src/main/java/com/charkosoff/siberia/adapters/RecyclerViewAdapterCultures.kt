@@ -1,6 +1,5 @@
 package com.charkosoff.siberia.adapters
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,11 +30,8 @@ class RecyclerViewAdapterCultures(values:Array<String>):
         fun onBing(position:Int){
             cultureNameTextView.text = data[position]
             cultureCardView.setOnClickListener {
-                var bundle = Bundle()
-                bundle.putInt("keyPos", position)
-                Data.currentCulture = arrayOf("Зерновые","Овёс","Пшеница","Ячмень")[position]
-                //bundle.putInt("id2Key", )
-                itemView.findNavController().navigate(R.id.action_navigation_cultures_viewpager_fragment_to_navigation_viewpager_fragment, bundle)
+                Data.currentCulture[Data.currentId] = data[position]
+                itemView.findNavController().popBackStack()
             }
         }
     }

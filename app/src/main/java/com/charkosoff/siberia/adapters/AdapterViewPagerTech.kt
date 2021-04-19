@@ -32,8 +32,8 @@ class PagerVHTech(itemView: View) : RecyclerView.ViewHolder(itemView){
     fun onBing(position: Int, names:Array<String>){
         var cultureNames = names
         when(position){
-            0->{cultureNames = arrayOf("Сеялки","СЗП-3,6","СЗУ-Т-3.6","СЗУ-3,6-04")}
-            1->{cultureNames = arrayOf("Комбайны","Енисей–1200–1НМ","Дон 1500")}
+            0->{cultureNames = arrayOf("СЗП-3,6","СЗУ-Т-3.6","СЗУ-3,6-04")}
+            1->{cultureNames = arrayOf("Енисей–1200–1НМ","Дон 1500")}
         }
         recyclerView.adapter = RecyclerViewAdapterTech(cultureNames)
         recyclerView.layoutManager = LinearLayoutManager(itemView.context)

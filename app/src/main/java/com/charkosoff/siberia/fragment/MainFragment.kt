@@ -24,13 +24,13 @@ class MainFragment: Fragment() {
         val view = LayoutInflater.from(this.requireContext()).inflate(R.layout.fragment_main, container, false)
 
         var currentTime = model.getCurrent()
-        var timeTable = model.timeTable()
+        val timeTable = model.timeTable()
 
-        var monthTextView: TextView = view.findViewById(R.id.monthTextView)
-        var firstField:ImageView = view.findViewById(R.id.field1)
-        var secondField:ImageView = view.findViewById(R.id.field2)
-        var thirdField:ImageView = view.findViewById(R.id.field3)
-        var fourthField:ImageView = view.findViewById(R.id.field4)
+        val monthTextView: TextView = view.findViewById(R.id.monthTextView)
+        val firstField:ImageView = view.findViewById(R.id.field1)
+        val secondField:ImageView = view.findViewById(R.id.field2)
+        val thirdField:ImageView = view.findViewById(R.id.field3)
+        val fourthField:ImageView = view.findViewById(R.id.field4)
 
         monthTextView.text = model.getMonth(currentTime, timeTable)
 
@@ -45,8 +45,7 @@ class MainFragment: Fragment() {
     }
     private fun moveToField(view:View, id:Int){
         val bundle = Bundle()
-        bundle.putInt("idKey", id)
-        Data.id = id
+        Data.currentId=id
         view.findNavController().navigate(R.id.action_navigation_main_fragment_to_navigation_viewpager_fragment, bundle)
     }
 }

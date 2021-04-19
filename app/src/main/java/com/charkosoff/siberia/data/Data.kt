@@ -1,6 +1,6 @@
 package com.charkosoff.siberia.data
 
 object Data {
-    var id:Int = 0
-    var currentCulture = ""
+    var currentId : Int = 0
+    var currentCulture : MutableList<String> = mutableListOf("","","","")
 }

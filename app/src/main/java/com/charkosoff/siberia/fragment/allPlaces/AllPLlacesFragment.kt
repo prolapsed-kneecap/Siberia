@@ -1,4 +1,4 @@
-package com.charkosoff.siberia.fragment
+package com.charkosoff.siberia.fragment.allPlaces
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,17 +11,21 @@ import com.charkosoff.siberia.R
 import com.charkosoff.siberia.adapters.AdapterViewPager
 import com.charkosoff.siberia.data.Data
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class ViewPagerFragment : Fragment() {
+class AllPLlacesFragment : Fragment() {
     lateinit var tab: TabLayout.Tab
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val viewModel: AllPlacesViewModel by viewModel()
+
+        viewModel.loadData()
         var id = Data.currentId
         val view = inflater.inflate(R.layout.fragment_view_pager, container, false)
 

@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/navigation_viewpager_fragment"
-        android:name="com.charkosoff.siberia.fragment.ViewPagerFragment"
+        android:name="com.charkosoff.siberia.fragment.allPlaces.AllPLlacesFragment"
         tools:layout="@layout/fragment_view_pager">
         <action
             android:id="@+id/action_navigation_viewpager_fragment_to_navigation_tech_viewpager_fragment"

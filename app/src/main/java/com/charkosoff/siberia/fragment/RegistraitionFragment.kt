@@ -15,14 +15,12 @@ import com.charkosoff.siberia.User
 class RegistraitionFragment : Fragment() {
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_registraition, container, false)
-
 
 
         val nameEditText: EditText = view.findViewById(R.id.editTextName)

@@ -1,7 +1,6 @@
 package com.charkosoff.siberia.fragment.allPlaces
 
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +20,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class AllPLlacesFragment : Fragment() {
-    lateinit var tab: TabLayout.Tab
+class AllPLacesFragment : Fragment() {
+    private lateinit var tab: TabLayout.Tab
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,7 +29,7 @@ class AllPLlacesFragment : Fragment() {
 
         val viewModel: AllPlacesViewModel by viewModel()
 
-        var id = Data.currentId
+        val id = Data.currentId
         val view = inflater.inflate(R.layout.fragment_view_pager, container, false)
 
         val moreFab: FloatingActionButton = view.findViewById(R.id.moreFab)
@@ -50,7 +49,7 @@ class AllPLlacesFragment : Fragment() {
             }
         }
         techFab.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_tech_viewpager_fragment)
+            findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_cultures_viewpager_fragment)
         }
 
         viewModel.times.observe(viewLifecycleOwner) {
@@ -69,11 +68,11 @@ class AllPLlacesFragment : Fragment() {
             viewModel.loadTime()
 
         }
-        var viewPager = view.findViewById<ViewPager2>(R.id.viewPager2)
+        val viewPager = view.findViewById<ViewPager2>(R.id.viewPager2)
         viewPager.adapter = AdapterViewPager()
 
-        var tabLayot = view.findViewById<TabLayout>(R.id.Tab_Layout)
-        TabLayoutMediator(tabLayot, viewPager,
+        val tabLayout = view.findViewById<TabLayout>(R.id.Tab_Layout)
+        TabLayoutMediator(tabLayout, viewPager,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
                     0 -> {
@@ -90,7 +89,7 @@ class AllPLlacesFragment : Fragment() {
                     }
                 }
             }).attach()
-        tabLayot.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 Data.currentId = tab.position
             }
@@ -101,7 +100,7 @@ class AllPLlacesFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })
-        tab = tabLayot.getTabAt(id)!!
+        tab = tabLayout.getTabAt(id)!!
         tab.select()
 
         return view

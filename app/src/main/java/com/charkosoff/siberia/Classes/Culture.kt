@@ -14,3 +14,4 @@ object Plants {
                 Culture("Фасоль")
 )
 }
+

@@ -1,7 +1,6 @@
 package com.charkosoff.siberia.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +12,6 @@ import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
 
-
-private const val TAG = "MainFragment"
-
 class MainFragment : Fragment() {
 
     private val model = Model()
@@ -23,6 +19,10 @@ class MainFragment : Fragment() {
     private lateinit var secondField: ImageView
     private lateinit var thirdField: ImageView
     private lateinit var fourthField: ImageView
+    private lateinit var firstFieldTxt: TextView
+    private lateinit var secondFieldTxt: TextView
+    private lateinit var thirdFieldTxt: TextView
+    private lateinit var fourthFieldTxt: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,10 +36,14 @@ class MainFragment : Fragment() {
         val timeTable = model.timeTable()
 
         val monthTextView: TextView = view.findViewById(R.id.monthTextView)
-        firstField = view.findViewById(R.id.field1)
-        secondField = view.findViewById(R.id.field2)
-        thirdField = view.findViewById(R.id.field3)
-        fourthField = view.findViewById(R.id.field4)
+        firstField = view.findViewById(R.id.field1) as ImageView
+        secondField = view.findViewById(R.id.field2) as ImageView
+        thirdField = view.findViewById(R.id.field3) as ImageView
+        fourthField = view.findViewById(R.id.field4) as ImageView
+        firstFieldTxt = view.findViewById(R.id.field1txt) as TextView
+        secondFieldTxt = view.findViewById(R.id.field2txt) as TextView
+        thirdFieldTxt = view.findViewById(R.id.field3txt) as TextView
+        fourthFieldTxt = view.findViewById(R.id.field4txt) as TextView
 
         monthTextView.text = model.getMonth(currentTime, timeTable)
 
@@ -48,20 +52,53 @@ class MainFragment : Fragment() {
         thirdField.setOnClickListener { moveToField(view, 2) }
         fourthField.setOnClickListener { moveToField(view, 3) }
 
+        setCultureRes()
+
         return view
     }
 
-
     override fun onStart() {
         super.onStart()
-        Log.d(TAG, "onResume() called")
+        setCultureRes()
     }
-
 
     private fun moveToField(view: View, id: Int) {
-        val bundle = Bundle()
+
         Data.currentId = id
-        view.findNavController()
-            .navigate(R.id.action_navigation_main_fragment_to_navigation_viewpager_fragment, bundle)
+
+        if (Data.currentCulture[id] == "Вспаханное поле")
+            view.findNavController()
+                .navigate(R.id.action_navigation_main_fragment_to_navigation_culture_fragment)
+        else
+            view.findNavController()
+                .navigate(R.id.action_navigation_main_fragment_to_navigation_viewpager_fragment)
     }
+
+    private fun setCultureRes() {
+        val bundle = this.arguments
+        if (bundle != null) {
+            val res = bundle.getInt("res", R.drawable.back_image)
+            val name = bundle.getString("name", "Вспаханное поле")
+            when (bundle.getInt("id", -1)) {
+                0 -> {
+                    firstField.setImageResource(res)
+                    firstFieldTxt.text = name
+                }
+                1 -> {
+                    secondField.setImageResource(res)
+                    secondFieldTxt.text = name
+                }
+                2 -> {
+                    thirdField.setImageResource(res)
+                    thirdFieldTxt.text = name
+                }
+                3 -> {
+                    fourthField.setImageResource(res)
+                    fourthFieldTxt.text = name
+                }
+            }
+
+        }
+    }
+
 }

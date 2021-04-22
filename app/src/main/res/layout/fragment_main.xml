@@ -26,6 +26,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/field" />
         <TextView
+            android:id="@+id/field1txt"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:text="Pole 1"
@@ -53,6 +54,7 @@
             android:src="@drawable/field" />
         <TextView
             android:layout_width="match_parent"
+            android:id="@+id/field2txt"
             android:layout_height="25dp"
             android:text="Pole 2"
             android:textAlignment="center"
@@ -80,6 +82,7 @@
             android:src="@drawable/field" />
         <TextView
             android:layout_width="match_parent"
+            android:id="@+id/field3txt"
             android:layout_height="25dp"
             android:text="Pole 3"
             android:textAlignment="center"
@@ -106,6 +109,7 @@
             android:src="@drawable/field" />
         <TextView
             android:layout_width="match_parent"
+            android:id="@+id/field4txt"
             android:layout_height="25dp"
             android:text="Pole 4"
             android:textAlignment="center"

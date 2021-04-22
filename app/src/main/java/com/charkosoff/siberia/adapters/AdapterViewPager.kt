@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.fragment.MainFragment
 
 
 class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
@@ -33,14 +34,12 @@ class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
     override fun onBindViewHolder(holder: PagerVH, position: Int) = holder.itemView.run {
         holder.onBing(position)
     }
-
 }
 
 class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private var currentCulture: TextView = itemView.findViewById(R.id.currentCulture)
     private var currentCultureImage: ImageView = itemView.findViewById(R.id.imageView)
-
 
     fun onBing(position: Int) {
         currentCulture.text = Data.currentCulture[position]

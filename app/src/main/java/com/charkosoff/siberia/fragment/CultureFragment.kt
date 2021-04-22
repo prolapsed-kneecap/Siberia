@@ -68,6 +68,24 @@ class CultureFragment : Fragment() {
             cultureNameTextView.text = data
             cultureCardView.setOnClickListener {
                 Data.currentCulture[Data.currentId] = data
+                val res = when (data) {
+                    "Овёс" -> R.drawable.oves
+                    "Пшеница" -> R.drawable.pshenitsa
+                    "Ячмень" -> R.drawable.yachmen
+                    "Горох" -> R.drawable.goroh
+                    "Фасоль" -> R.drawable.fasol
+                    else -> R.drawable.field
+                }
+                val mainFragment = MainFragment()
+                val bundle = Bundle()
+                bundle.putInt("res", res)
+                bundle.putInt("id", Data.currentId)
+                bundle.putString("name", data)
+                mainFragment.arguments = bundle
+                val transaction = fragmentManager?.beginTransaction()
+                transaction?.replace(R.id.nav_host_fragment, mainFragment)
+                transaction?.commit()
+
                 itemView.findNavController()
                     .navigate(R.id.action_navigation_culture_fragment_to_navigation_tech_viewpager_fragment)
             }
@@ -105,10 +123,10 @@ class CultureFragment : Fragment() {
 
         // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(columnCount: Int) =
+        fun newInstance(res: Int) =
             CultureFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
+                    putInt("res", res)
                 }
             }
     }

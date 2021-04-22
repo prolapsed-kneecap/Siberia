@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.charkosoff.siberia.R
@@ -36,6 +37,7 @@ class AllPLacesFragment : Fragment() {
         val techFab: FloatingActionButton = view.findViewById(R.id.techFab)
         val chemicalsFab: FloatingActionButton = view.findViewById(R.id.chemicalsFab)
         val timerTextView: TextView = view.findViewById(R.id.timerTextView)
+        val toMain: FloatingActionButton = view.findViewById(R.id.toMain)
 
         moreFab.setOnClickListener {
             if (techFab.visibility == View.GONE && chemicalsFab.visibility == View.GONE) {
@@ -49,7 +51,11 @@ class AllPLacesFragment : Fragment() {
             }
         }
         techFab.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_cultures_viewpager_fragment)
+            //findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_cultures_viewpager_fragment)
+        }
+
+        toMain.setOnClickListener{
+            view.findNavController().popBackStack()
         }
 
         viewModel.times.observe(viewLifecycleOwner) {

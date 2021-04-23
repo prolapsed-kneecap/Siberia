@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
 
@@ -76,18 +78,14 @@ class CultureFragment : Fragment() {
                     "Фасоль" -> R.drawable.fasol
                     else -> R.drawable.field
                 }
-                val mainFragment = MainFragment()
-                val bundle = Bundle()
-                bundle.putInt("res", res)
-                bundle.putInt("id", Data.currentId)
-                bundle.putString("name", data)
-                mainFragment.arguments = bundle
-                val transaction = fragmentManager?.beginTransaction()
-                transaction?.replace(R.id.nav_host_fragment, mainFragment)
-                transaction?.commit()
+                val bundle = bundleOf(
+                    "id" to Data.currentId,
+                    "res" to res,
+                    "name" to data
+                )
 
                 itemView.findNavController()
-                    .navigate(R.id.action_navigation_culture_fragment_to_navigation_tech_viewpager_fragment)
+                  .navigate(R.id.action_navigation_culture_fragment_to_navigation_tech_viewpager_fragment, bundle)
             }
         }
 

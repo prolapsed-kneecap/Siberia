@@ -1,6 +1,7 @@
 package com.charkosoff.siberia.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,10 +58,6 @@ class MainFragment : Fragment() {
         return view
     }
 
-    override fun onStart() {
-        super.onStart()
-        setCultureRes()
-    }
 
     private fun moveToField(view: View, id: Int) {
 
@@ -75,29 +72,34 @@ class MainFragment : Fragment() {
     }
 
     private fun setCultureRes() {
-        val bundle = this.arguments
-        if (bundle != null) {
-            val res = bundle.getInt("res", R.drawable.back_image)
-            val name = bundle.getString("name", "Вспаханное поле")
-            when (bundle.getInt("id", -1)) {
-                0 -> {
-                    firstField.setImageResource(res)
-                    firstFieldTxt.text = name
-                }
-                1 -> {
-                    secondField.setImageResource(res)
-                    secondFieldTxt.text = name
-                }
-                2 -> {
-                    thirdField.setImageResource(res)
-                    thirdFieldTxt.text = name
-                }
-                3 -> {
-                    fourthField.setImageResource(res)
-                    fourthFieldTxt.text = name
-                }
-            }
 
+        val res = arguments?.getInt("res")
+        val name = arguments?.getString("name")
+        when (arguments?.getInt("id")) {
+            0 -> {
+                if (res != null) {
+                    firstField.setImageResource(res)
+                }
+                firstFieldTxt.text = name
+            }
+            1 -> {
+                if (res != null) {
+                    secondField.setImageResource(res)
+                }
+                secondFieldTxt.text = name
+            }
+            2 -> {
+                if (res != null) {
+                    thirdField.setImageResource(res)
+                }
+                thirdFieldTxt.text = name
+            }
+            3 -> {
+                if (res != null) {
+                    fourthField.setImageResource(res)
+                }
+                fourthFieldTxt.text = name
+            }
         }
     }
 

@@ -66,7 +66,7 @@ class TechsFragment : Fragment() {
         fun bind(data: String) {
             techNameTextView.text = data
             techCardView.setOnClickListener {
-                itemView.findNavController().popBackStack()
+                itemView.findNavController().navigate(R.id.action_navigation_tech_fragment_to_navigation_main_fragment, arguments)
             }
         }
 

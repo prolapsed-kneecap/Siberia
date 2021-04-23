@@ -51,7 +51,7 @@ class AllPLacesFragment : Fragment() {
             }
         }
         techFab.setOnClickListener {
-            //findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_cultures_viewpager_fragment)
+            findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_culture_fragment)
         }
 
         toMain.setOnClickListener{

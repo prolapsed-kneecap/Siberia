@@ -50,6 +50,10 @@ class AllPLacesFragment : Fragment() {
                 chemicalsFab.visibility = View.GONE
             }
         }
+        chemicalsFab.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_fertilizers_fragment)
+        }
+
         techFab.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_culture_fragment)
         }
@@ -80,20 +84,7 @@ class AllPLacesFragment : Fragment() {
         val tabLayout = view.findViewById<TabLayout>(R.id.Tab_Layout)
         TabLayoutMediator(tabLayout, viewPager,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                when (position) {
-                    0 -> {
-                        tab.text = "1"
-                    }
-                    1 -> {
-                        tab.text = "2"
-                    }
-                    2 -> {
-                        tab.text = "3"
-                    }
-                    3 -> {
-                        tab.text = "4"
-                    }
-                }
+                tab.text = "ПОЛЕ ${(position + 1)}"
             }).attach()
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {

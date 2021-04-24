@@ -92,8 +92,6 @@ class CultureFragment : Fragment() {
         override fun onClick(v: View) {
 
         }
-
-
     }
 
     private inner class CultureAdapter(var cultures: Array<String>) :

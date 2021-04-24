@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.charkosoff.siberia.fragment.MainFragment
+
 
 class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
 
@@ -34,22 +34,22 @@ class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
     override fun onBindViewHolder(holder: PagerVH, position: Int) = holder.itemView.run {
         holder.onBing(position)
     }
-
 }
 
-class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView){
+class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    var currentCulture: TextView = itemView.findViewById(R.id.currentCulture)
-    var currentCultureImage: ImageView = itemView.findViewById(R.id.imageView)
+    private var currentCulture: TextView = itemView.findViewById(R.id.currentCulture)
+    private var currentCultureImage: ImageView = itemView.findViewById(R.id.imageView)
 
-    fun onBing(position: Int){
+    fun onBing(position: Int) {
         currentCulture.text = Data.currentCulture[position]
-        when (Data.currentCulture[position]){
-            "Овёс" ->  currentCultureImage.setImageResource(R.drawable.oves)
+        when (Data.currentCulture[position]) {
+            "Овёс" -> currentCultureImage.setImageResource(R.drawable.oves)
             "Пшеница" -> currentCultureImage.setImageResource(R.drawable.pshenitsa)
             "Ячмень" -> currentCultureImage.setImageResource(R.drawable.yachmen)
             "Горох" -> currentCultureImage.setImageResource(R.drawable.goroh)
             "Фасоль" -> currentCultureImage.setImageResource(R.drawable.fasol)
+
         }
     }
 }

@@ -18,10 +18,11 @@ import com.charkosoff.siberia.data.Data
 /**
  * A fragment representing a list of Items.
  */
+val cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль","Вспаханное поле")
+
 class CultureFragment : Fragment() {
 
     private var columnCount = 1
-    private var cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль")
     private lateinit var cultureRecyclerView: RecyclerView
     private var adapter: CultureAdapter? = null
 

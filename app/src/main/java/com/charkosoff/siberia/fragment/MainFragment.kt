@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
+import java.util.EnumSet.range
 
 class MainFragment : Fragment() {
 
@@ -70,37 +71,30 @@ class MainFragment : Fragment() {
             view.findNavController()
                 .navigate(R.id.action_navigation_main_fragment_to_navigation_viewpager_fragment)
     }
-
     private fun setCultureRes() {
-
         val res = arguments?.getInt("res")
         val name = arguments?.getString("name")
-        when (arguments?.getInt("id")) {
-            0 -> {
-                if (res != null) {
-                    firstField.setImageResource(res)
-                }
-                firstFieldTxt.text = name
-            }
-            1 -> {
-                if (res != null) {
-                    secondField.setImageResource(res)
-                }
-                secondFieldTxt.text = name
-            }
-            2 -> {
-                if (res != null) {
-                    thirdField.setImageResource(res)
-                }
-                thirdFieldTxt.text = name
-            }
-            3 -> {
-                if (res != null) {
-                    fourthField.setImageResource(res)
-                }
-                fourthFieldTxt.text = name
-            }
-        }
+        val imagesViewToText = listOf(
+            firstField to firstFieldTxt,
+            secondField to secondFieldTxt,
+            thirdField to thirdFieldTxt,
+            fourthField to fourthFieldTxt
+        )
+        for (i in imagesViewToText.indices)
+            loadField(i, imagesViewToText[i].first, imagesViewToText[i].second)
     }
 
+    fun loadField(fieldId: Int, imageView: ImageView, textView: TextView) {
+        val images = mapOf(
+            cultureNames[0] to R.drawable.oves,
+            cultureNames[1] to R.drawable.pshenitsa,
+            cultureNames[2] to R.drawable.yachmen,
+            cultureNames[3] to R.drawable.goroh,
+            cultureNames[4] to R.drawable.fasol,
+            cultureNames[5] to R.drawable.field
+        )
+
+        imageView.setImageResource(images[Data.currentCulture[fieldId]]!!)
+        textView.text = Data.currentCulture[fieldId]
+    }
 }

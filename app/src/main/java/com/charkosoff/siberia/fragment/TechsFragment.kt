@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.SeekBar
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import com.charkosoff.siberia.R
@@ -67,7 +70,36 @@ class TechsFragment : Fragment() {
             techNameTextView.text = data
             techCardView.setOnClickListener {
                 itemView.findNavController().navigate(R.id.action_navigation_tech_fragment_to_navigation_main_fragment, arguments)
+
+
+                val view = View.inflate(context,R.layout.dialog_techs,null)
+                var seekbar = view.findViewById<SeekBar>(R.id.seekBar)
+                seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+                    }
+                })
+
+                var btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
+
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setView(view)
+                val dialog = builder.create()
+                dialog.show()
+                dialog.setCancelable(false)
+
+                btn_accept.setOnClickListener(){
+                    dialog.dismiss()
+                }
             }
+
         }
 
         override fun onClick(v: View) {
@@ -75,7 +107,7 @@ class TechsFragment : Fragment() {
         }
 
 
-    }
+}
 
     private inner class TechAdapter(var techs: Array<String>) : RecyclerView.Adapter<TechHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)

@@ -1,5 +1,6 @@
 package com.charkosoff.siberia
 
+import android.text.TextUtils.replace
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -16,9 +17,20 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.charkosoff.siberia", appContext.packageName)
+    fun toCamelCase(str:String):String{
+        var string = str
+        for(i in string.indices){
+            if (string[i]=='_' || string[i]=='-' && i<=string.length-1){
+                if (string[i]!='['|| string[i]!=']' && (i+1)<=string.length-1){
+                    string = string[i+1].toString().replace(string[i+1].toString(), string[i+1].toString().capitalize())
+                }
+                else if((i+2)<=string.length-1){
+                    string = string[i+2].toString().replace(string[i+2].toString(), string[i+2].toString().capitalize())
+                }
+            }
+        }
+        string = string.replace("-", "", false)
+        string = string.replace("_", "", false)
+        return string
     }
 }

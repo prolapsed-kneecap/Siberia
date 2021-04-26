@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.databinding.FieldItemBinding
 
 
 class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
@@ -19,14 +20,11 @@ class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
         android.R.color.holo_purple
     )
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerVH =
-        PagerVH(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.field_item,
-                parent,
-                false
-            )
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerVH {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val fieldItemBinding = FieldItemBinding.inflate(layoutInflater, parent, false)
+        return PagerVH(fieldItemBinding)
+    }
 
     override fun getItemCount(): Int = colors.size
 
@@ -35,19 +33,17 @@ class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
     }
 }
 
-class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class PagerVH(private val fieldItemBinding: FieldItemBinding) : RecyclerView.ViewHolder(fieldItemBinding.root) {
 
-    private var currentCulture: TextView = itemView.findViewById(R.id.currentCulture)
-    private var currentCultureImage: ImageView = itemView.findViewById(R.id.imageView)
 
     fun onBing(position: Int) {
-        currentCulture.text = Data.currentCulture[position]
+        fieldItemBinding.currentCulture.text = Data.currentCulture[position]
         when (Data.currentCulture[position]) {
-            "Овёс" -> currentCultureImage.setImageResource(R.drawable.oves)
-            "Пшеница" -> currentCultureImage.setImageResource(R.drawable.pshenitsa)
-            "Ячмень" -> currentCultureImage.setImageResource(R.drawable.yachmen)
-            "Горох" -> currentCultureImage.setImageResource(R.drawable.goroh)
-            "Фасоль" -> currentCultureImage.setImageResource(R.drawable.fasol)
+            "Овёс" -> fieldItemBinding.imageView.setImageResource(R.drawable.oves)
+            "Пшеница" -> fieldItemBinding.imageView.setImageResource(R.drawable.pshenitsa)
+            "Ячмень" -> fieldItemBinding.imageView.setImageResource(R.drawable.yachmen)
+            "Горох" -> fieldItemBinding.imageView.setImageResource(R.drawable.goroh)
+            "Фасоль" -> fieldItemBinding.imageView.setImageResource(R.drawable.fasol)
         }
     }
 }

@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.adapters.AdapterViewPager
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.utils.Resource
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
@@ -22,7 +23,12 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class AllPLacesFragment : Fragment() {
+
     private lateinit var tab: TabLayout.Tab
+
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -13,44 +13,30 @@ import androidx.navigation.findNavController
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.fragment.cultureNames
 import com.charkosoff.siberia.utils.Resource
 
 class MainFragment : Fragment() {
 
     private val model = Model()
-    private val viewModel:MainFragmentViewModel by viewModels()
-    private lateinit var firstField: ImageView
-    private lateinit var secondField: ImageView
-    private lateinit var thirdField: ImageView
-    private lateinit var fourthField: ImageView
-    private lateinit var firstFieldTxt: TextView
-    private lateinit var secondFieldTxt: TextView
-    private lateinit var thirdFieldTxt: TextView
-    private lateinit var fourthFieldTxt: TextView
+
+
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = LayoutInflater.from(this.requireContext())
-            .inflate(R.layout.fragment_main, container, false)
+    ): View {
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         val currentTime = model.getCurrent()
         val timeTable = model.timeTable()
 
-        val monthTextView: TextView = view.findViewById(R.id.monthTextView)
-        firstField = view.findViewById(R.id.field1) as ImageView
-        secondField = view.findViewById(R.id.field2) as ImageView
-        thirdField = view.findViewById(R.id.field3) as ImageView
-        fourthField = view.findViewById(R.id.field4) as ImageView
-        firstFieldTxt = view.findViewById(R.id.field1txt) as TextView
-        secondFieldTxt = view.findViewById(R.id.field2txt) as TextView
-        thirdFieldTxt = view.findViewById(R.id.field3txt) as TextView
-        fourthFieldTxt = view.findViewById(R.id.field4txt) as TextView
-
-        monthTextView.text = model.getMonth(currentTime, timeTable)
+        binding.monthTextView.text = model.getMonth(currentTime, timeTable)
         /*viewModel.loadTime()
         viewModel.times.observe(viewLifecycleOwner){
             when(it){
@@ -60,10 +46,10 @@ class MainFragment : Fragment() {
             }
         }*/
 
-        firstField.setOnClickListener { moveToField(view, 0) }
-        secondField.setOnClickListener { moveToField(view, 1) }
-        thirdField.setOnClickListener { moveToField(view, 2) }
-        fourthField.setOnClickListener { moveToField(view, 3) }
+        binding.field1.setOnClickListener { moveToField(view, 0) }
+        binding.field2.setOnClickListener { moveToField(view, 1) }
+        binding.field3.setOnClickListener { moveToField(view, 2) }
+        binding.field4.setOnClickListener { moveToField(view, 3) }
 
         setCultureRes()
 
@@ -82,20 +68,19 @@ class MainFragment : Fragment() {
             view.findNavController()
                 .navigate(R.id.action_navigation_main_fragment_to_navigation_viewpager_fragment)
     }
+
     private fun setCultureRes() {
-        val res = arguments?.getInt("res")
-        val name = arguments?.getString("name")
         val imagesViewToText = listOf(
-            firstField to firstFieldTxt,
-            secondField to secondFieldTxt,
-            thirdField to thirdFieldTxt,
-            fourthField to fourthFieldTxt
+            binding.field1 to binding.field1txt,
+            binding.field2 to binding.field2txt,
+            binding.field3 to binding.field3txt,
+            binding.field4 to binding.field4txt,
         )
         for (i in imagesViewToText.indices)
             loadField(i, imagesViewToText[i].first, imagesViewToText[i].second)
     }
 
-    fun loadField(fieldId: Int, imageView: ImageView, textView: TextView) {
+    private fun loadField(fieldId: Int, imageView: ImageView, textView: TextView) {
         val images = mapOf(
             cultureNames[0] to R.drawable.oves,
             cultureNames[1] to R.drawable.pshenitsa,
@@ -107,5 +92,10 @@ class MainFragment : Fragment() {
 
         imageView.setImageResource(images[Data.currentCulture[fieldId]]!!)
         textView.text = Data.currentCulture[fieldId]
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

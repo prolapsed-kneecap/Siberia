@@ -1,7 +1,7 @@
 package com.charkosoff.siberia
 
-import com.charkosoff.siberia.Classes.Culture
-import com.charkosoff.siberia.Classes.Plants.cultures
+import com.charkosoff.siberia.classes.Culture
+import com.charkosoff.siberia.classes.Plants.cultures
 
 class MasterCulture(){
 

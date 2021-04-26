@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Siberia</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="plowed_field">Вспаханное поле</string>
+    <string name="steam_field">Паровое поле</string>
+    <string name="description_oves">тут будет описание кульутры овёс</string>
+    <string name="description_pshenitsya">тут будет описание культуры пшеница</string>
+    <string name="description_yachmen">тут будет описание культуры Ячмень</string>
+    <string name="description_goroh">тут будет описание культуры Горох</string>
+    <string name="description_fasol">тут будет описание культуры Фасоль</string>
+
+
 </resources>

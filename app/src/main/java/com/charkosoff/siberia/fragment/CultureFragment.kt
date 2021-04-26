@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.classes.Plants
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.Data.culturesToShow
 import com.charkosoff.siberia.databinding.FragmentCultureListBinding
@@ -19,7 +17,7 @@ import com.charkosoff.siberia.databinding.FragmentCultureListBinding
 /**
  * A fragment representing a list of Items.
  */
-val cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль", "Вспаханное поле")
+val cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль", "Паровое поле")
 
 class CultureFragment : Fragment() {
 
@@ -66,28 +64,18 @@ class CultureFragment : Fragment() {
         }
 
 
-        fun bind(data: String) {
+        fun bind(data: String, position: Int) {
             cultureItemBinding.culturesNameTextView.text = data
+            val selectedCulture = Plants.cultures[position]
+            cultureItemBinding.description.setText(selectedCulture.description)
+            cultureItemBinding.cultureRes.setImageResource(selectedCulture.image)
+            cultureItemBinding.family.append(selectedCulture.family)
             cultureItemBinding.cultureCardView.setOnClickListener {
                 Data.currentCulture[Data.currentId] = data
-                val res = when (data) {
-                    "Овёс" -> R.drawable.oves
-                    "Пшеница" -> R.drawable.pshenitsa
-                    "Ячмень" -> R.drawable.yachmen
-                    "Горох" -> R.drawable.goroh
-                    "Фасоль" -> R.drawable.fasol
-                    else -> R.drawable.field
-                }
-                val bundle = bundleOf(
-                    "id" to Data.currentId,
-                    "res" to res,
-                    "name" to data
-                )
 
                 itemView.findNavController()
                     .navigate(
-                        R.id.action_navigation_culture_fragment_to_navigation_tech_viewpager_fragment,
-                        bundle
+                        R.id.action_navigation_culture_fragment_to_navigation_tech_viewpager_fragment
                     )
             }
         }
@@ -102,7 +90,8 @@ class CultureFragment : Fragment() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
                 : CultureHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
-            val cultureItemBinding = FragmentCultureListBinding.inflate(layoutInflater, parent, false)
+            val cultureItemBinding =
+                FragmentCultureListBinding.inflate(layoutInflater, parent, false)
             return CultureHolder(cultureItemBinding)
         }
 
@@ -110,7 +99,7 @@ class CultureFragment : Fragment() {
         override fun onBindViewHolder(holder: CultureHolder, position: Int) {
             val culture = culturesToShow[position]
             holder.apply {
-                holder.bind(culture)
+                holder.bind(culture, position)
             }
         }
     }

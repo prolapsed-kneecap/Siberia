@@ -58,7 +58,7 @@ class MainFragment : Fragment() {
 
         Data.currentId = id
 
-        if (Data.currentCulture[id] == "Вспаханное поле")
+        if (Data.currentCulture[id] == "Паровое поле")
             view.findNavController()
                 .navigate(R.id.action_navigation_main_fragment_to_navigation_culture_fragment)
         else

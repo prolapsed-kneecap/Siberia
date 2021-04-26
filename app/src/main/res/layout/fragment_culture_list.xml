@@ -4,24 +4,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="60dp">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_marginTop="4dp"
         android:id="@+id/cultureCardView"
         app:cardCornerRadius="15dp"
         android:layout_width="375dp"
-        android:layout_height="48dp"
+        android:layout_height="150dp"
         android:backgroundTint="@color/FieldBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/cultureRes"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            />
 
         <TextView
             android:id="@+id/culturesNameTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:gravity="center"
-            android:text="*Имя культуры не указано*" />
+            android:text="*Имя культуры не указано*"
+            />
+        <TextView
+            android:id="@+id/family"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:text="Семейство: "
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="50dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"/>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

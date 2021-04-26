@@ -6,8 +6,8 @@
     app:startDestination="@id/navigation_registration_fragment">
     <fragment
         android:id="@+id/navigation_registration_fragment"
-        android:name="com.charkosoff.siberia.fragment.RegistraitionFragment"
-        tools:layout="@layout/fragment_registraition">
+        android:name="com.charkosoff.siberia.fragment.RegistrationFragment"
+        tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_navigation_registration_fragment_to_navigation_main_fragment"
             app:destination="@id/navigation_main_fragment" />

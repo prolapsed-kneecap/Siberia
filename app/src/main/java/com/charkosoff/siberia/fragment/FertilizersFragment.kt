@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.databinding.FragmentFertilizersListBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +23,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class FertilizersFragment : Fragment() {
 
-    private var fertilizersNames = arrayOf("Азотные", "Фосфорные", "Калийные", "Известковые", "Хлорсодержащие")
+    private var fertilizersNames =
+        arrayOf("Азотные", "Фосфорные", "Калийные", "Известковые", "Хлорсодержащие")
     private lateinit var fertilizersRecyclerView: RecyclerView
     private var adapter: FertilizersAdapter? = null
 
@@ -56,11 +56,9 @@ class FertilizersFragment : Fragment() {
         fertilizersRecyclerView.adapter = adapter
     }
 
-    private inner class FertilizersHolder(view: View) : RecyclerView.ViewHolder(view),
+    private inner class FertilizersHolder(private val fertilizersListBinding: FragmentFertilizersListBinding) :
+        RecyclerView.ViewHolder(fertilizersListBinding.root),
         View.OnClickListener {
-
-        var fertilizersNameTextView: TextView = itemView.findViewById(R.id.fertilizersNameTextView)
-        var fertilizersCardView: CardView = itemView.findViewById(R.id.fertilizersCardView)
 
         init {
             itemView.setOnClickListener(this)
@@ -68,9 +66,8 @@ class FertilizersFragment : Fragment() {
 
 
         fun bind(data: String) {
-            fertilizersNameTextView.text = data
-            fertilizersCardView.setOnClickListener {
-
+            fertilizersListBinding.fertilizersNameTextView.text = data
+            fertilizersListBinding.fertilizersCardView.setOnClickListener {
 
 
                 itemView.findNavController()
@@ -87,8 +84,10 @@ class FertilizersFragment : Fragment() {
         RecyclerView.Adapter<FertilizersHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
                 : FertilizersHolder {
-            val view = layoutInflater.inflate(R.layout.fragment_fertilizers_list, parent, false)
-            return FertilizersHolder(view)
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val fertilizersListBinding =
+                FragmentFertilizersListBinding.inflate(layoutInflater, parent, false)
+            return FertilizersHolder(fertilizersListBinding)
         }
 
         override fun getItemCount() = fertilizers.size

@@ -1,19 +1,18 @@
 package com.charkosoff.siberia.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SeekBar
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 
 /**
  * A fragment representing a list of Items.
@@ -55,11 +54,10 @@ class TechsFragment : Fragment() {
         techRecyclerView.adapter = adapter
     }
 
-    private inner class TechHolder(view: View) : RecyclerView.ViewHolder(view),
+    private inner class TechHolder(private val techsListBinding: FragmentTechsListBinding) :
+        RecyclerView.ViewHolder(techsListBinding.root),
         View.OnClickListener {
 
-        var techNameTextView: TextView = itemView.findViewById(R.id.techNameTextView)
-        var techCardView: CardView = itemView.findViewById(R.id.techCardView)
 
         init {
             itemView.setOnClickListener(this)
@@ -67,15 +65,22 @@ class TechsFragment : Fragment() {
 
 
         fun bind(data: String) {
-            techNameTextView.text = data
-            techCardView.setOnClickListener {
-                itemView.findNavController().navigate(R.id.action_navigation_tech_fragment_to_navigation_main_fragment, arguments)
+            techsListBinding.techNameTextView.text = data
+            techsListBinding.techCardView.setOnClickListener {
+                itemView.findNavController().navigate(
+                    R.id.action_navigation_tech_fragment_to_navigation_main_fragment,
+                    arguments
+                )
 
 
-                val view = View.inflate(context,R.layout.dialog_techs,null)
-                var seekbar = view.findViewById<SeekBar>(R.id.seekBar)
-                seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
-                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                val view = View.inflate(context, R.layout.dialog_techs, null)
+                val seekbar = view.findViewById<SeekBar>(R.id.seekBar)
+                seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(
+                        seekBar: SeekBar?,
+                        progress: Int,
+                        fromUser: Boolean
+                    ) {
 
                     }
 
@@ -87,7 +92,7 @@ class TechsFragment : Fragment() {
                     }
                 })
 
-                var btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
+                val btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
 
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setView(view)
@@ -95,7 +100,7 @@ class TechsFragment : Fragment() {
                 dialog.show()
                 dialog.setCancelable(false)
 
-                btn_accept.setOnClickListener(){
+                btn_accept.setOnClickListener() {
                     dialog.dismiss()
                 }
             }
@@ -107,13 +112,14 @@ class TechsFragment : Fragment() {
         }
 
 
-}
+    }
 
     private inner class TechAdapter(var techs: Array<String>) : RecyclerView.Adapter<TechHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
                 : TechHolder {
-            val view = layoutInflater.inflate(R.layout.fragment_techs_list, parent, false)
-            return TechHolder(view)
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val techsListBinding = FragmentTechsListBinding.inflate(layoutInflater, parent, false)
+            return TechHolder(techsListBinding)
         }
 
         override fun getItemCount() = techs.size

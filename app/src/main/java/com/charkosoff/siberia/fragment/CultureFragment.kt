@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.Data.culturesToShow
+import com.charkosoff.siberia.databinding.FragmentCultureListBinding
 
 /**
  * A fragment representing a list of Items.
  */
-val cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль","Вспаханное поле")
+val cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль", "Вспаханное поле")
 
 class CultureFragment : Fragment() {
 
@@ -56,11 +57,9 @@ class CultureFragment : Fragment() {
         cultureRecyclerView.adapter = adapter
     }
 
-    private inner class CultureHolder(view: View) : RecyclerView.ViewHolder(view),
+    private inner class CultureHolder(private val cultureItemBinding: FragmentCultureListBinding) :
+        RecyclerView.ViewHolder(cultureItemBinding.root),
         View.OnClickListener {
-
-        var cultureNameTextView: TextView = itemView.findViewById(R.id.culturesNameTextView)
-        var cultureCardView: CardView = itemView.findViewById(R.id.cultureCardView)
 
         init {
             itemView.setOnClickListener(this)
@@ -68,8 +67,8 @@ class CultureFragment : Fragment() {
 
 
         fun bind(data: String) {
-            cultureNameTextView.text = data
-            cultureCardView.setOnClickListener {
+            cultureItemBinding.culturesNameTextView.text = data
+            cultureItemBinding.cultureCardView.setOnClickListener {
                 Data.currentCulture[Data.currentId] = data
                 val res = when (data) {
                     "Овёс" -> R.drawable.oves
@@ -86,7 +85,10 @@ class CultureFragment : Fragment() {
                 )
 
                 itemView.findNavController()
-                  .navigate(R.id.action_navigation_culture_fragment_to_navigation_tech_viewpager_fragment, bundle)
+                    .navigate(
+                        R.id.action_navigation_culture_fragment_to_navigation_tech_viewpager_fragment,
+                        bundle
+                    )
             }
         }
 
@@ -95,12 +97,13 @@ class CultureFragment : Fragment() {
         }
     }
 
-    private inner class CultureAdapter():
+    private inner class CultureAdapter() :
         RecyclerView.Adapter<CultureHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
                 : CultureHolder {
-            val view = layoutInflater.inflate(R.layout.fragment_culture_list, parent, false)
-            return CultureHolder(view)
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val cultureItemBinding = FragmentCultureListBinding.inflate(layoutInflater, parent, false)
+            return CultureHolder(cultureItemBinding)
         }
 
         override fun getItemCount() = culturesToShow.size

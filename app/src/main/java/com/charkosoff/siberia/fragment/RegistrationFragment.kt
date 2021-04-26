@@ -4,41 +4,44 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.User
+import com.charkosoff.siberia.databinding.FragmentRegistrationBinding
 
-class RegistraitionFragment : Fragment() {
+class RegistrationFragment : Fragment() {
 
+    private var _binding: FragmentRegistrationBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_registraition, container, false)
+    ): View {
+        _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-
-        val nameEditText: EditText = view.findViewById(R.id.editTextName)
-        val groupEditText: EditText = view.findViewById(R.id.editTextGroup)
-        val inButton: Button = view.findViewById(R.id.button)
 
         val user = User("Имя", "Группа")
 
-        nameEditText.doOnTextChanged { text, start, before, count ->
+        binding.editTextName.doOnTextChanged { text, start, before, count ->
             user.name = text.toString()
         }
-        groupEditText.doOnTextChanged { text, start, before, count ->
+        binding.editTextGroup.doOnTextChanged { text, start, before, count ->
             user.group = text.toString()
         }
-        inButton.setOnClickListener {
+        binding.button.setOnClickListener {
             findNavController(this).navigate(R.id.action_navigation_registration_fragment_to_navigation_main_fragment)
         }
 
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

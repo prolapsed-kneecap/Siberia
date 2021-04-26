@@ -8,7 +8,9 @@ class Model():TimeInterface{
     private var time:Long = 0
     private val timeTable = mapOf<LongRange, String>(
         0..5000L to "Март",
-        5000..10000L to "Апрель"
+        5000..10000L to "Апрель",
+        10000..15000L to "Май",
+        15000..20000L to "Июнь"
     )
     var countDownTimer = object:CountDownTimer(20000, 1000) {
         override fun onTick(millisUntilFinished: Long) {

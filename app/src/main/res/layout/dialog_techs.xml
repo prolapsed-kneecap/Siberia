@@ -79,7 +79,7 @@
         android:id="@+id/btn_dialog_accept"
         android:layout_width="117dp"
         android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/white"
         android:text="подтвердить"
 
@@ -88,7 +88,6 @@
 
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 

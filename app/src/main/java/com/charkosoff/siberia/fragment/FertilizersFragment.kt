@@ -24,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class FertilizersFragment : Fragment() {
 
-    private var fertilizersNames = arrayOf("Удобрение", "Удобрение", "Удобрение", "Удобрение", "Удобрение")
+    private var fertilizersNames = arrayOf("Азотные", "Фосфорные", "Калийные", "Известковые", "Хлорсодержащие")
     private lateinit var fertilizersRecyclerView: RecyclerView
     private var adapter: FertilizersAdapter? = null
 
@@ -93,9 +93,9 @@ class FertilizersFragment : Fragment() {
 
         override fun getItemCount() = fertilizers.size
         override fun onBindViewHolder(holder: FertilizersHolder, position: Int) {
-            val culture = fertilizers[position]
+            val fertilizer = fertilizers[position]
             holder.apply {
-                holder.bind(culture)
+                holder.bind(fertilizer)
             }
         }
     }

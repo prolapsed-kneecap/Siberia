@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.data.Data.culturesToShow
 
 /**
  * A fragment representing a list of Items.
@@ -52,7 +53,7 @@ class CultureFragment : Fragment() {
 
     private fun updateUI() {
 
-        adapter = CultureAdapter(cultureNames)
+        adapter = CultureAdapter()
         cultureRecyclerView.adapter = adapter
     }
 
@@ -95,7 +96,7 @@ class CultureFragment : Fragment() {
         }
     }
 
-    private inner class CultureAdapter(var cultures: Array<String>) :
+    private inner class CultureAdapter():
         RecyclerView.Adapter<CultureHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
                 : CultureHolder {
@@ -103,9 +104,9 @@ class CultureFragment : Fragment() {
             return CultureHolder(view)
         }
 
-        override fun getItemCount() = cultures.size
+        override fun getItemCount() = culturesToShow.size
         override fun onBindViewHolder(holder: CultureHolder, position: Int) {
-            val culture = cultures[position]
+            val culture = culturesToShow[position]
             holder.apply {
                 holder.bind(culture)
             }

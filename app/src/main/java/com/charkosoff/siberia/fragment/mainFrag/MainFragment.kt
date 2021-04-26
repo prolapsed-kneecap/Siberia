@@ -1,22 +1,25 @@
-package com.charkosoff.siberia.fragment
+package com.charkosoff.siberia.fragment.mainFrag
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
-import java.util.EnumSet.range
+import com.charkosoff.siberia.fragment.cultureNames
+import com.charkosoff.siberia.utils.Resource
 
 class MainFragment : Fragment() {
 
     private val model = Model()
+    private val viewModel:MainFragmentViewModel by viewModels()
     private lateinit var firstField: ImageView
     private lateinit var secondField: ImageView
     private lateinit var thirdField: ImageView
@@ -48,6 +51,14 @@ class MainFragment : Fragment() {
         fourthFieldTxt = view.findViewById(R.id.field4txt) as TextView
 
         monthTextView.text = model.getMonth(currentTime, timeTable)
+        /*viewModel.loadTime()
+        viewModel.times.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading-> {
+                    monthTextView.text = model.getMonth(20000L - it.data!!, timeTable)
+                }
+            }
+        }*/
 
         firstField.setOnClickListener { moveToField(view, 0) }
         secondField.setOnClickListener { moveToField(view, 1) }

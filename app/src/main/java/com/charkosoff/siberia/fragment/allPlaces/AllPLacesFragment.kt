@@ -73,10 +73,8 @@ class AllPLacesFragment : Fragment() {
                 }
             }
         }
-
         timerTextView.setOnClickListener {
             viewModel.loadTime()
-
         }
         val viewPager = view.findViewById<ViewPager2>(R.id.viewPager2)
         viewPager.adapter = AdapterViewPager()

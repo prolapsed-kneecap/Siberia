@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/navigation_main_fragment"
-        android:name="com.charkosoff.siberia.fragment.MainFragment"
+        android:name="com.charkosoff.siberia.fragment.mainFrag.MainFragment"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_navigation_main_fragment_to_navigation_viewpager_fragment"
@@ -40,6 +40,7 @@
     </fragment>
 
     <fragment
+        android:label="Выберите культуру"
         android:id="@+id/navigation_culture_fragment"
         android:name="com.charkosoff.siberia.fragment.CultureFragment"
         tools:layout="@layout/fragment_culture">
@@ -49,6 +50,7 @@
             app:popUpTo="@id/navigation_tech_fragment"/>
     </fragment>
     <fragment
+        android:label="Выберите инструмент"
     android:id="@+id/navigation_tech_fragment"
     android:name="com.charkosoff.siberia.fragment.TechsFragment"
     tools:layout="@layout/fragment_techs">

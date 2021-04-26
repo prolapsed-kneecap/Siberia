@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:text="Pole 1"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:background="@color/semi_trans"/>
 
@@ -58,6 +59,7 @@
             android:layout_height="25dp"
             android:text="Pole 2"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:background="@color/semi_trans"/>
 
     </androidx.cardview.widget.CardView>
@@ -86,7 +88,8 @@
             android:layout_height="25dp"
             android:text="Pole 3"
             android:textAlignment="center"
-            android:background="@color/semi_trans"/>
+            android:background="@color/semi_trans"
+            android:textColor="@color/white" />
 
     </androidx.cardview.widget.CardView>
 
@@ -113,7 +116,8 @@
             android:layout_height="25dp"
             android:text="Pole 4"
             android:textAlignment="center"
-            android:background="@color/semi_trans"/>
+            android:background="@color/semi_trans"
+            android:textColor="@color/white"/>
 
     </androidx.cardview.widget.CardView>
 

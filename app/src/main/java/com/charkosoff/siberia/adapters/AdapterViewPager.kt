@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
-import com.charkosoff.siberia.fragment.MainFragment
 
 
 class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
@@ -49,7 +48,6 @@ class PagerVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
             "Ячмень" -> currentCultureImage.setImageResource(R.drawable.yachmen)
             "Горох" -> currentCultureImage.setImageResource(R.drawable.goroh)
             "Фасоль" -> currentCultureImage.setImageResource(R.drawable.fasol)
-
         }
     }
 }

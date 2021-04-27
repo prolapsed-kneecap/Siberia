@@ -17,7 +17,8 @@ import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 /**
  * A fragment representing a list of Items.
  */
-class TechsFragment : Fragment() {
+class
+TechsFragment : Fragment() {
 
     private var columnCount = 1
     private var techNames =

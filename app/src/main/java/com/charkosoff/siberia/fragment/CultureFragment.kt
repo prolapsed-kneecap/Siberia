@@ -14,7 +14,6 @@ import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.Data.culturesToShow
 import com.charkosoff.siberia.databinding.FragmentCultureBinding
 import com.charkosoff.siberia.databinding.FragmentCultureListBinding
-import com.charkosoff.siberia.databinding.FragmentMainBinding
 
 /**
  * A fragment representing a list of Items.

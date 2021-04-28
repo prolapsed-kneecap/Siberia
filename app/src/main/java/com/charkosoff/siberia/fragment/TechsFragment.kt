@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.TechnicsList
-import com.charkosoff.siberia.databinding.FragmentCultureBinding
-import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.databinding.FragmentTechsBinding
 import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 
@@ -26,7 +24,7 @@ TechsFragment : Fragment() {
 
     private var columnCount = 1
     private var techNames =
-        arrayOf("СЗП-3,6", "СЗУ-Т-3.6", "СЗУ-3,6-04", "Енисей–1200–1НМ", "Дон 1500")
+        Array(TechnicsList.technics.size) { i -> TechnicsList.technics[i].name }
     private var adapter: TechAdapter? = null
     private var _binding: FragmentTechsBinding? = null
     private val binding get() = _binding!!

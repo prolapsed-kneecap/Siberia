@@ -7,6 +7,12 @@
     <string name="description_yachmen">тут будет описание культуры Ячмень</string>
     <string name="description_goroh">тут будет описание культуры Горох</string>
     <string name="description_fasol">тут будет описание культуры Фасоль</string>
+    <string name="description_szp_3_6">тут будет описание СЗП-3,6</string>
+    <string name="description_szu_t">тут будет описание СЗУ-Т-3.6</string>
+    <string name="description_szu_z">тут будет описание СЗУ–3,6–04</string>
+    <string name="description_enisey">тут будет описание Енисей–1200–1НМ</string>
+    <string name="description_don">тут будет описание Дон 1500</string>
+
 
 
 </resources>

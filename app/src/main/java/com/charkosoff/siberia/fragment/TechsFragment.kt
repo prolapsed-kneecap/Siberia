@@ -12,6 +12,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.classes.TechnicsList
+import com.charkosoff.siberia.databinding.FragmentCultureBinding
+import com.charkosoff.siberia.databinding.FragmentMainBinding
+import com.charkosoff.siberia.databinding.FragmentTechsBinding
 import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 
 /**
@@ -23,8 +27,9 @@ TechsFragment : Fragment() {
     private var columnCount = 1
     private var techNames =
         arrayOf("СЗП-3,6", "СЗУ-Т-3.6", "СЗУ-3,6-04", "Енисей–1200–1НМ", "Дон 1500")
-    private lateinit var techRecyclerView: RecyclerView
     private var adapter: TechAdapter? = null
+    private var _binding: FragmentTechsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +43,11 @@ TechsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_techs, container, false)
+        _binding = FragmentTechsBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        techRecyclerView =
-            view.findViewById(R.id.tech_recycler_view) as RecyclerView
-        techRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        binding.techRecyclerView.layoutManager = LinearLayoutManager(context)
 
         updateUI()
 
@@ -52,7 +57,7 @@ TechsFragment : Fragment() {
     private fun updateUI() {
 
         adapter = TechAdapter(techNames)
-        techRecyclerView.adapter = adapter
+        binding.techRecyclerView.adapter = adapter
     }
 
     private inner class TechHolder(private val techsListBinding: FragmentTechsListBinding) :
@@ -65,8 +70,11 @@ TechsFragment : Fragment() {
         }
 
 
-        fun bind(data: String) {
+        fun bind(data: String, position: Int) {
             techsListBinding.techNameTextView.text = data
+            val selectedTech = TechnicsList.technics[position]
+            techsListBinding.description.setText(selectedTech.description)
+            techsListBinding.family.append(selectedTech.family)
             techsListBinding.techCardView.setOnClickListener {
                 itemView.findNavController().navigate(
                     R.id.action_navigation_tech_fragment_to_navigation_main_fragment,
@@ -127,7 +135,7 @@ TechsFragment : Fragment() {
         override fun onBindViewHolder(holder: TechHolder, position: Int) {
             val tech = techs[position]
             holder.apply {
-                holder.bind(tech)
+                holder.bind(tech, position)
             }
         }
     }

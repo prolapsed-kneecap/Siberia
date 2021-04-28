@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/cultureRes"
+            android:id="@+id/techRes"
             android:layout_width="72dp"
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
@@ -42,7 +42,7 @@
             android:layout_marginTop="30dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Вид"
+            android:text="Вид: "
             android:textStyle="bold" />
 
         <TextView

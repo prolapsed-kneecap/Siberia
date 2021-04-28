@@ -12,7 +12,9 @@ import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.Plants
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.Data.culturesToShow
+import com.charkosoff.siberia.databinding.FragmentCultureBinding
 import com.charkosoff.siberia.databinding.FragmentCultureListBinding
+import com.charkosoff.siberia.databinding.FragmentMainBinding
 
 /**
  * A fragment representing a list of Items.
@@ -22,8 +24,9 @@ val cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Гор
 class CultureFragment : Fragment() {
 
     private var columnCount = 1
-    private lateinit var cultureRecyclerView: RecyclerView
     private var adapter: CultureAdapter? = null
+    private var _binding: FragmentCultureBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,12 +40,11 @@ class CultureFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_culture, container, false)
+    ): View {
+        _binding = FragmentCultureBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        cultureRecyclerView =
-            view.findViewById(R.id.culture_recycler_view) as RecyclerView
-        cultureRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.cultureRecyclerView.layoutManager = LinearLayoutManager(context)
 
         updateUI()
 
@@ -52,7 +54,7 @@ class CultureFragment : Fragment() {
     private fun updateUI() {
 
         adapter = CultureAdapter()
-        cultureRecyclerView.adapter = adapter
+        binding.cultureRecyclerView.adapter = adapter
     }
 
     private inner class CultureHolder(private val cultureItemBinding: FragmentCultureListBinding) :

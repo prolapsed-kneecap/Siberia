@@ -30,7 +30,7 @@
             android:layout_marginStart="125dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="*Имя ثمتوافغلاف*"
+            android:text="*Имя не указано*"
             android:textStyle="bold" />
 
         <TextView

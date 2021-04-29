@@ -12,6 +12,12 @@
     <string name="description_szu_z">тут будет описание СЗУ–3,6–04</string>
     <string name="description_enisey">тут будет описание Енисей–1200–1НМ</string>
     <string name="description_don">тут будет описание Дон 1500</string>
+    <string name="description_azotnie">тут будет описание азотных удобрений</string>
+    <string name="description_phosphornie">тут будет описание фосфорных удобрений</string>
+    <string name="description_kaliynie">тут будет описание калийный удобрений</string>
+    <string name="description_izvestkovie">тут будет описание известковых удобрений</string>
+    <string name="description_hlorosoder">тут будет описание хлоросодержащий удобрений</string>
+
 
 
 

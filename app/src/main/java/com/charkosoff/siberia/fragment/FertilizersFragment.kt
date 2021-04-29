@@ -9,6 +9,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.classes.FertilizersList
+import com.charkosoff.siberia.databinding.FragmentFertilizersBinding
 import com.charkosoff.siberia.databinding.FragmentFertilizersListBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -16,17 +18,13 @@ import com.charkosoff.siberia.databinding.FragmentFertilizersListBinding
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FertilizersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class FertilizersFragment : Fragment() {
 
-    private var fertilizersNames =
-        arrayOf("Азотные", "Фосфорные", "Калийные", "Известковые", "Хлорсодержащие")
-    private lateinit var fertilizersRecyclerView: RecyclerView
+    private var fertilizersNames = Array(FertilizersList.fertilizers.size) { i -> FertilizersList.fertilizers[i].name }
     private var adapter: FertilizersAdapter? = null
+    private var _binding: FragmentFertilizersBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +35,12 @@ class FertilizersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_fertilizers, container, false)
+        _binding = FragmentFertilizersBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        fertilizersRecyclerView =
-            view.findViewById(R.id.fertilizers_recycler_view) as RecyclerView
-        fertilizersRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.fertilizersRecyclerView.layoutManager = LinearLayoutManager(context)
 
         updateUI()
         return view
@@ -53,7 +50,7 @@ class FertilizersFragment : Fragment() {
     private fun updateUI() {
 
         adapter = FertilizersAdapter(fertilizersNames)
-        fertilizersRecyclerView.adapter = adapter
+        binding.fertilizersRecyclerView.adapter = adapter
     }
 
     private inner class FertilizersHolder(private val fertilizersListBinding: FragmentFertilizersListBinding) :
@@ -65,8 +62,10 @@ class FertilizersFragment : Fragment() {
         }
 
 
-        fun bind(data: String) {
+        fun bind(data: String, position: Int) {
             fertilizersListBinding.fertilizersNameTextView.text = data
+            val selectedFertilizers = FertilizersList.fertilizers[position]
+            fertilizersListBinding.description.setText(selectedFertilizers.description)
             fertilizersListBinding.fertilizersCardView.setOnClickListener {
 
 
@@ -94,7 +93,7 @@ class FertilizersFragment : Fragment() {
         override fun onBindViewHolder(holder: FertilizersHolder, position: Int) {
             val fertilizer = fertilizers[position]
             holder.apply {
-                holder.bind(fertilizer)
+                holder.bind(fertilizer, position)
             }
         }
     }

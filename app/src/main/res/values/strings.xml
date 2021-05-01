@@ -13,6 +13,11 @@
     <string name="description_enisey">тут будет описание Енисей–1200–1НМ</string>
     <string name="description_don">тут будет описание Дон 1500</string>
 
+    <string name="description_azotnia">тут будет описание азотной</string>
+    <string name="description_phosphor">тут будет описание фосфорной</string>
+    <string name="description_kaliinie">тут будет описание калийной</string>
+    <string name="description_izvest">тут будет описание извястниковой</string>
+    <string name="description_chloro">тут будет описание хлоросодержащей</string>
 
 
 </resources>

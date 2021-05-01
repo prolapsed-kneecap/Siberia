@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.classes.FertilizerList
 import com.charkosoff.siberia.databinding.FragmentFertilizersListBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -65,8 +66,16 @@ class FertilizersFragment : Fragment() {
         }
 
 
-        fun bind(data: String) {
+        fun bind(data: String,position: Int) {
+            val selectedFertilizer = FertilizerList.Fertilizers[position]
             fertilizersListBinding.fertilizersNameTextView.text = data
+            fertilizersListBinding.description.setText(selectedFertilizer.description)
+            fertilizersListBinding.family.append(selectedFertilizer.family)
+
+
+
+
+
             fertilizersListBinding.fertilizersCardView.setOnClickListener {
 
 
@@ -94,7 +103,7 @@ class FertilizersFragment : Fragment() {
         override fun onBindViewHolder(holder: FertilizersHolder, position: Int) {
             val fertilizer = fertilizers[position]
             holder.apply {
-                holder.bind(fertilizer)
+                holder.bind(fertilizer,position)
             }
         }
     }

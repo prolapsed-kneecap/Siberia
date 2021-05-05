@@ -12,11 +12,11 @@ class Repository {
     fun loadTime() {
         val countDownTimer = object : CountDownTimer(START_TIME, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                timer.value = Resource.Loading(timer.value?.data?.minus(1000L))
+                timer.postValue(Resource.Loading(timer.value?.data?.minus(1000L)))
             }
 
             override fun onFinish() {
-                timer.value = Resource.Success(0L)
+                timer.postValue(Resource.Success(0L))
             }
         }
         countDownTimer.start()

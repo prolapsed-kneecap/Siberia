@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/linearLayout"
+            android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="108dp"
             android:layout_marginTop="20dp"
@@ -32,7 +32,7 @@
             <ImageView
                 android:id="@+id/field1"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
                 android:src="@drawable/field" />
 
@@ -55,14 +55,14 @@
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.1">
 
             <ImageView
                 android:id="@+id/field2"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
                 android:src="@drawable/field" />
 
@@ -78,7 +78,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/linearLayout3"
+            android:id="@+id/cardView3"
             android:layout_width="match_parent"
             android:layout_height="108dp"
             android:layout_marginTop="20dp"
@@ -86,13 +86,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2"
             app:layout_constraintVertical_bias="0.1">
 
             <ImageView
                 android:id="@+id/field3"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
                 android:src="@drawable/field" />
 
@@ -108,14 +108,14 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/linearLayout4"
+            android:id="@+id/cardView4"
             android:layout_width="match_parent"
             android:layout_height="108dp"
             android:layout_marginTop="20dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+            app:layout_constraintStart_toEndOf="@+id/cardView3"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             app:layout_constraintVertical_bias="0.1">
 
@@ -148,10 +148,10 @@
         app:fabCustomSize="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toEndOf="@+id/monthTextView"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintVertical_bias="0.426"
+        app:layout_constraintVertical_bias="0.497"
         app:srcCompat="@drawable/ic_baseline_fast_forward_24" />
 
     <TextView
@@ -165,9 +165,9 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.486" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

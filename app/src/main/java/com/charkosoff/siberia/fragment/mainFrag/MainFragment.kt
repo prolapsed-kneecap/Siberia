@@ -7,17 +7,22 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.fragment.cultureNames
+import com.charkosoff.siberia.utils.Resource
+import org.koin.android.ext.android.bind
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
 
     private val model = Model()
-
+    val viewModel:MainFragmentViewModel by viewModel()
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -33,15 +38,17 @@ class MainFragment : Fragment() {
         val currentTime = model.getCurrent()
         val timeTable = model.timeTable()
 
-        binding.monthTextView.text = model.getMonth(currentTime, timeTable)
-        /*viewModel.loadTime()
+        viewModel.loadTime()
         viewModel.times.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading-> {
-                    monthTextView.text = model.getMonth(20000L - it.data!!, timeTable)
+                        if(it.data!!>20000L){
+                            viewModel.loadTime()
+                        }
+                        binding.monthTextView.text = model.getMonth(20000L - it.data, timeTable)
                 }
             }
-        }*/
+        }
 
         binding.field1.setOnClickListener { moveToField(view, 0) }
         binding.field2.setOnClickListener { moveToField(view, 1) }

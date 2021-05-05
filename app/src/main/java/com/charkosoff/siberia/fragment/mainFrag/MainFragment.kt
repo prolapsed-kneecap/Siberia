@@ -38,7 +38,7 @@ class MainFragment : Fragment() {
         val currentTime = model.getCurrent()
         val timeTable = model.timeTable()
 
-/*        viewModel.loadTime()
+        viewModel.loadTime()
         viewModel.times.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading-> {
@@ -48,7 +48,7 @@ class MainFragment : Fragment() {
                         binding.monthTextView.text = model.getMonth(20000L - it.data, timeTable)
                 }
             }
-        }*/
+        }
 
         binding.field1.setOnClickListener { moveToField(view, 0) }
         binding.field2.setOnClickListener { moveToField(view, 1) }

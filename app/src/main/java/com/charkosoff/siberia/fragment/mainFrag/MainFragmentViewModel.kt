@@ -10,6 +10,9 @@ class MainFragmentViewModel(
 ):ViewModel() {
     var times: MutableLiveData<Resource<Long>> = repository.timer
     fun loadTime() {
-        repository.loadTime()
+        repository.getTimer
+    }
+    fun cancelTimer(){
+        repository.getTimer.cancel()
     }
 }

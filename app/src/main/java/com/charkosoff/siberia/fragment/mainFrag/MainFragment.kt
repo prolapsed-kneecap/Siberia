@@ -48,7 +48,7 @@ class MainFragment : Fragment() {
             when(it){
                 is Resource.Loading-> {
                     binding.timerTestTextView.text = (20000L-it.data!!).toString()+" test timer"
-                    binding.monthTextView.text = model.getMonth(20000L - it.data, timeTable)
+                    //binding.monthTextView.text = model.getMonth(20000L - it.data, timeTable)
                 }
             }
         }
@@ -61,8 +61,6 @@ class MainFragment : Fragment() {
             PlayButton.isSpeeded=!PlayButton.isSpeeded
         }
         binding.timerTestTextView.setOnClickListener {
-            viewModel.loadTime()
-            viewModel.cancelTimer()
             viewModel.loadTime()
         }
 

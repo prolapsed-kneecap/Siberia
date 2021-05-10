@@ -60,7 +60,7 @@ class AllPLacesFragment : Fragment() {
         binding.toMain.setOnClickListener{
             view.findNavController().popBackStack()
         }
-
+/*
         viewModel.times.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
@@ -71,7 +71,7 @@ class AllPLacesFragment : Fragment() {
 
                 }
             }
-        }
+        }*/
         binding.timerTextView.setOnClickListener {
             viewModel.loadTime()
         }

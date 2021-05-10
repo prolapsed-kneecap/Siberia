@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.data.PlayButton
 import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.fragment.cultureNames
 import com.charkosoff.siberia.utils.Resource
@@ -38,22 +39,30 @@ class MainFragment : Fragment() {
         val currentTime = model.getCurrent()
         val timeTable = model.timeTable()
 
-/*        viewModel.loadTime()
-        viewModel.times.observe(viewLifecycleOwner){
-            when(it){
-                is Resource.Loading-> {
-                        if(it.data!!>20000L){
-                            viewModel.loadTime()
-                        }
-                        binding.monthTextView.text = model.getMonth(20000L - it.data, timeTable)
-                }
-            }
-        }*/
-
         binding.field1.setOnClickListener { moveToField(view, 0) }
         binding.field2.setOnClickListener { moveToField(view, 1) }
         binding.field3.setOnClickListener { moveToField(view, 2) }
         binding.field4.setOnClickListener { moveToField(view, 3) }
+
+        viewModel.times.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading-> {
+                    binding.timerTestTextView.text = (20000L-it.data!!).toString()+" test timer"
+                    //binding.monthTextView.text = model.getMonth(20000L - it.data, timeTable)
+                }
+            }
+        }
+
+        binding.speedFab.setOnClickListener {
+            if (PlayButton.isSpeeded)
+                binding.speedFab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+            else
+                binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
+            PlayButton.isSpeeded=!PlayButton.isSpeeded
+        }
+        binding.timerTestTextView.setOnClickListener {
+            viewModel.loadTime()
+        }
 
         setCultureRes()
 

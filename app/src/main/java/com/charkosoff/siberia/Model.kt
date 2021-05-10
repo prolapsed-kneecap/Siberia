@@ -30,6 +30,6 @@ class Model():TimeInterface{
     }
 
     fun getMonth(time:Long, timeTable:Map<LongRange, String>):String{
-        return timeTable.entries.find { time in it.key }?.value ?: throw Exception("Выход за календарные границы")
+        return timeTable.entries.find {time in it.key}?.value ?: throw Exception("Выход за календарные границы")
     }
 }

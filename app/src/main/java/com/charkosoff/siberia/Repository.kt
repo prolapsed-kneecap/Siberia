@@ -17,14 +17,20 @@ class Repository {
     private var currentTime = 0L
     private val timeUpdater = 1000L
 
-    suspend fun startTimer(){
+    fun startTimer(){
         var prevTime = System.currentTimeMillis()
         stop=prevTime+20000L
-        currentTime=prevTime
-        while (currentTime < stop){
+        var startTime=prevTime
+        while (currentTime+startTime < stop){
+            if(PlayButton.isSpeeded)
+                speed=2000L
+            else
+                speed=1000L
             if (System.currentTimeMillis() - prevTime > timeUpdater)   {
                 currentTime += speed
-                timer.value = Resource.Loading(currentTime)
+                if(currentTime>20000)
+                    currentTime=20000
+                timer.postValue(Resource.Loading(currentTime))
                 prevTime = System.currentTimeMillis()
             }
         }
@@ -35,12 +41,13 @@ class Repository {
         val a = object:CountDownTimer(START_TIME, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 if (timer.value?.data?.minus(1000L)!!>0L)
-                    if (PlayButton.isSpeeded)
-                        timer.value = (Resource.Loading(timer.value?.data?.minus(2000L)))
+                    timer.postValue(Resource.Loading(timer.value?.data?.minus(1000L)))
+                    /*if (PlayButton.isSpeeded)
+                        timer.postValue(Resource.Loading(timer.value?.data?.minus(2000L)))
                     else
-                        timer.value = (Resource.Loading(timer.value?.data?.minus(1000L)))
+                        timer.postValue(Resource.Loading(timer.value?.data?.minus(1000L)))*/
                 else
-                    timer.value = (Resource.Loading(0L))
+                    timer.postValue((Resource.Loading(0L)))
             }
             override fun onFinish() {
                 timer.postValue(Resource.Success(0L))

@@ -36,7 +36,7 @@ class MainFragment : Fragment() {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val currentTime = model.getCurrent()
+        var currentTime = model.getCurrent()
         val timeTable = model.timeTable()
 
         binding.field1.setOnClickListener { moveToField(view, 0) }
@@ -47,18 +47,19 @@ class MainFragment : Fragment() {
         viewModel.times.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Loading-> {
-                    binding.timerTestTextView.text = (20000L-it.data!!).toString()+" test timer"
-                    //binding.monthTextView.text = model.getMonth(20000L - it.data, timeTable)
+                    currentTime=it.data!!
+                    binding.timerTestTextView.text = (it.data).toString()+" test timer"
+                    binding.monthTextView.text = model.getMonth(it.data, timeTable)
                 }
             }
         }
 
         binding.speedFab.setOnClickListener {
+            PlayButton.isSpeeded=!PlayButton.isSpeeded
             if (PlayButton.isSpeeded)
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
             else
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
-            PlayButton.isSpeeded=!PlayButton.isSpeeded
         }
         binding.timerTestTextView.setOnClickListener {
             viewModel.loadTime()

@@ -75,6 +75,7 @@ TechsFragment : Fragment() {
             techsListBinding.description.setText(selectedTech.description)
             techsListBinding.family.append(selectedTech.family)
             techsListBinding.techCardView.setOnClickListener {
+                Data.currentTech = selectedTech
                 itemView.findNavController().navigate(
                     R.id.action_navigation_tech_fragment_to_navigation_main_fragment,
                     arguments

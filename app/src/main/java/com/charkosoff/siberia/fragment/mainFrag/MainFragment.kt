@@ -1,22 +1,28 @@
 package com.charkosoff.siberia.fragment.mainFrag
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navDeepLink
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.data.Data.schetchik
 import com.charkosoff.siberia.data.PlayButton
 import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.fragment.cultureNames
+import com.charkosoff.siberia.resulted
 import com.charkosoff.siberia.utils.Resource
 import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -52,13 +58,15 @@ class MainFragment : Fragment() {
                     binding.timerTestTextView.text = (it.data).toString()+" test timer"
                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
                 }
+                is Resource.Success ->{
+                    schetchik++
+                   val result = Intent(activity,resulted::class.java)
+startActivity(result)
+                    var x = "what"
+                    val arguments = Bundle()
+                    result.putExtra("score",x)
+                }
             }
-        }
-
-        binding.settingsButtons.setOnClickListener(){
-
-
-            findNavController().navigate(R.id.action_navigation_main_fragment_to_websettings)
         }
 
         binding.speedFab.setOnClickListener {

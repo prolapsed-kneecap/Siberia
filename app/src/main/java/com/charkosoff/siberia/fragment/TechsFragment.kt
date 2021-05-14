@@ -19,8 +19,7 @@ import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 /**
  * A fragment representing a list of Items.
  */
-class
-TechsFragment : Fragment() {
+class TechsFragment : Fragment() {
 
     private var columnCount = 1
     private var techNames =
@@ -40,7 +39,7 @@ TechsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTechsBinding.inflate(inflater, container, false)
         val view = binding.root
 

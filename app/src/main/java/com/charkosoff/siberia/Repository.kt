@@ -34,6 +34,7 @@ class Repository {
                 prevTime = System.currentTimeMillis()
             }
         }
+        timer.postValue(Resource.Success(currentTime))
     }
 
 

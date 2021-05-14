@@ -18,8 +18,9 @@ class Technics(val name: String) {
         else -> R.string.description_don
     } */
     val family = when (name) {
-        "Енисей–1200–1НМ", "Дон 1500" -> "Комбайн"
-        else -> "Сеялка"
+        "Енисей–1200–1НМ", "Дон 1500" -> "Уборка"
+       "СЗП-3,6" -> "Обработка"
+        else -> "Посев"
     }
 }
 

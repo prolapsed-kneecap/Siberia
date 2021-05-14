@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.classes.TechnicsList
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.PlayButton
 import com.charkosoff.siberia.databinding.FragmentMainBinding
@@ -20,7 +22,7 @@ import com.charkosoff.siberia.utils.Resource
 import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MainFragment : Fragment() {
+class   MainFragment : Fragment() {
 
     private val model = Model()
     val viewModel:MainFragmentViewModel by viewModel()
@@ -50,6 +52,13 @@ class MainFragment : Fragment() {
                     currentTime=it.data!!
                     binding.timerTestTextView.text = (it.data).toString()+" test timer"
                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
+                    Data.currentMonth = model.getMonth(it.data, timeTable)
+                    Data.currentTime = it.data
+                    Data.currentEvent = model.getCurrentEvent()
+                    binding.monthTextView.text = model.isTechChoiceRight(Data.currentEvent, Data.currentTech).toString()
+                }
+                is Resource.Success ->{
+                    binding.timerTestTextView.isClickable = true
                 }
             }
         }
@@ -62,6 +71,7 @@ class MainFragment : Fragment() {
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
         }
         binding.timerTestTextView.setOnClickListener {
+            binding.timerTestTextView.isClickable=false
             viewModel.loadTime()
         }
 

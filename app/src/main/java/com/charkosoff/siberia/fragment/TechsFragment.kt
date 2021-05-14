@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.TechnicsList
+import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentTechsBinding
 import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 

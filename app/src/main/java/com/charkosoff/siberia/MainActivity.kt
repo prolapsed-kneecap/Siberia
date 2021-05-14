@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         MaterialTapTargetPrompt.Builder(this)
             .setTarget(R.id.button)
-            .setPrimaryText("This text is displayed on the first line")
-            .setSecondaryText("Text to display on the second line")
+            .setPrimaryText("Нажмите, чтобы продемонстрировать свою способность читать")
             .setPromptStateChangeListener { prompt, state ->
                 if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED)
                 {

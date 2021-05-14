@@ -62,6 +62,9 @@ class MainFragment : Fragment() {
                     schetchik++
                    val result = Intent(activity,resulted::class.java)
 startActivity(result)
+                    var x = "what"
+                    val arguments = Bundle()
+                    result.putExtra("score",x)
                 }
             }
         }

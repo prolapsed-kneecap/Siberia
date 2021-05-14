@@ -18,6 +18,7 @@ class Resulteted : Fragment() {
     ): View? {
        val view = inflater.inflate(R.layout.fragment_resulteted, container, false)
         return view
+
     }
 
 

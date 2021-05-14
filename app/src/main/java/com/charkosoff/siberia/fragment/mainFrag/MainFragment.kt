@@ -18,7 +18,6 @@ import androidx.navigation.navDeepLink
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
-import com.charkosoff.siberia.data.Data.schetchik
 import com.charkosoff.siberia.data.PlayButton
 import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.fragment.cultureNames
@@ -57,14 +56,13 @@ class MainFragment : Fragment() {
                     currentTime=it.data!!
                     binding.timerTestTextView.text = (it.data).toString()+" test timer"
                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
+
                 }
                 is Resource.Success ->{
-                    schetchik++
                    val result = Intent(activity,resulted::class.java)
 startActivity(result)
-                    var x = "what"
-                    val arguments = Bundle()
-                    result.putExtra("score",x)
+
+
                 }
             }
         }

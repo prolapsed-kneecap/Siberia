@@ -1,6 +1,7 @@
 package com.charkosoff.siberia.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.charkosoff.siberia.CultureMaster
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.classes.Culture
+import com.charkosoff.siberia.classes.ListOfFields
 import com.charkosoff.siberia.classes.Plants
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.Data.culturesToShow
@@ -18,6 +22,7 @@ import com.charkosoff.siberia.databinding.FragmentCultureListBinding
 /**
  * A fragment representing a list of Items.
  */
+private const val TAG = "CultureFragment"
 val cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль", "Паровое поле")
 
 class CultureFragment : Fragment() {
@@ -68,12 +73,26 @@ class CultureFragment : Fragment() {
         fun bind(data: String, position: Int) {
             cultureItemBinding.culturesNameTextView.text = data
             val selectedCulture = Plants.cultures[position]
+            val selectedField = ListOfFields.fields[Data.currentId]
+
             cultureItemBinding.description.setText(selectedCulture.description)
             cultureItemBinding.cultureRes.setImageResource(selectedCulture.image)
             cultureItemBinding.family.append(selectedCulture.family)
+
             cultureItemBinding.cultureCardView.setOnClickListener {
                 Data.currentCulture[Data.currentId] = data
-
+                selectedField.userSequenceCulture.add(data)
+                if (selectedField.userSequenceCulture.size > 1){
+                    val check = CultureMaster()
+                    if (check.howIsGoodChoice(selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 2],
+                        selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 1])) {
+                        Log.i(TAG, "Правильно наследовал")
+                    } else
+                    {
+                        Log.i(TAG,"huy tam")
+                    }
+                }
+                Log.i(TAG, "Выбраная культура ${selectedCulture.name},id field: ${Data.currentId} sequence: ${selectedField.userSequenceCulture}")
                 itemView.findNavController()
                     .navigate(
                         R.id.action_navigation_culture_fragment_to_navigation_tech_viewpager_fragment

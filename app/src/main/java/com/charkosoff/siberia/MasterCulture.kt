@@ -4,18 +4,16 @@ import com.charkosoff.siberia.classes.Culture
 import com.charkosoff.siberia.classes.Plants.cultures
 
 class CultureMaster(){
-    private val map_Positive_culture= mutableMapOf<Culture,List<Culture>>(
-        cultures[0] to listOf(cultures[2],cultures[4]),
-        cultures[1] to listOf(cultures[1]),
-        cultures[2] to listOf(cultures[4],cultures[3]),
+    private val mapPositiveCulture= mutableMapOf<String,List<String>>(
+        cultures[0].name to listOf(cultures[1].name,cultures[4].name),
+        cultures[1].name to listOf(cultures[2].name),
+        cultures[2].name to listOf(cultures[4].name,cultures[3].name),
+        cultures[3].name to listOf(cultures[1].name)
     )
 
 
-    fun howIsGoodChoice(prev : Culture, next : Culture) : Int{
-        val isGoodNext = map_Positive_culture[prev]?.contains(next)
-        return if (isGoodNext!!)
-            250
-        else
-            10
+    fun howIsGoodChoice(prev : String, next : String) : Boolean {
+        val isGoodNext = mapPositiveCulture[prev]?.contains(next)
+        return isGoodNext!!
     }
 }

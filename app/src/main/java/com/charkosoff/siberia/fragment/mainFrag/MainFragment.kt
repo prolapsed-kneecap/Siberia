@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
                 }
                 is Resource.Success ->{
                    val result = Intent(activity,resulted::class.java)
-startActivity(result)
+                    startActivity(result)
 
 
                 }

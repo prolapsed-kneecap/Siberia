@@ -97,11 +97,9 @@ class CultureFragment : Fragment() {
                         selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 1])) {
                         Log.i(TAG, "Правильно наследовал")
                         selectedField.score++
-                        Toast.makeText(activity, "${selectedField.percentOfAnswer()}",Toast.LENGTH_SHORT).show()
                     } else
                     {
                         Log.i(TAG, "неправильно наследовал")
-                        Toast.makeText(activity, "${selectedField.percentOfAnswer()}",Toast.LENGTH_SHORT).show()
                     }
                 }
                 Log.i(TAG, "Выбраная культура ${selectedCulture.name},id field: ${Data.currentId} sequence: ${selectedField.userSequenceCulture}")

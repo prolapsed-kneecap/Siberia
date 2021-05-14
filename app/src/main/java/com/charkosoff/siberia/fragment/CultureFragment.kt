@@ -1,15 +1,19 @@
 package com.charkosoff.siberia.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.CultureMaster
+import com.charkosoff.siberia.MainViewModel
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.Culture
 import com.charkosoff.siberia.classes.ListOfFields
@@ -31,6 +35,10 @@ class CultureFragment : Fragment() {
     private var adapter: CultureAdapter? = null
     private var _binding: FragmentCultureBinding? = null
     private val binding get() = _binding!!
+
+    private val mainViewModel: MainViewModel by lazy {
+        ViewModelProviders.of(this).get(MainViewModel::class.java)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +78,7 @@ class CultureFragment : Fragment() {
         }
 
 
+        @SuppressLint("ShowToast")
         fun bind(data: String, position: Int) {
             cultureItemBinding.culturesNameTextView.text = data
             val selectedCulture = Plants.cultures[position]
@@ -87,9 +96,12 @@ class CultureFragment : Fragment() {
                     if (check.howIsGoodChoice(selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 2],
                         selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 1])) {
                         Log.i(TAG, "Правильно наследовал")
+                        selectedField.score++
+                        Toast.makeText(activity, "${selectedField.percentOfAnswer()}",Toast.LENGTH_SHORT).show()
                     } else
                     {
-                        Log.i(TAG,"huy tam")
+                        Log.i(TAG, "неправильно наследовал")
+                        Toast.makeText(activity, "${selectedField.percentOfAnswer()}",Toast.LENGTH_SHORT).show()
                     }
                 }
                 Log.i(TAG, "Выбраная культура ${selectedCulture.name},id field: ${Data.currentId} sequence: ${selectedField.userSequenceCulture}")

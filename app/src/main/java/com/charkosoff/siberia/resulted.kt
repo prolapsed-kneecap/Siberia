@@ -17,10 +17,9 @@ class resulted : AppCompatActivity() {
         res.text = ""
         var summ = 0.0
         for (i in ListOfFields.fields.indices){
-            res.append("pole ${i + 1}: " + ListOfFields.fields[i].percentOfAnswer().toString() + "%\n")
             summ  += ListOfFields.fields[i].percentOfAnswer()
         }
-        res.append((summ/5.0).toString() + "% правльных решений")
+        res.append((summ/5.0).toString() + "% правльных саженцев")
 
 
     }

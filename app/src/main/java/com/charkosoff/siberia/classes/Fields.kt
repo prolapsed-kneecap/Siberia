@@ -3,10 +3,10 @@ package com.charkosoff.siberia.classes
 class Fields(val id: Int) {
     var userSequenceCulture = mutableListOf<String>()
 
-    var score = 1
+    var score = 0
 
     fun percentOfAnswer(): Double {
-        return (score * 100.0) / userSequenceCulture.size
+        return (score * 100.0) / (userSequenceCulture.size - 1)
     }
 
 }

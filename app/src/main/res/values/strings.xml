@@ -18,6 +18,7 @@
     <string name="description_kaliinie">тут будет описание калийной</string>
     <string name="description_izvest">тут будет описание извястниковой</string>
     <string name="description_chloro">тут будет описание хлоросодержащей</string>
+    <string name="url_culture" translatable="false">file:///res/htmlfiles/culture.html</string>
 
 
 </resources>

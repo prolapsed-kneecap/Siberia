@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
@@ -52,6 +53,12 @@ class MainFragment : Fragment() {
                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
                 }
             }
+        }
+
+        binding.settingsButtons.setOnClickListener(){
+
+
+            findNavController().navigate(R.id.action_navigation_main_fragment_to_websettings)
         }
 
         binding.speedFab.setOnClickListener {

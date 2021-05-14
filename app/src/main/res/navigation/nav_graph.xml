@@ -24,6 +24,9 @@
             android:id="@+id/action_navigation_main_fragment_to_navigation_culture_fragment"
             app:destination="@id/navigation_culture_fragment"
             app:popUpTo="@id/navigation_culture_fragment" />
+        <action
+            android:id="@+id/action_navigation_main_fragment_to_websettings"
+            app:destination="@id/websettings" />
 
     </fragment>
 
@@ -68,8 +71,14 @@
             app:destination="@id/navigation_viewpager_fragment"
             app:popUpTo="@id/navigation_main_fragment"/>
     </fragment>
-
-
+    <fragment
+        android:id="@+id/websettings"
+        android:name="com.charkosoff.siberia.Websettings"
+        android:label="Websettings" >
+        <action
+            android:id="@+id/action_websettings_to_navigation_main_fragment"
+            app:destination="@id/navigation_main_fragment" />
+    </fragment>
 
 
 </navigation>

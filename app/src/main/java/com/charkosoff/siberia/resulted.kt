@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.charkosoff.siberia.classes.Fields
 import com.charkosoff.siberia.classes.ListOfFields
 import com.charkosoff.siberia.data.Data
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 class resulted : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

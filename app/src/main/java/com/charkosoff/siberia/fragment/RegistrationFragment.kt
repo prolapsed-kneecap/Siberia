@@ -1,5 +1,6 @@
 package com.charkosoff.siberia.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.User
 import com.charkosoff.siberia.databinding.FragmentRegistrationBinding
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 class RegistrationFragment : Fragment() {
 
@@ -40,8 +42,8 @@ class RegistrationFragment : Fragment() {
         return view
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
     }
-}

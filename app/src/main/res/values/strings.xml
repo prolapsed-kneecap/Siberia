@@ -2,16 +2,18 @@
     <string name="app_name">Siberia</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="steam_field">Паровое поле</string>
-    <string name="description_oves">тут будет описание кульутры овёс</string>
-    <string name="description_pshenitsya">тут будет описание культуры пшеница</string>
-    <string name="description_yachmen">тут будет описание культуры Ячмень</string>
-    <string name="description_goroh">тут будет описание культуры Горох</string>
-    <string name="description_fasol">тут будет описание культуры Фасоль</string>
-    <string name="description_szp_3_6">тут будет описание СЗП-3,6</string>
-    <string name="description_szu_t">тут будет описание СЗУ-Т-3.6</string>
-    <string name="description_szu_z">тут будет описание СЗУ–3,6–04</string>
-    <string name="description_enisey">тут будет описание Енисей–1200–1НМ</string>
-    <string name="description_don">тут будет описание Дон 1500</string>
+    <string name="description_oves">Овёс — род однолетних травянистых растений из семейства Злаки, или Мятликовые.</string>
+    <string name="description_pshenitsya">Пшени́ца — род травянистых растений семейства Злаки, или Мятликовые.</string>
+    <string name="description_yachmen">Ячме́нь — род растений семейства Злаки, один из древнейших злаков, возделываемых человеком</string>
+    <string name="description_goroh">Горо́х — род однолетних и многолетних травянистых растений семейства бобовых. </string>
+    <string name="description_fasol">Фасо́ль — типовой род растений семейства, объединяющий около 97 видов. </string>
+    <string name="description_szp_3_6">СЗП 3.6 – это сельхозмашина, предназначенная для посадки зерновых культур  и зернобобовых культур  рядками
+        , а также для удобрения и прикатывания . </string>
+    <string name="description_szu_t">СЗУ-Т-3,6 Harvest предназначена для рядового посева зерновых, зернобобовых культур,
+как раздельно, и внесением гранулированных минеральных удобрений.</string>
+    <string name="description_szu_z"> СЗУ 3,6 со сцепкой составляют гидрофицированный широкозахватный агрегат для посева зерновых культур</string>
+    <string name="description_enisey">Енисей 1200 1НМ представляет собой зерноуборочный комбайн имеющих урожайность не ниже средней.</string>
+    <string name="description_don">Дон-1500 — советский и российский зерноуборочный комбайн.</string>
 
     <string name="description_azotnia">тут будет описание азотной</string>
     <string name="description_phosphor">тут будет описание фосфорной</string>

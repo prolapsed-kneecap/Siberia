@@ -8,7 +8,7 @@ class Model():TimeInterface{
     private var time:Long = 0
     private val timeTable = mapOf<LongRange, String>(
         0..2500L to "МартⅠ",
-        2500..5000L to "МартмъⅡ",
+        2500..5000L to "МартⅡ",
         5000..7500L to "АпрельⅠ",
         7500..10000L to "АпрельⅡ",
         10000..12500L to "МайⅠ",

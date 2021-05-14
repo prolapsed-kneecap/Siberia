@@ -5,6 +5,7 @@ object Data {
     var currentId : Int = -1
     var currentCulture : MutableList<String> = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")
     val culturesToShow = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль")
+    var schetchik = 0
 }
 object PlayButton {
     var isSpeeded=false

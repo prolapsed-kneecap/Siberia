@@ -55,6 +55,7 @@ class   MainFragment : Fragment() {
                     Data.currentMonth = model.getMonth(it.data, timeTable)
                     Data.currentTime = it.data
                     Data.currentEvent = model.getCurrentEvent()
+
                     //binding.monthTextView.text = model.isTechChoiceRight(Data.currentEvent, Data.currentTech).toString()
                 }
                 is Resource.Success -> {

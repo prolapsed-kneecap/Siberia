@@ -5,7 +5,7 @@ import com.charkosoff.siberia.classes.Technics
 
 object Data {
     var currentTech = Technics("Не указано")
-    var currentEvent = "***"
+    var currentEvent = "Не указано"
     var currentTime = 0L
     var currentMonth = "Март"
     var currentId : Int = -1

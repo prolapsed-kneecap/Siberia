@@ -11,8 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.charkosoff.siberia.Event.EventMaster
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.TechnicsList
+import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentTechsBinding
 import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 
@@ -27,6 +29,7 @@ class TechsFragment : Fragment() {
     private var adapter: TechAdapter? = null
     private var _binding: FragmentTechsBinding? = null
     private val binding get() = _binding!!
+    private var eventMaster = EventMaster()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +76,9 @@ class TechsFragment : Fragment() {
             techsListBinding.description.setText(selectedTech.description)
             techsListBinding.family.append(selectedTech.family)
             techsListBinding.techCardView.setOnClickListener {
+                if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))
+                    //score++
+                Data.currentTech = selectedTech
                 itemView.findNavController().navigate(
                     R.id.action_navigation_tech_fragment_to_navigation_main_fragment,
                     arguments

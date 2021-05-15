@@ -17,10 +17,12 @@ class Technics(val name: String) {
         "Енисей–1200–1НМ" -> R.string.description_enisey
         else -> R.string.description_don
     } */
-    val family = when (name) {
-        "Енисей–1200–1НМ", "Дон 1500" -> "Комбайн"
-        else -> "Сеялка"
-    }
+    val family = when(name) {
+        "Енисей–1200–1НМ", "Дон 1500" -> "Уборка"
+       "СЗП-3,6" -> "Обработка"
+        "СЗУ-Т-3.6", "СЗУ-3,6-04" -> "Посев"
+       else -> "Нет"
+   }
 }
 
 object TechnicsList {

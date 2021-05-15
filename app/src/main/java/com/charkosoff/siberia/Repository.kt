@@ -10,12 +10,16 @@ class Repository {
 
     val START_TIME = 0L
     var timer : MutableLiveData<Resource<Long>> = MutableLiveData(Resource.Loading(START_TIME))
+    var globalTimer : MutableLiveData<Resource<Long>> = MutableLiveData(Resource.Loading(START_TIME))
 
     private var start : Long = 0L
     private var speed : Long = 1000L
     private var stop : Long = 20000L
     private var currentTime = 0L
     private val timeUpdater = 1000L
+
+    private var globalStop:Long = 120000L
+    private var globalCurrentTime = 0L
 
     fun startTimer(){
         var prevTime = System.currentTimeMillis()
@@ -35,6 +39,24 @@ class Repository {
             }
         }
         timer.postValue(Resource.Success(currentTime))
+    }
+    fun startGlobalTimer(){
+        var prevTime = System.currentTimeMillis()
+        globalStop+=prevTime
+        var startTime=prevTime
+        while (globalCurrentTime+startTime < globalStop){
+            if(PlayButton.isSpeeded)
+                speed=2000L
+            else
+                speed=1000L
+            if (System.currentTimeMillis() - prevTime > timeUpdater)   {
+                globalCurrentTime += speed
+                if(globalCurrentTime>120000)
+                    globalCurrentTime=120000
+                globalTimer.postValue(Resource.Loading(globalCurrentTime))
+                prevTime = System.currentTimeMillis()
+            }
+        }
     }
 
 

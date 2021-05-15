@@ -1,6 +1,5 @@
 package com.charkosoff.siberia
 
-import com.charkosoff.siberia.classes.Culture
 import com.charkosoff.siberia.classes.Plants.cultures
 
 class CultureMaster(){

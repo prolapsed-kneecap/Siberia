@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.CultureMaster
 import com.charkosoff.siberia.MainViewModel
 import com.charkosoff.siberia.R
-import com.charkosoff.siberia.classes.Culture
 import com.charkosoff.siberia.classes.ListOfFields
 import com.charkosoff.siberia.classes.Plants
 import com.charkosoff.siberia.data.Data

@@ -94,6 +94,7 @@ class MainFragment : Fragment() {
         }
         binding.timerTestTextView.setOnClickListener {
             viewModel.loadTime()
+            animator.showNext()
         }
 
         setCultureRes()

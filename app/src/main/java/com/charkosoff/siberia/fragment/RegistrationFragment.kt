@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.User
 import com.charkosoff.siberia.databinding.FragmentRegistrationBinding
+
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 class RegistrationFragment : Fragment() {

@@ -2,6 +2,7 @@ package com.charkosoff.siberia
 
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
+import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.PlayButton
 import com.charkosoff.siberia.utils.Resource
 import java.lang.Exception
@@ -18,7 +19,7 @@ class Repository {
     private var currentTime = 0L
     private val timeUpdater = 1000L
 
-    private var globalStop:Long = 120000L
+    private var globalStop:Long = 125000L
     private var globalCurrentTime = 0L
 
     fun startTimer(){
@@ -30,6 +31,8 @@ class Repository {
                 2000L
             else
                 1000L
+            if(!Data.globalTimerIsRunning)
+                speed = 0L
             if (System.currentTimeMillis() - prevTime > timeUpdater)   {
                 currentTime += speed
                 if(currentTime>35000L)
@@ -50,10 +53,12 @@ class Repository {
                 2000L
             else
                 1000L
+            if (Data.globalTimerIsStopped)
+                speed = 0L
             if (System.currentTimeMillis() - prevTime > timeUpdater)   {
                 globalCurrentTime += speed
-                if(globalCurrentTime>120000)
-                    globalCurrentTime=120000
+                if(globalCurrentTime>125000)
+                    globalCurrentTime=125000
                 globalTimer.postValue(Resource.Loading(globalCurrentTime))
                 prevTime = System.currentTimeMillis()
             }

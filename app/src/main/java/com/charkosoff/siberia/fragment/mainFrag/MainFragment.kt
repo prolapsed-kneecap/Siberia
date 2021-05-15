@@ -62,9 +62,27 @@ class MainFragment : Fragment() {
         animationOut.duration = 10000
         animationIn.duration = 10000
 
+        binding.speedFabPause.setOnClickListener {
+            if(!Data.globalTimerWasStarted)
+                viewModel.loadGlobalTime()
+                Data.globalTimerWasStarted = true
+            if(Data.globalTimerIsRunning) {
+                binding.speedFabPause.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+                Data.globalTimerIsRunning = false
+                Data.globalTimerIsStopped = true
+                binding.speedFab.isEnabled = false
+            }
+            else {
+                binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
+                Data.globalTimerIsRunning = true
+                Data.globalTimerIsStopped = false
+                binding.speedFab.isEnabled = true
+            }
+        }
+
         animator.inAnimation = animationIn
         animator.outAnimation = animationOut
-        viewModel.times.observe(viewLifecycleOwner) {
+        viewModel.globalTimes.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
                     currentTime = it.data!!
@@ -96,7 +114,7 @@ class MainFragment : Fragment() {
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
         }
         binding.timerTestTextView.setOnClickListener {
-            viewModel.loadTime()
+            viewModel.loadGlobalTime()
         }
 
         setCultureRes()

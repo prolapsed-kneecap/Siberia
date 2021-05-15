@@ -141,10 +141,26 @@
         app:fabCustomSize="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.634"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewAnimator"
-        app:layout_constraintVertical_bias="0.51"
+        app:layout_constraintVertical_bias="0.514"
         app:srcCompat="@drawable/ic_baseline_fast_forward_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/speedFabPause"
+        android:layout_width="41dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/rewindButton"
+        android:clickable="true"
+        app:fabCustomSize="42dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/speedFab"
+        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAnimator"
+        app:layout_constraintVertical_bias="0.514"
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
     <ViewAnimator
         android:id="@+id/viewAnimator"
@@ -178,6 +194,7 @@
         android:id="@+id/settings_buttons"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        app:fabCustomSize="50dp"
         android:backgroundTint="@color/rewindButton"
         android:scaleType="centerCrop"
         android:src="@android:drawable/ic_menu_help"

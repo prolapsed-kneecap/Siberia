@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_navigation_main_fragment_to_resulteted"
             app:destination="@id/resulteted" />
+        <action
+            android:id="@+id/action_navigation_main_fragment_to_webSettingsFragment"
+            app:destination="@id/webSettingsFragment" />
 
     </fragment>
 
@@ -79,7 +82,9 @@
             android:id="@+id/deepLink"
             app:uri="resultFragment" />
     </fragment>
-
-
+    <fragment
+        android:id="@+id/webSettingsFragment"
+        android:name="com.charkosoff.siberia.WebSettingsFragment"
+        android:label="WebSettingsFragment" />
 </navigation>
 

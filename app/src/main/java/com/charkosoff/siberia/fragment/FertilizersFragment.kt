@@ -1,17 +1,22 @@
 package com.charkosoff.siberia.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.FertilizerList
+import com.charkosoff.siberia.databinding.FragmentFertilizersBinding
 import com.charkosoff.siberia.databinding.FragmentFertilizersListBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,9 +31,10 @@ private const val ARG_PARAM2 = "param2"
 class FertilizersFragment : Fragment() {
 
     private var fertilizersNames =
-        arrayOf("Азотные", "Фосфорные", "Калийные", "Известковые", "Хлорсодержащие")
-    private lateinit var fertilizersRecyclerView: RecyclerView
+        arrayListOf("Азотные", "Фосфорные", "Калийные", "Известковые", "Хлорсодержащие")
     private var adapter: FertilizersAdapter? = null
+    private var _binding: FragmentFertilizersBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,17 +45,27 @@ class FertilizersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_fertilizers, container, false)
+    ): View {
+        _binding = FragmentFertilizersBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        fertilizersRecyclerView =
-            view.findViewById(R.id.fertilizers_recycler_view) as RecyclerView
-        fertilizersRecyclerView.layoutManager = LinearLayoutManager(context)
-
-
+        binding.fertilizersRecyclerView.layoutManager = LinearLayoutManager(context)
 
         updateUI()
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter?.filter?.filter(newText)
+                return false
+            }
+
+
+        })
         return view
     }
 
@@ -57,7 +73,7 @@ class FertilizersFragment : Fragment() {
     private fun updateUI() {
 
         adapter = FertilizersAdapter(fertilizersNames)
-        fertilizersRecyclerView.adapter = adapter
+        binding.fertilizersRecyclerView.adapter = adapter
     }
 
     private inner class FertilizersHolder(private val fertilizersListBinding: FragmentFertilizersListBinding) :
@@ -69,7 +85,7 @@ class FertilizersFragment : Fragment() {
         }
 
 
-        fun bind(data: String,position: Int) {
+        fun bind(data: String, position: Int) {
             val selectedFertilizer = FertilizerList.Fertilizers[position]
             fertilizersListBinding.fertilizersNameTextView.text = data
             fertilizersListBinding.description.setText(selectedFertilizer.description)
@@ -92,8 +108,47 @@ class FertilizersFragment : Fragment() {
         }
     }
 
-    private inner class FertilizersAdapter(var fertilizers: Array<String>) :
-        RecyclerView.Adapter<FertilizersHolder>() {
+    private inner class FertilizersAdapter(var fertilizers: ArrayList<String>) :
+        RecyclerView.Adapter<FertilizersHolder>(), Filterable {
+
+
+        var fertilizersFilterList = ArrayList<String>()
+
+        init {
+            fertilizersFilterList = fertilizers
+        }
+
+        override fun getFilter(): Filter {
+            return object : Filter() {
+                override fun performFiltering(constraint: CharSequence?): FilterResults {
+                    val charSearch = constraint.toString()
+                    if (charSearch.isEmpty()) {
+                        fertilizersFilterList = fertilizers
+                    } else {
+                        val resultList = ArrayList<String>()
+                        for (row in fertilizers) {
+                            if (row.toLowerCase(Locale.ROOT)
+                                    .contains(charSearch.toLowerCase(Locale.ROOT))
+                            ) {
+                                resultList.add(row)
+                            }
+                        }
+                        fertilizersFilterList = resultList
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = fertilizersFilterList
+                    return filterResults
+                }
+
+                @Suppress("UNCHECKED_CAST")
+                override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                    fertilizersFilterList = results?.values as ArrayList<String>
+                    notifyDataSetChanged()
+                }
+
+            }
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
                 : FertilizersHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
@@ -102,11 +157,11 @@ class FertilizersFragment : Fragment() {
             return FertilizersHolder(fertilizersListBinding)
         }
 
-        override fun getItemCount() = fertilizers.size
+        override fun getItemCount() = fertilizersFilterList.size
         override fun onBindViewHolder(holder: FertilizersHolder, position: Int) {
-            val fertilizer = fertilizers[position]
+            val fertilizer = fertilizersFilterList[position]
             holder.apply {
-                holder.bind(fertilizer,position)
+                holder.bind(fertilizer, position)
             }
         }
     }

@@ -50,14 +50,11 @@ class MainFragment : Fragment() {
         binding.field2.setOnClickListener { moveToField(view, 1) }
         binding.field3.setOnClickListener { moveToField(view, 2) }
         binding.field4.setOnClickListener { moveToField(view, 3) }
+
         val animator = binding.viewAnimator
 
-
         val animationIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left)
-
-
         val animationOut = AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right)
-
 
         animationOut.duration = 10000
         animationIn.duration = 10000

@@ -97,7 +97,7 @@ class TechsFragment : Fragment() {
                     }
                 })
 
-                val btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
+                val   btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
 
                 val builder = MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
                 builder.setView(view)

@@ -18,14 +18,14 @@ object StatusUtils {
     }
 
     fun storeStatusMain(context: Context, show: Boolean) {
-        val preferences = context.getSharedPreferences("showStatus", Context.MODE_PRIVATE)
+        val preferences = context.getSharedPreferences("showStatusMain", Context.MODE_PRIVATE)
         val editor = preferences.edit()
-        editor.putBoolean("show", show)
+        editor.putBoolean("showMain", show)
         editor.apply()
     }
 
     fun getStatusMain(context: Context): Boolean {
-        val preferences = context.getSharedPreferences("showStatus", Context.MODE_PRIVATE)
-        return preferences.getBoolean("show", true)
+        val preferences = context.getSharedPreferences("showStatusMain", Context.MODE_PRIVATE)
+        return preferences.getBoolean("showMain", true)
     }
 }

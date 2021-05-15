@@ -22,6 +22,9 @@ import com.charkosoff.siberia.utils.StatusUtils
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
 import org.koin.android.viewmodel.ext.android.viewModel
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
+
 
 class MainFragment : Fragment() {
 
@@ -123,15 +126,23 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
-    fun showToolTip() {
-        // 1
-        // 1
+    private fun showToolTip() {
+
         if (StatusUtils.getStatusMain(requireContext())) {
-            TapTargetSequence(requireActivity())
+            TapTargetSequence(activity)
                 .targets(
-                    TapTarget.forView(binding.cardView3, "najmite jtobi nachat'")
+                    TapTarget.forView(binding.cardView3, "Нажмите на поле, чтобы посадить культуры")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(true)
+                        .tintTarget(false),
+                    TapTarget.forView(
+                        binding.speedFab,
+                        "Нажмите на нопку, чтобы начать отчет времени"
+                    )
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .tintTarget(true),
+                    TapTarget.forView(binding.monthTextView, "Здесь отображается текущий меся года")
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .tintTarget(false)
                 ).listener(object : TapTargetSequence.Listener {
                     override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
                     }

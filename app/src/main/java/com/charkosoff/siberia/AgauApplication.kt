@@ -14,7 +14,7 @@ class AgauApplication : Application() {
     val appModule = module {
         single <Repository> { Repository() }
         viewModel{AllPlacesViewModel(get())}
-        viewModel{MainFragmentViewModel(get())}
+        viewModel{MainFragmentViewModel(get()) }
     }
     override fun onCreate() {
         super.onCreate()

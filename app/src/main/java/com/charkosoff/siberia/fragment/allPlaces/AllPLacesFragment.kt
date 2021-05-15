@@ -1,12 +1,11 @@
 package com.charkosoff.siberia.fragment.allPlaces
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -14,7 +13,6 @@ import com.charkosoff.siberia.R
 import com.charkosoff.siberia.adapters.AdapterViewPager
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentViewPagerBinding
-import com.charkosoff.siberia.utils.Resource
 import com.charkosoff.siberia.utils.StatusUtils
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
@@ -62,7 +60,7 @@ class AllPLacesFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_culture_fragment)
         }
 
-        binding.toMain.setOnClickListener{
+        binding.toMain.setOnClickListener {
             view.findNavController().popBackStack()
         }
 /*
@@ -84,7 +82,8 @@ class AllPLacesFragment : Fragment() {
         viewPager.adapter = AdapterViewPager()
 
         val tabLayout = view.findViewById<TabLayout>(R.id.Tab_Layout)
-        TabLayoutMediator(tabLayout, viewPager
+        TabLayoutMediator(
+            tabLayout, viewPager
         ) { tab, position ->
             tab.text = "ПОЛЕ ${(position + 1)}"
         }.attach()
@@ -105,11 +104,15 @@ class AllPLacesFragment : Fragment() {
         return view
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun showTapTarget() {
         if (StatusUtils.getStatusPager(requireContext())) {
             TapTargetSequence(activity)
                 .targets(
-                    TapTarget.forView(binding.moreFab, "Нажмите на кнопку, чттобы отобразить возможные действия")
+                    TapTarget.forView(
+                        binding.moreFab,
+                        "Нажмите на кнопку, чтобы отобразить возможные действия"
+                    )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false),
                     TapTarget.forView(
@@ -118,7 +121,7 @@ class AllPLacesFragment : Fragment() {
                     )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(true),
-                    TapTarget.forView(binding.TabLayout, "Здесь отображается кладки полей")
+                    TapTarget.forView(binding.TabLayout, "Здесь отображается вкладки полей")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false)
                 ).listener(object : TapTargetSequence.Listener {

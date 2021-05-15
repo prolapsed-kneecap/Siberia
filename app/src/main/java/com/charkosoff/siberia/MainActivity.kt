@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         if (StatusUtils.getStatus(this)) {
             TapTargetSequence(this)
                 .targets(
-                    TapTarget.forView(findViewById<Button>(R.id.button), "Кнопка Входа")
+                    TapTarget.forView(findViewById<Button>(R.id.button), "Нажмите, чтобы продемонстрировать свою способность читать")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(true)).listener(object : TapTargetSequence.Listener {
                     override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {

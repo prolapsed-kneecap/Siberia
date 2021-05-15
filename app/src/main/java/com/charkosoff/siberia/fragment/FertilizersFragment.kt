@@ -46,8 +46,7 @@ class FertilizersFragment : Fragment() {
         fertilizersRecyclerView =
             view.findViewById(R.id.fertilizers_recycler_view) as RecyclerView
         fertilizersRecyclerView.layoutManager = LinearLayoutManager(context)
-        val search = view.findViewById<SearchView>(R.id.search)
-        //search.queryHint = "aboba"
+
 
 
         updateUI()

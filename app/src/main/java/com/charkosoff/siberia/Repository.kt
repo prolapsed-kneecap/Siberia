@@ -57,6 +57,7 @@ class Repository {
                 prevTime = System.currentTimeMillis()
             }
         }
+        globalTimer.postValue(Resource.Success(currentTime))
     }
 
 

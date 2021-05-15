@@ -17,6 +17,7 @@ import com.charkosoff.siberia.classes.TechnicsList
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentTechsBinding
 import com.charkosoff.siberia.databinding.FragmentTechsListBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * A fragment representing a list of Items.
@@ -77,7 +78,7 @@ class TechsFragment : Fragment() {
             techsListBinding.family.append(selectedTech.family)
             techsListBinding.techCardView.setOnClickListener {
                 if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))
-                    //score++
+
                 Data.currentTech = selectedTech
                 itemView.findNavController().navigate(
                     R.id.action_navigation_tech_fragment_to_navigation_main_fragment,
@@ -106,7 +107,7 @@ class TechsFragment : Fragment() {
 
                 val btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
 
-                val builder = AlertDialog.Builder(requireContext())
+                val builder = MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
                 builder.setView(view)
                 val dialog = builder.create()
                 dialog.show()

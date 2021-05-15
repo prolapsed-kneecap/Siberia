@@ -1,32 +1,25 @@
 package com.charkosoff.siberia.fragment.mainFrag
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.navDeepLink
 import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
-import com.charkosoff.siberia.classes.TechnicsList
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.Data.currentTime
 import com.charkosoff.siberia.data.PlayButton
 import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.fragment.cultureNames
-import com.charkosoff.siberia.resulted
+import com.charkosoff.siberia.ResultedActivity
+import com.charkosoff.siberia.data.Data.globalTimerIsRunning
 import com.charkosoff.siberia.utils.Resource
-import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
@@ -64,6 +57,10 @@ class MainFragment : Fragment() {
                     Data.currentTime = it.data
                     Data.currentEvent = model.getCurrentEvent()
                 }
+                is Resource.Success->{
+                    var result = Intent(activity, ResultedActivity::class.java)
+                    startActivity(result)
+                }
             }
         }
 
@@ -76,11 +73,9 @@ class MainFragment : Fragment() {
 
                 }
                 is Resource.Success ->{
-                   val result = Intent(activity,resulted::class.java)
-startActivity(result)
+                    val result = Intent(activity,ResultedActivity::class.java)
+                    startActivity(result)
                     binding.timerTestTextView.isClickable = true
-
-
                 }
             }
         }
@@ -94,7 +89,10 @@ startActivity(result)
         }
         binding.timerTestTextView.setOnClickListener {
             binding.timerTestTextView.isClickable=false
-            viewModel.loadGlobalTime()
+            if(!globalTimerIsRunning){
+                viewModel.loadGlobalTime()
+                globalTimerIsRunning=true
+            }
         }
 
         setCultureRes()
@@ -108,14 +106,20 @@ startActivity(result)
         Data.currentId = id
 
         if (Data.currentCulture[id] == "Паровое поле"){
-            viewModel.loadTime()
-            viewModel.times.observe(viewLifecycleOwner) {
+            if(!globalTimerIsRunning){
+                globalTimerIsRunning=true
+                viewModel.loadGlobalTime()
+            }
+            viewModel.globalTimes.observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Loading -> {
                         currentTime = it.data!!
                     }
                     is Resource.Success -> {
+                        globalTimerIsRunning=false
                         binding.timerTestTextView.isClickable = true
+                        val resultAct = Intent(activity,ResultedActivity::class.java)
+                        startActivity(resultAct)
                     }
                 }
             }

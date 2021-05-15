@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/resulteted"
-        android:name="com.charkosoff.siberia.Resulteted"
+        android:name="com.charkosoff.siberia.ResultetedFragment"
         android:label="Resulteted">
         <deepLink
             android:id="@+id/deepLink"

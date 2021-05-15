@@ -9,7 +9,7 @@ import android.view.ViewGroup
 
 
 
-class Resulteted : Fragment() {
+class ResultetedFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -17,9 +17,9 @@ class Resulteted : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
        val view = inflater.inflate(R.layout.fragment_resulteted, container, false)
+
+
+
         return view
-
     }
-
-
-    }
+}

@@ -8,7 +8,7 @@ import java.lang.Exception
 
 class Repository {
 
-    val START_TIME = 20000L
+    val START_TIME = 0L
     var timer : MutableLiveData<Resource<Long>> = MutableLiveData(Resource.Loading(START_TIME))
 
     private var start : Long = 0L

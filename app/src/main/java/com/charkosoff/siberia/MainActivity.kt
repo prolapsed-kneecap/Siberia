@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        MaterialTapTargetPrompt.Builder(this)
+/*        MaterialTapTargetPrompt.Builder(this)
             .setTarget(R.id.button)
             .setPrimaryText("This text is displayed on the first line")
             .setSecondaryText("Text to display on the second line")
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                     // User has pressed the prompt target
                 }
             }
-            .show()
+            .show()*/
     }
 }
 

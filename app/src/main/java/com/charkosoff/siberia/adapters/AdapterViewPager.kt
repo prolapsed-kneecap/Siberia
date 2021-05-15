@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.charkosoff.siberia.FirstPlaceViewModel
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FieldItemBinding
 
 
 class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
-
     private val colors = intArrayOf(
         android.R.color.black,
         android.R.color.holo_red_light,
@@ -32,10 +32,9 @@ class AdapterViewPager : RecyclerView.Adapter<PagerVH>() {
 }
 
 class PagerVH(private val fieldItemBinding: FieldItemBinding) : RecyclerView.ViewHolder(fieldItemBinding.root) {
-    val eventTextView = itemView.findViewById<TextView>(R.id.eventTextView)
     fun onBing(position: Int) {
         fieldItemBinding.currentCulture.text = Data.currentCulture[position]
-        eventTextView.text = Data.currentEvent
+        fieldItemBinding.eventTextView.text = Data.currentEvent
         when (Data.currentCulture[position]) {
             "Овёс" -> fieldItemBinding.imageView.setImageResource(R.drawable.oves)
             "Пшеница" -> fieldItemBinding.imageView.setImageResource(R.drawable.pshenitsa)

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -67,6 +68,23 @@ class MainFragment : Fragment() {
             }
         }
 
+
+        val animator = binding.viewAnimator
+
+
+        val animationIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left)
+
+
+        val animationOut = AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right)
+
+
+        animationOut.duration = 10000
+        animationIn.duration = 10000
+
+        animator.inAnimation = animationIn
+        animator.outAnimation = animationOut
+
+
         binding.speedFab.setOnClickListener {
             PlayButton.isSpeeded = !PlayButton.isSpeeded
             if (PlayButton.isSpeeded)
@@ -82,6 +100,8 @@ class MainFragment : Fragment() {
 
         return view
     }
+
+
 
 
     private fun moveToField(view: View, id: Int) {

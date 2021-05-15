@@ -7,12 +7,13 @@ import com.charkosoff.siberia.data.Data
 class Model():TimeInterface, EventInterface{
     private val eventMaster = EventMaster()
     private var time:Long = 0
+    private var globalTime:Long = 0
     private val month = Data.currentMonth
     private val monthTimeTable = mapOf<LongRange, String>(
-        0..5000L to "Март",
-        5000..10000L to "Апрель",
-        10000..15000L to "Май",
-        15000..20000L to "Июнь"
+        0..30000L to "Март",
+        30000..60000L to "Апрель",
+        60000..90000L to "Май",
+        90000..120000L to "Июнь"
     )
     private val eventsTimeTable = mapOf(
         "Март" to "Посев",//Event("Посев"),
@@ -23,6 +24,10 @@ class Model():TimeInterface, EventInterface{
 
     override fun getCurrent(): Long {
         return time
+    }
+
+    override fun getGlobalCurrent(): Long {
+        return globalTime
     }
 
     override fun timeTable(): Map<LongRange, String> {

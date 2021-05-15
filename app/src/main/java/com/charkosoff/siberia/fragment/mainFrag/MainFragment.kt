@@ -15,6 +15,7 @@ import com.charkosoff.siberia.Model
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.TechnicsList
 import com.charkosoff.siberia.data.Data
+import com.charkosoff.siberia.data.Data.currentTime
 import com.charkosoff.siberia.data.PlayButton
 import com.charkosoff.siberia.databinding.FragmentMainBinding
 import com.charkosoff.siberia.fragment.cultureNames
@@ -39,6 +40,7 @@ class   MainFragment : Fragment() {
         val view = binding.root
 
         var currentTime = model.getCurrent()
+        var currentGlobalTime = model.getGlobalCurrent()
         val timeTable = model.timeTable()
 
         binding.field1.setOnClickListener { moveToField(view, 0) }
@@ -46,19 +48,27 @@ class   MainFragment : Fragment() {
         binding.field3.setOnClickListener { moveToField(view, 2) }
         binding.field4.setOnClickListener { moveToField(view, 3) }
 
-        viewModel.times.observe(viewLifecycleOwner){
+        viewModel.globalTimes.observe(viewLifecycleOwner){
             when(it){
-                is Resource.Loading-> {
-                    currentTime=it.data!!
-                    binding.timerTestTextView.text = (it.data).toString()+" test timer"
+                is Resource.Loading->{
+                    currentGlobalTime= it.data!!
+                    binding.timerTestTextView.text = (it.data).toString()+" global timer"
                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
                     Data.currentMonth = model.getMonth(it.data, timeTable)
                     Data.currentTime = it.data
                     Data.currentEvent = model.getCurrentEvent()
+                }
+            }
+        }
 
+        viewModel.times.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading-> {
+                    currentTime=it.data!!
                     //binding.monthTextView.text = model.isTechChoiceRight(Data.currentEvent, Data.currentTech).toString()
                 }
                 is Resource.Success -> {
+
                     binding.timerTestTextView.isClickable = true
                 }
             }
@@ -73,7 +83,7 @@ class   MainFragment : Fragment() {
         }
         binding.timerTestTextView.setOnClickListener {
             binding.timerTestTextView.isClickable=false
-            viewModel.loadTime()
+            viewModel.loadGlobalTime()
         }
 
         setCultureRes()
@@ -86,9 +96,21 @@ class   MainFragment : Fragment() {
 
         Data.currentId = id
 
-        if (Data.currentCulture[id] == "Паровое поле")
+        if (Data.currentCulture[id] == "Паровое поле"){
+            viewModel.loadTime()
+            viewModel.times.observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Loading -> {
+                        currentTime = it.data!!
+                    }
+                    is Resource.Success -> {
+                        binding.timerTestTextView.isClickable = true
+                    }
+                }
+            }
             view.findNavController()
                 .navigate(R.id.action_navigation_main_fragment_to_navigation_culture_fragment)
+        }
         else
             view.findNavController()
                 .navigate(R.id.action_navigation_main_fragment_to_navigation_viewpager_fragment)

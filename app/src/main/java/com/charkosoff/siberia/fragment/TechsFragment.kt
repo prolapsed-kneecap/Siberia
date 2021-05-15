@@ -75,17 +75,9 @@ class TechsFragment : Fragment() {
             val selectedTech = TechnicsList.technics[position]
             techsListBinding.description.setText(selectedTech.description)
             techsListBinding.family.append(selectedTech.family)
-            techsListBinding.techCardView.setOnClickListener {
+            itemView.setOnClickListener {
 
                 //if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))
-
-                Data.currentTech = selectedTech
-                itemView.findNavController().navigate(
-                    R.id.action_navigation_tech_fragment_to_navigation_main_fragment,
-                    arguments
-                )
-
-
                 val view = View.inflate(context, R.layout.dialog_techs, null)
                 val seekbar = view.findViewById<SeekBar>(R.id.seekBar)
                 seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -115,6 +107,11 @@ class TechsFragment : Fragment() {
 
                 btn_accept.setOnClickListener() {
                     dialog.dismiss()
+                    Data.currentTech = selectedTech
+                    itemView.findNavController().navigate(
+                        R.id.action_navigation_tech_fragment_to_navigation_main_fragment,
+                        arguments
+                    )
                 }
             }
 

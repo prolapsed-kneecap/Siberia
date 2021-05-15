@@ -88,7 +88,7 @@ class CultureFragment : Fragment() {
             cultureItemBinding.cultureRes.setImageResource(selectedCulture.image)
             cultureItemBinding.family.append(selectedCulture.family)
 
-            cultureItemBinding.cultureCardView.setOnClickListener {
+            itemView.setOnClickListener {
                 Data.currentCulture[Data.currentId] = data
                 selectedField.userSequenceCulture.add(data)
                 if (selectedField.userSequenceCulture.size > 1){

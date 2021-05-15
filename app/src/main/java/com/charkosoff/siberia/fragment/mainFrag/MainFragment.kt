@@ -50,25 +50,6 @@ class MainFragment : Fragment() {
         binding.field2.setOnClickListener { moveToField(view, 1) }
         binding.field3.setOnClickListener { moveToField(view, 2) }
         binding.field4.setOnClickListener { moveToField(view, 3) }
-
-        viewModel.times.observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.Loading -> {
-                    currentTime = it.data!!
-                    binding.timerTestTextView.text = (it.data).toString() + " test timer"
-                    binding.monthTextView.text = model.getMonth(it.data, timeTable)
-                    Data.currentMonth = model.getMonth(it.data, timeTable)
-                }
-                is Resource.Success -> {
-                    val result = Intent(activity, ResultedActivity::class.java)
-                    startActivity(result)
-
-
-                }
-            }
-        }
-
-
         val animator = binding.viewAnimator
 
 
@@ -83,7 +64,29 @@ class MainFragment : Fragment() {
 
         animator.inAnimation = animationIn
         animator.outAnimation = animationOut
+        viewModel.times.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Loading -> {
+                    currentTime = it.data!!
+                    binding.timerTestTextView.text = (it.data).toString() + " test timer"
+                    binding.monthTextView.text = model.getMonth(it.data, timeTable)
+                    Data.currentMonth = model.getMonth(it.data, timeTable)
+                    Data.currentTime = it.data
+                    Data.currentEvent = model.getCurrentEvent()
 
+                }
+                is Resource.Success -> {
+                    val result = Intent(activity, ResultedActivity::class.java)
+                    // startActivity(result)
+
+
+                }
+            }
+        }
+
+        binding.settingsButtons.setOnClickListener{
+            view.findNavController().navigate(R.id.action_navigation_main_fragment_to_webSettingsFragment)
+        }
 
         binding.speedFab.setOnClickListener {
             PlayButton.isSpeeded = !PlayButton.isSpeeded
@@ -101,8 +104,6 @@ class MainFragment : Fragment() {
 
         return view
     }
-
-
 
 
     private fun moveToField(view: View, id: Int) {
@@ -152,16 +153,19 @@ class MainFragment : Fragment() {
         if (StatusUtils.getStatusMain(requireContext())) {
             TapTargetSequence(activity)
                 .targets(
-                    TapTarget.forView(binding.cardView3, "Нажмите на поле, чтобы посадить культуры")
+                    TapTarget.forView(binding.field1txt, "Нажмите на поле, чтобы посадить культуры")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false),
                     TapTarget.forView(
                         binding.speedFab,
-                        "Нажмите на нопку, чтобы начать отчет времени"
+                        "Нажмите на кнопку, чтобы начать отчет времени"
                     )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(true),
                     TapTarget.forView(binding.monthTextView, "Здесь отображается текущий меся года")
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .tintTarget(false),
+                    TapTarget.forView(binding.settingsButtons, "Здесь вы найдете справку по игре!")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false)
                 ).listener(object : TapTargetSequence.Listener {

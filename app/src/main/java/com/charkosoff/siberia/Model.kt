@@ -10,16 +10,22 @@ class Model :TimeInterface, EventInterface{
     private var globalTime:Long = 0
     private val month = Data.currentMonth
     private val monthTimeTable = mapOf<LongRange, String>(
-        0..30000L to "Март",
-        30000..60000L to "Апрель",
-        60000..90000L to "Май",
-        90000..120000L to "Июнь"
+        0..5000L to "Март",
+        5000..10000L to "Апрель",
+        10000..15000L to "Май",
+        15000..20000L to "Июнь",
+        20000..25000L to "Июль",
+        25000..30000L to "Август",
+        30000..35000L to "Сентябрь"
     )
     private val eventsTimeTable = mapOf(
         "Март" to "Посев",//Event("Посев"),
         "Апрель" to "Обработка",//Event("Обработка"),
         "Май" to "Обработка",//Event("Обработка"),
-        "Июнь" to "Уборка"//Event("Уборка")
+        "Июнь" to "Уборка",
+        "Июль" to "Уборка",
+        "Август" to "Уборка",
+        "Сентябрь" to "Уборка"//Event("Уборка")
     )
 
     override fun getCurrent(): Long {

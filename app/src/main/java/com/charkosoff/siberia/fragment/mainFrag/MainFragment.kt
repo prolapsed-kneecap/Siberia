@@ -81,7 +81,6 @@ startActivity(result)
                     binding.timerTestTextView.isClickable = true
 
 
-                    //binding.monthTextView.text = model.isTechChoiceRight(Data.currentEvent, Data.currentTech).toString()
                 }
             }
         }

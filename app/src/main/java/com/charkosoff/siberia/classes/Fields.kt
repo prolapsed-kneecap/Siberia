@@ -19,6 +19,6 @@ object ListOfFields {
         Fields(0),
         Fields(1),
         Fields(2),
-        Fields(3)
+        Fields(3),
     )
 }

@@ -20,7 +20,7 @@ class resulted : AppCompatActivity() {
         for (i in ListOfFields.fields.indices){
             summ  += ListOfFields.fields[i].percentOfAnswer()
         }
-        res.append((summ/5.0).toString() + "% правльных саженцев")
+        res.append((summ/4.0).toString() + "% правльных саженцев")
 
 
     }

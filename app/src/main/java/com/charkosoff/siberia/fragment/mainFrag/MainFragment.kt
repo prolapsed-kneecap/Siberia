@@ -150,7 +150,7 @@ class MainFragment : Fragment() {
             cultureNames[2] to R.drawable.yachmen,
             cultureNames[3] to R.drawable.goroh,
             cultureNames[4] to R.drawable.fasol,
-            cultureNames[5] to R.drawable.field
+            cultureNames[5] to R.drawable.field1
         )
 
         imageView.setImageResource(images[Data.currentCulture[fieldId]]!!)

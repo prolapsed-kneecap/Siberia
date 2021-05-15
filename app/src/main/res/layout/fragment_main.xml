@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/FieldBackground"
+    android:background="#F9F2E5"
+
     app:navGraph="@navigation/nav_graph">
 
     <androidx.cardview.widget.CardView
@@ -25,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/field" />
+            android:src="@drawable/field1" />
 
         <TextView
             android:id="@+id/field1txt"
@@ -56,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/field" />
+            android:src="@drawable/field1" />
 
         <TextView
             android:id="@+id/field2txt"
@@ -87,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/field" />
+            android:src="@drawable/field1" />
 
         <TextView
             android:id="@+id/field3txt"
@@ -118,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/field" />
+            android:src="@drawable/field1" />
 
         <TextView
             android:id="@+id/field4txt"
@@ -136,7 +137,7 @@
         android:id="@+id/speedFab"
         android:layout_width="41dp"
         android:layout_height="48dp"
-        android:backgroundTint="@color/rewindButton"
+        android:backgroundTint="#48624C"
         android:clickable="true"
         app:fabCustomSize="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -151,7 +152,7 @@
         android:id="@+id/speedFabPause"
         android:layout_width="41dp"
         android:layout_height="48dp"
-        android:backgroundTint="@color/rewindButton"
+        android:backgroundTint="#48624C"
         android:clickable="true"
         app:fabCustomSize="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -164,8 +165,8 @@
 
     <ViewAnimator
         android:id="@+id/viewAnimator"
-        android:layout_width="410dp"
-        android:layout_height="34dp"
+        android:layout_width="399dp"
+        android:layout_height="67dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,11 +177,12 @@
         <TextView
             android:id="@+id/monthTextView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:text="Март"
+            android:text="Май"
+ android:textColor="#48624C"
 
-            android:textSize="20sp" />
+            android:textSize="48dp" />
     </ViewAnimator>
 
     <TextView
@@ -196,9 +198,9 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:fabCustomSize="50dp"
-        android:backgroundTint="@color/rewindButton"
+        android:backgroundTint="#48624C"
         android:scaleType="centerCrop"
-        android:src="@android:drawable/ic_menu_help"
+        android:src="@drawable/vector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.963"

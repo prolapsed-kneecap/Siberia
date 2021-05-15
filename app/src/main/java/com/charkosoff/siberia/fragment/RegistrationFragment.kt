@@ -29,13 +29,13 @@ class RegistrationFragment : Fragment() {
 
         val user = User("Имя", "Группа")
 
-        binding.editTextName.doOnTextChanged { text, start, before, count ->
+        binding.nameText.doOnTextChanged { text, start, before, count ->
             user.name = text.toString()
         }
-        binding.editTextGroup.doOnTextChanged { text, start, before, count ->
+        binding.secnameText.doOnTextChanged { text, start, before, count ->
             user.group = text.toString()
         }
-        binding.button.setOnClickListener {
+        binding.texttt.setOnClickListener {
             findNavController(this).navigate(R.id.action_navigation_registration_fragment_to_navigation_main_fragment)
         }
 

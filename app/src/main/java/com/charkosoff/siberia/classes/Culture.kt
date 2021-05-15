@@ -16,7 +16,7 @@ class Culture(val name: String){
         "Ячмень" -> R.drawable.yachmen
         "Горох" -> R.drawable.goroh
         "Фасоль" -> R.drawable.fasol
-        else -> R.drawable.field
+        else -> R.drawable.field1
     }
     val family = when (name) {
         "Горох", "Фасоль" -> "Бобовые"

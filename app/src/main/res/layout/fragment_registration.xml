@@ -4,94 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_image"
 
     >
 
-    <ImageButton
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/trans"
-        android:scaleType="centerCrop"
-        android:src="@drawable/back_icon"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-    <LinearLayout
-        android:id="@+id/view"
+
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:scaleX="3"
+        android:scaleY="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/TextStyle"
-        android:paddingStart="30dp"
-        android:paddingTop="15dp"
-        android:paddingEnd="30dp"
-        android:paddingBottom="30dp"
+        tools:srcCompat="@drawable/fie" />
 
-        android:background="@drawable/layout_style"
-        >
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="292dp"
+        android:layout_height="51dp"
+            android:layout_marginTop="100dp"
+        android:hint="Логин"
+        app:boxBackgroundColor="#F9F2E5"
 
-        <TextView
-            style="@style/TextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="30dp"
-            android:text="Вход"
-            android:textSize="25dp"
- />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextStyle"
-            android:ems="10"
-            android:hint="ФИО"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/nameText"
 
-        <EditText
-            android:id="@+id/editTextGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            style="@style/TextStyle"
-            android:ems="10"
-            android:hint="Группа"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+            android:layout_height="wrap_content" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:textColor="@color/blue"
-            android:background = "@drawable/round_shape_btn"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:textStyle="bold"
-            android:text="Войти"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextGroup" />
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_width="292dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="300dp"
+        android:hint="Пароль"
+        app:boxBackgroundColor="#F9F2E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/secnameText"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/texttt"
+        android:layout_width="97dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="360dp"
+        android:text="Вход"
+        android:textSize="36dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent">
 
 
+    </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

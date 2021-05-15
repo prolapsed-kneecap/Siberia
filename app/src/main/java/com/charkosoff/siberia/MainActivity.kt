@@ -2,9 +2,15 @@ package com.charkosoff.siberia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.charkosoff.siberia.utils.StatusUtils
+import com.getkeepsafe.taptargetview.TapTarget
+import com.getkeepsafe.taptargetview.TapTargetSequence
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,16 +22,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-/*        MaterialTapTargetPrompt.Builder(this)
-            .setTarget(R.id.button)
-            .setPrimaryText("Нажмите, чтобы продемонстрировать свою способность читать")
-            .setPromptStateChangeListener { prompt, state ->
-                if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED)
-                {
-                    // User has pressed the prompt target
-                }
-            }
-            .show()*/
+        if (StatusUtils.getStatus(this)) {
+            TapTargetSequence(this)
+                .targets(
+                    TapTarget.forView(findViewById<Button>(R.id.button), "Кнопка Входа")
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .tintTarget(true)).listener(object : TapTargetSequence.Listener {
+                    override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
+                    }
+
+                    override fun onSequenceFinish() {
+                        StatusUtils.storeStatus(this@MainActivity, false)
+                    }
+
+                    override fun onSequenceCanceled(lastTarget: TapTarget) {
+                    }
+                }).start()
+        }
+
     }
 }
 

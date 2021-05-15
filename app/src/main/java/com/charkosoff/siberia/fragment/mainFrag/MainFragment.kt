@@ -50,19 +50,25 @@ class MainFragment : Fragment() {
         binding.field3.setOnClickListener { moveToField(view, 2) }
         binding.field4.setOnClickListener { moveToField(view, 3) }
 
-        viewModel.times.observe(viewLifecycleOwner) {
+        viewModel.globalTimes.observe(viewLifecycleOwner) {
             when (it) {
-                is Resource.Loading -> {
-                    currentTime = it.data!!
-                    binding.timerTestTextView.text = (it.data).toString() + " test timer"
-                    binding.monthTextView.text = model.getMonth(it.data, timeTable)
-
-                }
                 is Resource.Success -> {
                     val result = Intent(activity, ResultedActivity::class.java)
                     startActivity(result)
-
-
+                }
+            }
+        }
+        viewModel.times.observe(viewLifecycleOwner){
+            when(it) {
+                 is Resource.Loading ->{
+                     currentTime = it.data!!
+                     binding.timerTestTextView.text = (it.data).toString() + " test timer"
+                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
+                     Data.currentMonth = model.getMonth(it.data, timeTable)
+                     Data.currentEvent = model.getCurrentEvent()
+                 }
+                is Resource.Success ->{
+                    viewModel.loadTime()
                 }
             }
         }
@@ -76,6 +82,7 @@ class MainFragment : Fragment() {
         }
         binding.timerTestTextView.setOnClickListener {
             viewModel.loadTime()
+            viewModel.loadGlobalTime()
         }
 
         setCultureRes()

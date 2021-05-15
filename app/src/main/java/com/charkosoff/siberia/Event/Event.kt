@@ -10,7 +10,7 @@ class EventMaster() {
         "Обработка" to listOf(TechnicsList.technics[2].family),
         "Уборка" to listOf(TechnicsList.technics[3].family)
     )
-    fun isTechChoiceRight(event:String, tech:Technics):Boolean{
+/*    fun isTechChoiceRight(event:String, tech:Technics):Boolean{
         return eventToTechnic[event]!!.contains(tech.family)
-    }
+    }*/
 }

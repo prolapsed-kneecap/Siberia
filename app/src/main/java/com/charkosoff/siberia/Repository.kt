@@ -14,7 +14,7 @@ class Repository {
 
     private var start : Long = 0L
     private var speed : Long = 1000L
-    private var stop : Long = 20000L
+    private var stop : Long = 60000L
     private var currentTime = 0L
     private val timeUpdater = 1000L
 
@@ -23,7 +23,7 @@ class Repository {
 
     fun startTimer(){
         var prevTime = System.currentTimeMillis()
-        stop=prevTime+20000L
+        stop+=prevTime
         var startTime=prevTime
         while (currentTime+startTime < stop){
             if(PlayButton.isSpeeded)
@@ -32,8 +32,8 @@ class Repository {
                 speed=1000L
             if (System.currentTimeMillis() - prevTime > timeUpdater)   {
                 currentTime += speed
-                if(currentTime>20000)
-                    currentTime=20000
+                if(currentTime>60000L)
+                    currentTime=60000L
                 timer.postValue(Resource.Loading(currentTime))
                 prevTime = System.currentTimeMillis()
             }

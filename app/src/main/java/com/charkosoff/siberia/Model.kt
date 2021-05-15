@@ -10,10 +10,10 @@ class Model():TimeInterface, EventInterface{
     private var globalTime:Long = 0
     private val month = Data.currentMonth
     private val monthTimeTable = mapOf<LongRange, String>(
-        0..30000L to "Март",
-        30000..60000L to "Апрель",
-        60000..90000L to "Май",
-        90000..120000L to "Июнь"
+        0..15000L to "Март",
+        15000..30000L to "Апрель",
+        30000..45000L to "Май",
+        45000..60000L to "Июнь"
     )
     private val eventsTimeTable = mapOf(
         "Март" to "Посев",//Event("Посев"),
@@ -42,11 +42,15 @@ class Model():TimeInterface, EventInterface{
         return eventsTimeTable[Data.currentMonth]!!
     }
 
+    override fun isTechChoiceRight(event: String, tech: Technics): Boolean {
+        return true
+    }
+
 /*    override fun eventTimeTable(): Map<String, Event> {
         return eventsTimeTable
     }*/
 
-    override fun isTechChoiceRight(event:String, tech:Technics): Boolean {
+/*    override fun isTechChoiceRight(event:String, tech:Technics): Boolean {
         return eventMaster.isTechChoiceRight(event, tech)
-    }
+    }*/
 }

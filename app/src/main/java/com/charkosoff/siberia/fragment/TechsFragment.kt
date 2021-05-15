@@ -77,7 +77,7 @@ class TechsFragment : Fragment() {
             techsListBinding.description.setText(selectedTech.description)
             techsListBinding.family.append(selectedTech.family)
             techsListBinding.techCardView.setOnClickListener {
-                if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))
+//                if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))
 
                 Data.currentTech = selectedTech
                 itemView.findNavController().navigate(

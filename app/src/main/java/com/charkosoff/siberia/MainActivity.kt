@@ -1,5 +1,6 @@
 package com.charkosoff.siberia
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 .targets(
                     TapTarget.forView(findViewById<Button>(R.id.button), "Нажмите, чтобы продемонстрировать свою способность читать")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(true)).listener(object : TapTargetSequence.Listener {
+                        .tintTarget(true).outerCircleColor(R.color.lal)).listener(object : TapTargetSequence.Listener {
                     override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
                     }
 

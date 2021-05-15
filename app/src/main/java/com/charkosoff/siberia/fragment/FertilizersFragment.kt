@@ -122,8 +122,8 @@ class FertilizersFragment : Fragment() {
             return object : Filter() {
                 override fun performFiltering(constraint: CharSequence?): FilterResults {
                     val charSearch = constraint.toString()
-                    if (charSearch.isEmpty()) {
-                        fertilizersFilterList = fertilizers
+                    fertilizersFilterList = if (charSearch.isEmpty()) {
+                        fertilizers
                     } else {
                         val resultList = ArrayList<String>()
                         for (row in fertilizers) {
@@ -133,7 +133,7 @@ class FertilizersFragment : Fragment() {
                                 resultList.add(row)
                             }
                         }
-                        fertilizersFilterList = resultList
+                        resultList
                     }
                     val filterResults = FilterResults()
                     filterResults.values = fertilizersFilterList

@@ -79,7 +79,7 @@ class FertilizersFragment : Fragment() {
 
 
 
-            fertilizersListBinding.fertilizersCardView.setOnClickListener {
+            itemView.setOnClickListener {
 
 
                 itemView.findNavController()

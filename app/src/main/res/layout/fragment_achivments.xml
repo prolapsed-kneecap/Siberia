@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/achivmentCardView"
+        android:layout_width="309dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="#9B6F6F"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_achivka"
+            android:layout_width="106dp"
+
+            android:layout_height="match_parent"
+            android:src="@drawable/heronapredele"
+
+            />
+
+
+        <TextView
+            android:textSize="18dp"
+            android:id="@+id/achiv_problem"
+            android:layout_width="204dp"
+            android:layout_height="71dp"
+            android:text="Достигниите 100 баллов "
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="50dp"
+
+            />
+
+        <TextView
+            android:id="@+id/name_achivka"
+            android:layout_width="300dp"
+            android:layout_height="49dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="105dp"
+            android:text="На пределе"
+            android:textSize="20dp">
+
+        </TextView>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/achivmentCardView2"
+        android:layout_width="309dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="450dp"
+        android:backgroundTint="@color/FieldBackground"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_achivka2"
+            android:layout_width="106dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/steel"/>
+
+
+        <TextView
+            android:id="@+id/achiv_problem2"
+            android:layout_width="204dp"
+            android:layout_height="71dp"
+
+            android:textSize="18dp"
+            android:text="Пройдите уровень за 1 минуту"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="50dp"
+
+            />
+
+        <TextView
+            android:id="@+id/name_achivka2"
+            android:layout_width="303dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="105dp"
+            android:text="Куй пока горячо!"
+            android:textSize="20dp">
+
+        </TextView>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/achivmentCardView3"
+        android:layout_width="309dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/FieldBackground"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_achivka3"
+            android:layout_width="106dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/perviisbor"/>
+
+
+        <TextView
+            android:id="@+id/achiv_problem3"
+            android:layout_width="204dp"
+            android:text="Собирите 10 пачек каждой культуры"
+            android:textSize="18dp"
+            android:layout_height="71dp"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="50dp"
+
+            />
+
+        <TextView
+            android:id="@+id/name_achivka3"
+            android:layout_width="302dp"
+            android:layout_height="49dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="105dp"
+            android:text="Растениевод"
+            android:textSize="20dp">
+
+        </TextView>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/achivmentCardView4"
+        android:layout_width="309dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="150dp"
+        android:backgroundTint="@color/FieldBackground"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_achivka4"
+            android:layout_width="106dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/earth"/>
+
+
+        <TextView
+            android:id="@+id/achiv_problem4"
+            android:layout_width="204dp"
+            android:text="Посадите 1000 культур"
+            android:layout_height="71dp"
+            android:textSize="18dp"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="50dp"
+
+            />
+
+        <TextView
+            android:id="@+id/name_achivka4"
+            android:layout_width="303dp"
+            android:layout_height="49dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="105dp"
+            android:text="Захватчик"
+            android:textSize="20dp">
+
+        </TextView>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha=".9"
+        android:scaleX="4"
+        android:scaleY="4"
+        android:src="@drawable/ground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textDostzh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Достижения"
+        android:textSize="40dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/achivmentCardView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.288" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

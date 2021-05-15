@@ -114,7 +114,7 @@ class MainFragment : Fragment() {
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
         }
         binding.timerTestTextView.setOnClickListener {
-            viewModel.loadGlobalTime()
+            viewModel.loadTime()
         }
 
         setCultureRes()

@@ -89,7 +89,7 @@ class FertilizersFragment : Fragment() {
             val selectedFertilizer = FertilizerList.Fertilizers[position]
             fertilizersListBinding.fertilizersNameTextView.text = data
             fertilizersListBinding.description.setText(selectedFertilizer.description)
-            fertilizersListBinding.family.append(selectedFertilizer.family)
+            fertilizersListBinding.family.text = selectedFertilizer.family
 
 
 

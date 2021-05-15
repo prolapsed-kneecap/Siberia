@@ -19,5 +19,6 @@
     <color name="FieldBackground">#A8D6FC</color>
     <color name="rewindButton">#2D6DA2</color>
     <color name="tabIndicatorColor">#122B40</color>
-    <color name="lal">#F9F2E5</color>
+    <color name="main_text">#F9F2E5</color>
+    <color name="back">#F9F2E5</color>
 </resources>

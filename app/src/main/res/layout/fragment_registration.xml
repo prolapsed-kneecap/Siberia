@@ -8,56 +8,34 @@
     android:background="@drawable/fiaa">
 
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/imageView3"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:scaleX="3"-->
-    <!--        android:scaleY="3"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        tools:srcCompat="@drawable/fie" />-->
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="292dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="100dp"
-        android:hint="Логин"
-        app:boxBackgroundColor="#F9F2E5"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/editTextName"
+        android:background="@drawable/round_shape_btn"
+        android:layout_width="280sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="15dp"
+        android:paddingStart="5dp"
+        android:ems="10"
+        android:hint="ФИО"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/texttt" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameText"
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-
-        android:layout_width="292dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="300dp"
-        android:hint="Пароль"
-        app:boxBackgroundColor="#F9F2E5"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/editTextGroup"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:paddingStart="5dp"
+        android:background="@drawable/round_shape_btn"
+        android:ems="10"
+        android:hint="Группа"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/secnameText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
     <TextView
         android:id="@+id/texttt"
@@ -65,6 +43,7 @@
         android:layout_height="56dp"
         android:text="Вход"
         android:textSize="36dp"
+        android:fontFamily="@font/montserrat"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

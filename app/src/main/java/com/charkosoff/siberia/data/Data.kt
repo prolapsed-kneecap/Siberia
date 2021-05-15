@@ -10,7 +10,7 @@ object Data {
     var currentMonth = "Март"
     var currentId : Int = -1
     var currentCulture : MutableList<String> = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")
-    val culturesToShow = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль")
+    val culturesToShow = arrayListOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль")
     var globalTimerIsRunning = false
     var globalTimerWasStarted = false
     var globalTimerIsStopped = false

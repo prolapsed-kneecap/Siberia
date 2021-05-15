@@ -1,11 +1,11 @@
 package com.charkosoff.siberia.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.SeekBar
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +17,8 @@ import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentTechsBinding
 import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A fragment representing a list of Items.
@@ -25,7 +27,7 @@ class TechsFragment : Fragment() {
 
     private var columnCount = 1
     private var techNames =
-        Array(TechnicsList.technics.size) { i -> TechnicsList.technics[i].name }
+        arrayListOf("СЗП-3,6", "СЗУ-Т-3.6", "СЗУ-3,6-04", "Енисей–1200–1НМ", "Дон 1500")
     private var adapter: TechAdapter? = null
     private var _binding: FragmentTechsBinding? = null
     private val binding get() = _binding!!
@@ -51,6 +53,18 @@ class TechsFragment : Fragment() {
 
         updateUI()
 
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter?.filter?.filter(newText)
+                return false
+            }
+
+        })
+
         return view
     }
 
@@ -70,11 +84,12 @@ class TechsFragment : Fragment() {
         }
 
 
+        @SuppressLint("SetTextI18n")
         fun bind(data: String, position: Int) {
             techsListBinding.techNameTextView.text = data
             val selectedTech = TechnicsList.technics[position]
             techsListBinding.description.setText(selectedTech.description)
-            techsListBinding.family.append(selectedTech.family)
+            techsListBinding.family.text = "Вид: " + selectedTech.family
             itemView.setOnClickListener {
 
                 //if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))
@@ -97,9 +112,12 @@ class TechsFragment : Fragment() {
                     }
                 })
 
-                val   btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
+                val btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
 
-                val builder = MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
+                val builder = MaterialAlertDialogBuilder(
+                    requireContext(),
+                    R.style.MaterialAlertDialog_Rounded
+                )
                 builder.setView(view)
                 val dialog = builder.create()
                 dialog.show()
@@ -124,7 +142,47 @@ class TechsFragment : Fragment() {
 
     }
 
-    private inner class TechAdapter(var techs: Array<String>) : RecyclerView.Adapter<TechHolder>() {
+    private inner class TechAdapter(var techs: ArrayList<String>) :
+        RecyclerView.Adapter<TechHolder>(),
+        Filterable {
+
+        var techsFilterList = ArrayList<String>()
+
+        init {
+            techsFilterList = techs
+        }
+
+        override fun getFilter(): Filter {
+            return object : Filter() {
+                override fun performFiltering(constraint: CharSequence?): FilterResults {
+                    val charSearch = constraint.toString()
+                    if (charSearch.isEmpty()) {
+                        techsFilterList = techs
+                    } else {
+                        val resultList = ArrayList<String>()
+                        for (row in techs) {
+                            if (row.toLowerCase(Locale.ROOT)
+                                    .contains(charSearch.toLowerCase(Locale.ROOT))
+                            ) {
+                                resultList.add(row)
+                            }
+                        }
+                        techsFilterList = resultList
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = techsFilterList
+                    return filterResults
+                }
+
+                @Suppress("UNCHECKED_CAST")
+                override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                    techsFilterList = results?.values as ArrayList<String>
+                    notifyDataSetChanged()
+                }
+
+            }
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
                 : TechHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
@@ -132,9 +190,9 @@ class TechsFragment : Fragment() {
             return TechHolder(techsListBinding)
         }
 
-        override fun getItemCount() = techs.size
+        override fun getItemCount() = techsFilterList.size
         override fun onBindViewHolder(holder: TechHolder, position: Int) {
-            val tech = techs[position]
+            val tech = techsFilterList[position]
             holder.apply {
                 holder.bind(tech, position)
             }

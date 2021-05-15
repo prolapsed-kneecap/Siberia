@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
@@ -28,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         if (StatusUtils.getStatus(this)) {
             TapTargetSequence(this)
                 .targets(
-                    TapTarget.forView(findViewById<ImageView>(R.id.texttt), "Нажмите, чтобы продемонстрировать свою способность читать")
+                    TapTarget.forView(findViewById<Button>(R.id.texttt), "Нажмите, чтобы продемонстрировать свою способность читать")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(true).outerCircleColor(R.color.lal)).listener(object : TapTargetSequence.Listener {
+                        .tintTarget(true).outerCircleColor(R.color.main_text)).listener(object : TapTargetSequence.Listener {
                     override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
                     }
 

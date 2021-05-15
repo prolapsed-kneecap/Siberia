@@ -6,13 +6,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.CultureMaster
-import com.charkosoff.siberia.MainViewModel
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.ListOfFields
 import com.charkosoff.siberia.classes.Plants
@@ -20,12 +21,14 @@ import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.data.Data.culturesToShow
 import com.charkosoff.siberia.databinding.FragmentCultureBinding
 import com.charkosoff.siberia.databinding.FragmentCultureListBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A fragment representing a list of Items.
  */
 private const val TAG = "CultureFragment"
-val cultureNames = arrayOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль", "Паровое поле")
+val cultureNames = arrayListOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль", "Паровое поле")
 
 class CultureFragment : Fragment() {
 
@@ -33,10 +36,6 @@ class CultureFragment : Fragment() {
     private var adapter: CultureAdapter? = null
     private var _binding: FragmentCultureBinding? = null
     private val binding get() = _binding!!
-
-    private val mainViewModel: MainViewModel by lazy {
-        ViewModelProviders.of(this).get(MainViewModel::class.java)
-    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +57,18 @@ class CultureFragment : Fragment() {
 
         updateUI()
 
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter?.filter?.filter(newText)
+                return false
+            }
+
+        })
+
         return view
     }
 
@@ -76,7 +87,7 @@ class CultureFragment : Fragment() {
         }
 
 
-        @SuppressLint("ShowToast")
+        @SuppressLint("ShowToast", "SetTextI18n")
         fun bind(data: String, position: Int) {
             cultureItemBinding.culturesNameTextView.text = data
             val selectedCulture = Plants.cultures[position]
@@ -84,7 +95,7 @@ class CultureFragment : Fragment() {
 
             cultureItemBinding.description.setText(selectedCulture.description)
             cultureItemBinding.cultureRes.setImageResource(selectedCulture.image)
-            cultureItemBinding.family.append(selectedCulture.family)
+            cultureItemBinding.family.text ="Семейство: "+selectedCulture.family
 
             itemView.setOnClickListener {
                 Data.currentCulture[Data.currentId] = data
@@ -114,7 +125,43 @@ class CultureFragment : Fragment() {
     }
 
     private inner class CultureAdapter() :
-        RecyclerView.Adapter<CultureHolder>() {
+        RecyclerView.Adapter<CultureHolder>(), Filterable {
+
+        var cultureFilterList = ArrayList<String>()
+
+        init {
+            cultureFilterList = culturesToShow
+        }
+
+        override fun getFilter(): Filter {
+            return object : Filter() {
+                override fun performFiltering(constraint: CharSequence?): FilterResults {
+                    val charSearch = constraint.toString()
+                    if (charSearch.isEmpty()) {
+                        cultureFilterList = culturesToShow
+                    } else {
+                        val resultList = ArrayList<String>()
+                        for (row in culturesToShow) {
+                            if (row.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
+                                resultList.add(row)
+                            }
+                        }
+                        cultureFilterList = resultList
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = cultureFilterList
+                    return filterResults
+                }
+
+                @Suppress("UNCHECKED_CAST")
+                override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                    cultureFilterList = results?.values as ArrayList<String>
+                    notifyDataSetChanged()
+                }
+
+            }
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
                 : CultureHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
@@ -123,9 +170,9 @@ class CultureFragment : Fragment() {
             return CultureHolder(cultureItemBinding)
         }
 
-        override fun getItemCount() = culturesToShow.size
+        override fun getItemCount() = cultureFilterList.size
         override fun onBindViewHolder(holder: CultureHolder, position: Int) {
-            val culture = culturesToShow[position]
+            val culture = cultureFilterList[position]
             holder.apply {
                 holder.bind(culture, position)
             }

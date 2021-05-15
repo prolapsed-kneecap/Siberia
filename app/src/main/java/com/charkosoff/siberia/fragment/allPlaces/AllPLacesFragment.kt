@@ -15,6 +15,9 @@ import com.charkosoff.siberia.adapters.AdapterViewPager
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentViewPagerBinding
 import com.charkosoff.siberia.utils.Resource
+import com.charkosoff.siberia.utils.StatusUtils
+import com.getkeepsafe.taptargetview.TapTarget
+import com.getkeepsafe.taptargetview.TapTargetSequence
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -37,6 +40,8 @@ class AllPLacesFragment : Fragment() {
         val viewModel: AllPlacesViewModel by viewModel()
 
         val id = Data.currentId
+
+        showTapTarget()
 
         binding.moreFab.setOnClickListener {
             if (binding.techFab.visibility == View.GONE && binding.chemicalsFab.visibility == View.GONE) {
@@ -98,6 +103,37 @@ class AllPLacesFragment : Fragment() {
         tab.select()
 
         return view
+    }
+
+    private fun showTapTarget() {
+        if (StatusUtils.getStatusPager(requireContext())) {
+            TapTargetSequence(activity)
+                .targets(
+                    TapTarget.forView(binding.moreFab, "Нажмите на кнопку, чттобы отобразить возможные действия")
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .tintTarget(false),
+                    TapTarget.forView(
+                        binding.toMain,
+                        "Нажмите на нопку, чтобы вернуться на главную"
+                    )
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .tintTarget(true),
+                    TapTarget.forView(binding.TabLayout, "Здесь отображается кладки полей")
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .tintTarget(false)
+                ).listener(object : TapTargetSequence.Listener {
+                    override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
+                    }
+
+                    override fun onSequenceFinish() {
+                        StatusUtils.storeStatusPager(requireContext(), false)
+                    }
+
+                    override fun onSequenceCanceled(lastTarget: TapTarget) {
+                    }
+                }).start()
+
+        }
     }
 
     override fun onDestroyView() {

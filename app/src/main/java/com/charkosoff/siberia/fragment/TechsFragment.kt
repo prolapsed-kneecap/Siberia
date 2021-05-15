@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SeekBar
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -77,7 +76,7 @@ class TechsFragment : Fragment() {
             techsListBinding.description.setText(selectedTech.description)
             techsListBinding.family.append(selectedTech.family)
             techsListBinding.techCardView.setOnClickListener {
-                if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))
+                //if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))
 
                 Data.currentTech = selectedTech
                 itemView.findNavController().navigate(

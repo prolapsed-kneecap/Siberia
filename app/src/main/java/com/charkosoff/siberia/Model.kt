@@ -4,7 +4,7 @@ import com.charkosoff.siberia.Event.EventMaster
 import com.charkosoff.siberia.classes.Technics
 import com.charkosoff.siberia.data.Data
 
-class Model():TimeInterface, EventInterface{
+class Model :TimeInterface, EventInterface{
     private val eventMaster = EventMaster()
     private var time:Long = 0
     private var globalTime:Long = 0
@@ -42,9 +42,9 @@ class Model():TimeInterface, EventInterface{
         return eventsTimeTable[Data.currentMonth]!!
     }
 
-/*    override fun eventTimeTable(): Map<String, Event> {
+  /* override fun eventTimeTable(): Map<String, Event> {
         return eventsTimeTable
-    }*/
+    } */
 
     override fun isTechChoiceRight(event:String, tech:Technics): Boolean {
         return eventMaster.isTechChoiceRight(event, tech)

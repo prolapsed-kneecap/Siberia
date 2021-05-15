@@ -1,5 +1,6 @@
 package com.charkosoff.siberia.fragment.mainFrag
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,18 +23,17 @@ import com.charkosoff.siberia.utils.StatusUtils
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
 import org.koin.android.viewmodel.ext.android.viewModel
-import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
-import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 
 
 class MainFragment : Fragment() {
 
     private val model = Model()
-    val viewModel: MainFragmentViewModel by viewModel()
+    private val viewModel: MainFragmentViewModel by viewModel()
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,7 +56,7 @@ class MainFragment : Fragment() {
                     currentTime = it.data!!
                     binding.timerTestTextView.text = (it.data).toString() + " test timer"
                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
-
+                    Data.currentMonth = model.getMonth(it.data, timeTable)
                 }
                 is Resource.Success -> {
                     val result = Intent(activity, ResultedActivity::class.java)

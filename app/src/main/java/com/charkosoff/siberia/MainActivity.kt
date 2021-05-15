@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 .targets(
                     TapTarget.forView(findViewById<Button>(R.id.texttt), "Нажмите, чтобы продемонстрировать свою способность читать")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(true).outerCircleColor(R.color.main_text)).listener(object : TapTargetSequence.Listener {
+                        .tintTarget(true).outerCircleColor(R.color.second_main)).listener(object : TapTargetSequence.Listener {
                     override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
                     }
 

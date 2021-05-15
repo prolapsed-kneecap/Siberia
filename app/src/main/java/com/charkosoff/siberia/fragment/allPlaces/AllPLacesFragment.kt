@@ -114,16 +114,16 @@ class AllPLacesFragment : Fragment() {
                         "Нажмите на кнопку, чтобы отобразить возможные действия"
                     )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(false),
+                        .tintTarget(false).outerCircleColor(R.color.second_main),
                     TapTarget.forView(
                         binding.toMain,
                         "Нажмите на нопку, чтобы вернуться на главную"
                     )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(true),
+                        .tintTarget(true).outerCircleColor(R.color.second_main),
                     TapTarget.forView(binding.TabLayout, "Здесь отображается вкладки полей")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(false)
+                        .tintTarget(false).outerCircleColor(R.color.second_main)
                 ).listener(object : TapTargetSequence.Listener {
                     override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
                     }

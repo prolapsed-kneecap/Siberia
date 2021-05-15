@@ -53,6 +53,7 @@ class MainFragment : Fragment() {
                     currentGlobalTime= it.data!!
                     binding.timerTestTextView.text = (it.data).toString()+" global timer"
                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
+                    binding.eventTextViewForTests.text = model.getCurrentEvent()+" (for tests)"
                     Data.currentMonth = model.getMonth(it.data, timeTable)
                     Data.currentTime = it.data
                     Data.currentEvent = model.getCurrentEvent()

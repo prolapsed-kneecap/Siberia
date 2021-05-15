@@ -19,11 +19,12 @@
         app:srcCompat="@drawable/field" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,14 +33,35 @@
             android:id="@+id/currentCulture"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Вспаханное поле"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textColor="@color/white"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
+            android:text="Вспаханное поле"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
 
             />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginBottom="575dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:textSize="24sp"
+            android:id="@+id/eventTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="*current event*"
+            android:textColor="@color/white"/>
 
     </androidx.cardview.widget.CardView>
 

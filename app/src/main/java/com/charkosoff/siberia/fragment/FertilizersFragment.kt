@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
 import com.charkosoff.siberia.classes.FertilizerList
+import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentFertilizersBinding
 import com.charkosoff.siberia.databinding.FragmentFertilizersListBinding
 import java.util.*
@@ -95,8 +96,19 @@ class FertilizersFragment : Fragment() {
 
             itemView.setOnClickListener {
 
-                Toast.makeText(context, "Удобрение использовано!\n Вы получили ${(0..10).random()} баллов!", Toast.LENGTH_SHORT)
-                    .show()
+                if (Data.currentCulture[Data.currentId] == "Паровое поле")
+                    Toast.makeText(
+                        context,
+                        "Вы использовалие удобрение на паровое поле! Молодцы, 0 баллов!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                else
+                    Toast.makeText(
+                        context,
+                        "Удобрение использовано!\n Вы получили ${(0..10).random()} баллов!",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
 
                 itemView.findNavController()
                     .navigate(R.id.action_navigation_fertilizers_fragment_to_navigation_viewpager_fragment)

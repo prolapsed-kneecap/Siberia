@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="30dp"
+        android:id="@+id/achivmentCardView3"
+        android:layout_width="309dp"
+        android:layout_height="122dp"
+        android:backgroundTint="#A9A9A9"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/image_achivka3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/akar_icons_plant" />
+
+
+        <TextView
+            android:id="@+id/achiv_problem3"
+            android:layout_width="204dp"
+            android:layout_height="71dp"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="50dp"
+            android:text="*Текст задания*"
+            android:textSize="18dp"
+
+            />
+
+        <TextView
+            android:id="@+id/name_achivka3"
+            android:layout_width="302dp"
+            android:layout_height="49dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="105dp"
+            android:text="*Название ачивки*"
+            android:textSize="20dp">
+
+        </TextView>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

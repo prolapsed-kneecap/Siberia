@@ -108,7 +108,7 @@ class MainFragment : Fragment() {
         }
 
         binding.settingsButtons.setOnClickListener{
-            view.findNavController().navigate(R.id.action_navigation_main_fragment_to_webSettingsFragment)
+            view.findNavController().navigate(R.id.action_navigation_main_fragment_to_questionFragment)
         }
 
         binding.speedFab.setOnClickListener {

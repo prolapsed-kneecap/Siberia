@@ -30,6 +30,12 @@
         <action
             android:id="@+id/action_navigation_main_fragment_to_webSettingsFragment"
             app:destination="@id/webSettingsFragment" />
+        <action
+            android:id="@+id/action_navigation_main_fragment_to_achievementsFragment"
+            app:destination="@id/achievementsFragment" />
+        <action
+            android:id="@+id/action_navigation_main_fragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
 
     </fragment>
 
@@ -90,5 +96,22 @@
         android:id="@+id/webSettingsFragment"
         android:name="com.charkosoff.siberia.WebSettingsFragment"
         android:label="WebSettingsFragment" />
+    <fragment
+        android:id="@+id/achievementsFragment"
+        android:name="com.charkosoff.siberia.AchievementsFragment"
+        android:label="AchievementsFragment"
+        tools:layout="@layout/fragment_achivments"/>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.charkosoff.siberia.QuestionFragment"
+        android:label="QuestionFragment"
+        tools:layout="@layout/fragment_question">
+        <action
+            android:id="@+id/action_questionFragment_to_achievementsFragment"
+            app:destination="@id/achievementsFragment" />
+        <action
+            android:id="@+id/action_questionFragment_to_webSettingsFragment"
+            app:destination="@id/webSettingsFragment" />
+    </fragment>
 </navigation>
 

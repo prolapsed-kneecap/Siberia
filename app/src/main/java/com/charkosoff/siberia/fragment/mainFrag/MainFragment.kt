@@ -189,7 +189,7 @@ class MainFragment : Fragment() {
                         "Нажмите на кнопку, чтобы начать отчет времени"
                     )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(true).outerCircleColor(R.color.second_main),
+                        .tintTarget(false).outerCircleColor(R.color.second_main),
                     TapTarget.forView(binding.monthTextView, "Здесь отображается текущий меся года")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),

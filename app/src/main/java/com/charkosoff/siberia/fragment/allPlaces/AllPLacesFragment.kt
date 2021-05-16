@@ -40,7 +40,7 @@ class AllPLacesFragment : Fragment() {
         val id = Data.currentId
 
         binding.moreFab.setOnClickListener {
-            if (binding.techFab.visibility == View.GONE && binding.chemicalsFab.visibility == View.GONE) {
+            if (binding.techFab.visibility == View.GONE && binding.chemicalsFab.visibility == View.GONE && binding.chemicals2Fab.visibility == View.GONE) {
                 binding.moreFab.setImageResource(R.drawable.ic_baseline_close_24)
                 binding.techFab.visibility = View.VISIBLE
                 binding.chemicalsFab.visibility = View.VISIBLE
@@ -53,7 +53,7 @@ class AllPLacesFragment : Fragment() {
                                 "Нажмите на кнопку, чтобы посадить культуру"
                             )
                                 .cancelable(false).transparentTarget(true).targetRadius(30)
-                                .tintTarget(true).outerCircleColor(R.color.second_main),
+                                .tintTarget(false).outerCircleColor(R.color.second_main),
                             TapTarget.forView(
                                 binding.chemicalsFab,
                                 "Нажмите на кнопку, чтобы собрать культуры"
@@ -80,6 +80,8 @@ class AllPLacesFragment : Fragment() {
                             override fun onSequenceCanceled(lastTarget: TapTarget) {
                             }
                         }).start()
+                }
+
                 } else {
                     binding.moreFab.setImageResource(R.drawable.ic_baseline_more_horiz_24)
                     binding.techFab.visibility = View.GONE
@@ -87,7 +89,7 @@ class AllPLacesFragment : Fragment() {
                     binding.chemicals2Fab.visibility = View.GONE
                 }
             }
-        }
+
 
         showTapTarget()
 
@@ -164,9 +166,9 @@ class AllPLacesFragment : Fragment() {
                         "Нажмите на нопку, чтобы вернуться на главную"
                     )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
-                        .tintTarget(true).outerCircleColor(R.color.second_main),
+                        .tintTarget(false).outerCircleColor(R.color.second_main),
                     TapTarget.forView(binding.TabLayout, "Здесь отображается вкладки полей")
-                        .cancelable(true).transparentTarget(true).targetRadius(70)
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main)
                 ).listener(object : TapTargetSequence.Listener {
                     override fun onSequenceStep(

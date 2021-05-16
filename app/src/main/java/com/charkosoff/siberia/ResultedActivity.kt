@@ -19,8 +19,6 @@ class ResultedActivity : AppCompatActivity() {
         ListOfFields.fields.forEach {
             summ+=it.percentOfAnswer()
         }
-        res.append((summ/4.0).toString() + "% правльных саженцев")
-
-
+        res.text = ((summ/4.0).toInt().toString() + "% правльных саженцев")
     }
 }

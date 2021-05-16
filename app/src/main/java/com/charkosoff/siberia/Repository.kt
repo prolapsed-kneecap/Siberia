@@ -19,7 +19,7 @@ class Repository {
     private var currentTime = 0L
     private val timeUpdater = 1000L
 
-    private var globalStop:Long = 125000L
+    private var globalStop:Long = 120000L
     private var globalCurrentTime = 0L
 
     fun startTimer(){
@@ -57,8 +57,8 @@ class Repository {
                 speed = 0L
             if (System.currentTimeMillis() - prevTime > timeUpdater)   {
                 globalCurrentTime += speed
-                if(globalCurrentTime>125000)
-                    globalCurrentTime=125000
+                if(globalCurrentTime>120000)
+                    globalCurrentTime=120000
                 globalTimer.postValue(Resource.Loading(globalCurrentTime))
                 prevTime = System.currentTimeMillis()
             }

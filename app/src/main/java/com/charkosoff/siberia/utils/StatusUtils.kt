@@ -28,6 +28,7 @@ object StatusUtils {
         val preferences = context.getSharedPreferences("showStatusMain", Context.MODE_PRIVATE)
         return preferences.getBoolean("showMain", true)
     }
+
     fun storeStatusPager(context: Context, show: Boolean) {
         val preferences = context.getSharedPreferences("showStatusPager", Context.MODE_PRIVATE)
         val editor = preferences.edit()
@@ -38,5 +39,18 @@ object StatusUtils {
     fun getStatusPager(context: Context): Boolean {
         val preferences = context.getSharedPreferences("showStatusPager", Context.MODE_PRIVATE)
         return preferences.getBoolean("showPager", true)
+
+    }
+
+    fun storeStatusPager2(context: Context, show: Boolean) {
+        val preferences = context.getSharedPreferences("showStatusPager2", Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+        editor.putBoolean("showPager2", show)
+        editor.apply()
+    }
+
+    fun getStatusPager2(context: Context): Boolean {
+        val preferences = context.getSharedPreferences("showStatusPager2", Context.MODE_PRIVATE)
+        return preferences.getBoolean("showPager2", true)
     }
 }

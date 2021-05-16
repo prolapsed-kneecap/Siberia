@@ -17,6 +17,7 @@ import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentTechsBinding
 import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import kotlin.collections.ArrayList
 

@@ -39,26 +39,64 @@ class AllPLacesFragment : Fragment() {
 
         val id = Data.currentId
 
-        showTapTarget()
-
         binding.moreFab.setOnClickListener {
             if (binding.techFab.visibility == View.GONE && binding.chemicalsFab.visibility == View.GONE) {
                 binding.moreFab.setImageResource(R.drawable.ic_baseline_close_24)
                 binding.techFab.visibility = View.VISIBLE
                 binding.chemicalsFab.visibility = View.VISIBLE
                 binding.chemicals2Fab.visibility = View.VISIBLE
-            } else {
-                binding.moreFab.setImageResource(R.drawable.ic_baseline_more_horiz_24)
-                binding.techFab.visibility = View.GONE
-                binding.chemicalsFab.visibility = View.GONE
-                binding.chemicals2Fab.visibility = View.GONE
+                if (StatusUtils.getStatusPager2(requireContext())) {
+                    TapTargetSequence(activity)
+                        .targets(
+                            TapTarget.forView(
+                                binding.techFab,
+                                "Нажмите на кнопку, чтобы посадить культуру"
+                            )
+                                .cancelable(true).transparentTarget(true).targetRadius(30)
+                                .tintTarget(true).outerCircleColor(R.color.second_main),
+                            TapTarget.forView(
+                                binding.chemicalsFab,
+                                "Нажмите на кнопку, чтобы собрать культуры"
+                            )
+                                .cancelable(true).transparentTarget(true).targetRadius(30)
+                                .tintTarget(false).outerCircleColor(R.color.second_main),
+                            TapTarget.forView(
+                                binding.chemicals2Fab,
+                                "Здесь вы найдете удобрения для культур"
+                            )
+                                .cancelable(true).transparentTarget(true).targetRadius(30)
+                                .tintTarget(false).outerCircleColor(R.color.second_main)
+                        ).listener(object : TapTargetSequence.Listener {
+                            override fun onSequenceStep(
+                                lastTarget: TapTarget?,
+                                targetClicked: Boolean
+                            ) {
+                            }
+
+                            override fun onSequenceFinish() {
+                                StatusUtils.storeStatusPager2(requireContext(), false)
+                            }
+
+                            override fun onSequenceCanceled(lastTarget: TapTarget) {
+                            }
+                        }).start()
+                } else {
+                    binding.moreFab.setImageResource(R.drawable.ic_baseline_more_horiz_24)
+                    binding.techFab.visibility = View.GONE
+                    binding.chemicalsFab.visibility = View.GONE
+                    binding.chemicals2Fab.visibility = View.GONE
+                }
             }
         }
+
+        showTapTarget()
+
         binding.chemicals2Fab.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_fertilizers_fragment)
         }
         binding.chemicalsFab.setOnClickListener {
-            Data.currentCulture = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")
+            Data.currentCulture =
+                mutableListOf("Паровое поле", "Паровое поле", "Паровое поле", "Паровое поле")
             findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_main_fragment)
         }
 
@@ -119,19 +157,22 @@ class AllPLacesFragment : Fragment() {
                         binding.moreFab,
                         "Нажмите на кнопку, чтобы отобразить возможные действия"
                     )
-                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .cancelable(true).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),
                     TapTarget.forView(
                         binding.toMain,
                         "Нажмите на нопку, чтобы вернуться на главную"
                     )
-                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .cancelable(true).transparentTarget(true).targetRadius(70)
                         .tintTarget(true).outerCircleColor(R.color.second_main),
                     TapTarget.forView(binding.TabLayout, "Здесь отображается вкладки полей")
-                        .cancelable(false).transparentTarget(true).targetRadius(70)
+                        .cancelable(true).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main)
                 ).listener(object : TapTargetSequence.Listener {
-                    override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
+                    override fun onSequenceStep(
+                        lastTarget: TapTarget?,
+                        targetClicked: Boolean
+                    ) {
                     }
 
                     override fun onSequenceFinish() {

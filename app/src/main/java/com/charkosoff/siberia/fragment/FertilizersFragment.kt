@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -94,6 +95,8 @@ class FertilizersFragment : Fragment() {
 
             itemView.setOnClickListener {
 
+                Toast.makeText(context, "Удобрение использовано!\n Вы получили 7 баллов!", Toast.LENGTH_SHORT)
+                    .show()
 
                 itemView.findNavController()
                     .navigate(R.id.action_navigation_fertilizers_fragment_to_navigation_viewpager_fragment)

@@ -22,12 +22,12 @@
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/cardView5">
 
         <TextView
             android:id="@+id/currentCulture"
@@ -45,23 +45,24 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_marginBottom="575dp"
+        android:id="@+id/cardView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="575dp"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:textSize="24sp"
             android:id="@+id/eventTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="*current event*"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="24sp" />
 
     </androidx.cardview.widget.CardView>
 

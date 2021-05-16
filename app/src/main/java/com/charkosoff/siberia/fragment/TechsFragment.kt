@@ -88,8 +88,11 @@ class TechsFragment : Fragment() {
         fun bind(data: String, position: Int) {
             techsListBinding.techNameTextView.text = data
             val selectedTech = TechnicsList.technics[position]
+
+
             techsListBinding.description.setText(selectedTech.description)
             techsListBinding.family.text = "Вид: " + selectedTech.family
+            techsListBinding.techRes.setImageResource(selectedTech.image)
             itemView.setOnClickListener {
 
                 //if(eventMaster.isTechChoiceRight(Data.currentEvent, TechnicsList.technics[position]))

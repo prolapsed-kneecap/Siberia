@@ -10,13 +10,13 @@ class Technics(val name: String) {
         "Енисей–1200–1НМ" -> R.string.description_enisey
         else -> R.string.description_don
     }
-   /* val image = when (name) {
-        "СЗП-3,6" -> R.string.description_szp_3_6
-        "СЗУ-Т-3.6" -> R.string.description_szu_t
-        "СЗУ-3,6-04" -> R.string.description_szu_3
-        "Енисей–1200–1НМ" -> R.string.description_enisey
-        else -> R.string.description_don
-    } */
+    val image = when (name) {
+        "СЗП-3,6" -> R.drawable.szp
+        "СЗУ-Т-3.6" ->R.drawable.szytt
+        "СЗУ-3,6-04" -> R.drawable.szy
+        "Енисей–1200–1НМ" -> R.drawable.inesei
+        else -> R.drawable.don
+    }
     val family = when(name) {
         "Енисей–1200–1НМ", "Дон 1500" -> "Уборка"
        "СЗП-3,6" -> "Обработка"

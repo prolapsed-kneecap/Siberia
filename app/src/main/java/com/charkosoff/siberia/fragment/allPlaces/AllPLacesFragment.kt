@@ -52,19 +52,19 @@ class AllPLacesFragment : Fragment() {
                                 binding.techFab,
                                 "Нажмите на кнопку, чтобы посадить культуру"
                             )
-                                .cancelable(true).transparentTarget(true).targetRadius(30)
+                                .cancelable(false).transparentTarget(true).targetRadius(30)
                                 .tintTarget(true).outerCircleColor(R.color.second_main),
                             TapTarget.forView(
                                 binding.chemicalsFab,
                                 "Нажмите на кнопку, чтобы собрать культуры"
                             )
-                                .cancelable(true).transparentTarget(true).targetRadius(30)
+                                .cancelable(false).transparentTarget(true).targetRadius(30)
                                 .tintTarget(false).outerCircleColor(R.color.second_main),
                             TapTarget.forView(
                                 binding.chemicals2Fab,
                                 "Здесь вы найдете удобрения для культур"
                             )
-                                .cancelable(true).transparentTarget(true).targetRadius(30)
+                                .cancelable(false).transparentTarget(true).targetRadius(30)
                                 .tintTarget(false).outerCircleColor(R.color.second_main)
                         ).listener(object : TapTargetSequence.Listener {
                             override fun onSequenceStep(
@@ -157,13 +157,13 @@ class AllPLacesFragment : Fragment() {
                         binding.moreFab,
                         "Нажмите на кнопку, чтобы отобразить возможные действия"
                     )
-                        .cancelable(true).transparentTarget(true).targetRadius(70)
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),
                     TapTarget.forView(
                         binding.toMain,
                         "Нажмите на нопку, чтобы вернуться на главную"
                     )
-                        .cancelable(true).transparentTarget(true).targetRadius(70)
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(true).outerCircleColor(R.color.second_main),
                     TapTarget.forView(binding.TabLayout, "Здесь отображается вкладки полей")
                         .cancelable(true).transparentTarget(true).targetRadius(70)

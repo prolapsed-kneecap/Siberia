@@ -182,19 +182,19 @@ class MainFragment : Fragment() {
             TapTargetSequence(activity)
                 .targets(
                     TapTarget.forView(binding.field3txt, "Нажмите на поле, чтобы посадить культуры")
-                        .cancelable(true).transparentTarget(true).targetRadius(70)
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),
                     TapTarget.forView(
                         binding.speedFabPause,
                         "Нажмите на кнопку, чтобы начать отчет времени"
                     )
-                        .cancelable(true).transparentTarget(true).targetRadius(70)
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(true).outerCircleColor(R.color.second_main),
                     TapTarget.forView(binding.monthTextView, "Здесь отображается текущий меся года")
-                        .cancelable(true).transparentTarget(true).targetRadius(70)
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),
                     TapTarget.forView(binding.settingsButtons, "Здесь вы найдете справку по игре и достижения!")
-                        .cancelable(true).transparentTarget(true).targetRadius(70)
+                        .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main)
                 ).listener(object : TapTargetSequence.Listener {
                     override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {

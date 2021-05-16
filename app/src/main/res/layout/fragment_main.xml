@@ -149,29 +149,20 @@
             android:textSize="48dp" />
     </ViewAnimator>
 
-    <TextView
-        android:id="@+id/timerTestTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/settings_buttons"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="41dp"
+        android:layout_height="48dp"
         android:backgroundTint="#48624C"
         android:scaleType="centerCrop"
-        android:src="@drawable/vector"
-        app:fabCustomSize="50dp"
+        android:src="@android:drawable/ic_menu_help"
+        app:fabCustomSize="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969" />
+        app:layout_constraintVertical_bias="0.976" />
 
     <TextView
         android:id="@+id/eventTextViewForTests"

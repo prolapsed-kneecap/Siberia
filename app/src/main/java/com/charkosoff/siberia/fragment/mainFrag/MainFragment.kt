@@ -94,7 +94,6 @@ class MainFragment : Fragment() {
             when (it) {
                 is Resource.Loading -> {
                     currentTime = it.data!!
-                    binding.timerTestTextView.text = (it.data).toString() + " test timer"
                     binding.monthTextView.text = model.getMonth(it.data, timeTable)
                     Data.currentMonth = model.getMonth(it.data, timeTable)
                     Data.currentTime = it.data
@@ -123,9 +122,6 @@ class MainFragment : Fragment() {
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
             else
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
-        }
-        binding.timerTestTextView.setOnClickListener {
-            viewModel.loadTime()
         }
 
         setCultureRes()

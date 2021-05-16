@@ -95,7 +95,7 @@ class FertilizersFragment : Fragment() {
 
             itemView.setOnClickListener {
 
-                Toast.makeText(context, "Удобрение использовано!\n Вы получили 7 баллов!", Toast.LENGTH_SHORT)
+                Toast.makeText(context, "Удобрение использовано!\n Вы получили ${(0..10).random()} баллов!", Toast.LENGTH_SHORT)
                     .show()
 
                 itemView.findNavController()

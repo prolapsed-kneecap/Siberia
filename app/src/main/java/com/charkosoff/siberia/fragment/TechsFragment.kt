@@ -17,7 +17,6 @@ import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentTechsBinding
 import com.charkosoff.siberia.databinding.FragmentTechsListBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -116,7 +115,7 @@ class TechsFragment : Fragment() {
                     }
                 })
 
-                val btn_accept = view.findViewById<Button>(R.id.btn_dialog_accept)
+                val btnAccept = view.findViewById<Button>(R.id.btn_dialog_accept)
 
                 val builder = MaterialAlertDialogBuilder(
                     requireContext(),
@@ -127,9 +126,9 @@ class TechsFragment : Fragment() {
                 dialog.show()
                 dialog.setCancelable(false)
 
-                btn_accept.setOnClickListener() {
+                btnAccept.setOnClickListener() {
                     dialog.dismiss()
-                    Toast.makeText(context, "Культура посажена! Вы получили 2 баллов!", Toast.LENGTH_SHORT)
+                    Toast.makeText(context, "Культура посажена! Вы получили ${(0..10).random()} баллов!", Toast.LENGTH_SHORT)
                         .show()
                     Data.currentTech = selectedTech
                     itemView.findNavController().navigate(

@@ -33,10 +33,12 @@ class RegistrationFragment : Fragment() {
         binding.editTextGroup.doOnTextChanged { text, start, before, count ->
             user.group = text.toString()
         }
-        binding.texttt.setOnClickListener {
+/*        binding.texttt.setOnClickListener {
+            findNavController(this).navigate(R.id.action_navigation_registration_fragment_to_navigation_main_fragment)
+        }*/
+        binding.signInButton.setOnClickListener {
             findNavController(this).navigate(R.id.action_navigation_registration_fragment_to_navigation_main_fragment)
         }
-
         return view
     }
 

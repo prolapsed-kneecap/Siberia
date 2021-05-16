@@ -36,6 +36,12 @@
         <action
             android:id="@+id/action_navigation_main_fragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_navigation_main_fragment_to_questionFragment2"
+            app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_navigation_main_fragment_to_webSettingsFragment2"
+            app:destination="@id/webSettingsFragment" />
 
     </fragment>
 

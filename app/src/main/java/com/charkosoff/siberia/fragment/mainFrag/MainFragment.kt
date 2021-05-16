@@ -23,6 +23,7 @@ import com.charkosoff.siberia.utils.Resource
 import com.charkosoff.siberia.utils.StatusUtils
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -108,6 +109,11 @@ class MainFragment : Fragment() {
         }
 
         binding.settingsButtons.setOnClickListener{
+            /*val builder = MaterialAlertDialogBuilder(requireContext())
+            builder.setView(R.layout.fragment_question)
+            val dialog = builder.create()
+            dialog.show()
+            dialog.setCancelable(true)*/
             view.findNavController().navigate(R.id.action_navigation_main_fragment_to_questionFragment)
         }
 

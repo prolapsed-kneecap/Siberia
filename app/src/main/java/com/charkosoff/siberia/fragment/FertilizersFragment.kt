@@ -89,10 +89,7 @@ class FertilizersFragment : Fragment() {
             val selectedFertilizer = FertilizerList.Fertilizers[position]
             fertilizersListBinding.fertilizersNameTextView.text = data
             fertilizersListBinding.description.setText(selectedFertilizer.description)
-            fertilizersListBinding.family.text = selectedFertilizer.family
-
-
-
+            fertilizersListBinding.fertilizerRes.setImageResource(selectedFertilizer.image)
 
 
             itemView.setOnClickListener {

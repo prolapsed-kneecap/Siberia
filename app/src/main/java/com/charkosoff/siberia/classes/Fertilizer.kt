@@ -10,13 +10,13 @@ class Fertilizer(val name: String) {
         "Известковые" -> R.string.description_izvest
         else -> R.string.description_chloro
     }
-    /* val image = when (name) {
-         "СЗП-3,6" -> R.string.description_szp_3_6
-         "СЗУ-Т-3.6" -> R.string.description_szu_t
-         "СЗУ-3,6-04" -> R.string.description_szu_3
-         "Енисей–1200–1НМ" -> R.string.description_enisey
-         else -> R.string.description_don
-     } */
+     val image = when (name) {
+         "Азотные" -> R.drawable.azotnie
+         "Фосфорные" -> R.drawable.phosphor
+         "Калийные" -> R.drawable.kaliy_hlor
+         "Известковые" -> R.drawable.izvest
+         else -> R.drawable.hlor
+     }
     val family = when (name) {
         ",,", ".." -> ".."
         else -> ".."

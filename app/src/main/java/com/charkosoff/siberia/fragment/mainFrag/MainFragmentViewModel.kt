@@ -1,7 +1,5 @@
 package com.charkosoff.siberia.fragment.mainFrag
 
-import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

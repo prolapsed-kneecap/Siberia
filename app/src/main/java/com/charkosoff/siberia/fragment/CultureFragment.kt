@@ -137,8 +137,8 @@ class CultureFragment : Fragment() {
             return object : Filter() {
                 override fun performFiltering(constraint: CharSequence?): FilterResults {
                     val charSearch = constraint.toString()
-                    if (charSearch.isEmpty()) {
-                        cultureFilterList = culturesToShow
+                    cultureFilterList = if (charSearch.isEmpty()) {
+                        culturesToShow
                     } else {
                         val resultList = ArrayList<String>()
                         for (row in culturesToShow) {
@@ -146,7 +146,7 @@ class CultureFragment : Fragment() {
                                 resultList.add(row)
                             }
                         }
-                        cultureFilterList = resultList
+                        resultList
                     }
                     val filterResults = FilterResults()
                     filterResults.values = cultureFilterList

@@ -46,11 +46,16 @@ class AllPLacesFragment : Fragment() {
                 binding.moreFab.setImageResource(R.drawable.ic_baseline_close_24)
                 binding.techFab.visibility = View.VISIBLE
                 binding.chemicalsFab.visibility = View.VISIBLE
+                binding.chemicals2Fab.visibility = View.VISIBLE
             } else {
                 binding.moreFab.setImageResource(R.drawable.ic_baseline_more_horiz_24)
                 binding.techFab.visibility = View.GONE
                 binding.chemicalsFab.visibility = View.GONE
+                binding.chemicals2Fab.visibility = View.GONE
             }
+        }
+        binding.chemicals2Fab.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_fertilizers_fragment)
         }
         binding.chemicalsFab.setOnClickListener {
             Data.currentCulture = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")

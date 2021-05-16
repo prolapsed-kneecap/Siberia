@@ -21,5 +21,6 @@
     <color name="tabIndicatorColor">#122B40</color>
     <color name="main_text">#F9F2E5</color>
     <color name="back">#F9F2E5</color>
+    <color name="transperent">#00FFFFFF</color>
     <color name="second_main">#48624C</color>
 </resources>

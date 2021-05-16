@@ -82,7 +82,7 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/second_main"
             android:clickable="true"
-            android:src="@drawable/compost"
+            android:src="@drawable/vectoudob"
             android:visibility="gone"
             app:fabCustomSize="50dp"
             app:layout_constraintBottom_toTopOf="@+id/techFab"

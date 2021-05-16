@@ -190,7 +190,7 @@ class MainFragment : Fragment() {
                     )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),
-                    TapTarget.forView(binding.monthTextView, "Здесь отображается текущий меся года")
+                    TapTarget.forView(binding.monthTextView, "Здесь отображается текущий месяц года")
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),
                     TapTarget.forView(binding.settingsButtons, "Здесь вы найдете справку по игре и достижения!")

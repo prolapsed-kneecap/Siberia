@@ -92,9 +92,7 @@ class MainFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     val result = Intent(activity, ResultedActivity::class.java)
-                    // startActivity(result)
-
-
+                    startActivity(result)
                 }
             }
         }

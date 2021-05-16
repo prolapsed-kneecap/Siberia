@@ -53,7 +53,8 @@ class AllPLacesFragment : Fragment() {
             }
         }
         binding.chemicalsFab.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_fertilizers_fragment)
+            Data.currentCulture = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")
+            findNavController().navigate(R.id.action_navigation_viewpager_fragment_to_navigation_main_fragment)
         }
 
         binding.techFab.setOnClickListener {

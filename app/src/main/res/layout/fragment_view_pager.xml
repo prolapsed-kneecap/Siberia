@@ -56,7 +56,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/viewPager2"
-        app:srcCompat="@drawable/vectortractor"
+        app:srcCompat="@android:drawable/ic_dialog_dialer"
         app:tint="@color/main_text" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -67,7 +67,7 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/second_main"
             android:clickable="true"
-            android:src="@drawable/tractor"
+            android:src="@drawable/vectortractor"
             android:visibility="gone"
             app:fabCustomSize="50dp"
             app:layout_constraintBottom_toTopOf="@+id/moreFab"

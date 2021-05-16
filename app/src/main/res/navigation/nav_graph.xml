@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_navigation_viewpager_fragment_to_navigation_fertilizers_fragment"
             app:destination="@id/navigation_fertilizers_fragment" />
+        <action
+            android:id="@+id/action_navigation_viewpager_fragment_to_navigation_main_fragment"
+            app:destination="@id/navigation_main_fragment" />
     </fragment>
 
     <fragment
@@ -77,6 +80,7 @@
     <fragment
         android:id="@+id/resulteted"
         android:name="com.charkosoff.siberia.ResultetedFragment"
+        tools:layout="@layout/activity_resulted"
         android:label="Resulteted">
         <deepLink
             android:id="@+id/deepLink"

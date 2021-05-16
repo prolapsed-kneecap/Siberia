@@ -79,6 +79,16 @@ class MainFragment : Fragment() {
 
         animator.inAnimation = animationIn
         animator.outAnimation = animationOut
+
+        if(!Data.globalTimerIsStopped)
+            binding.speedFabPause.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+        else
+            binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
+        if(PlayButton.isSpeeded)
+            binding.speedFab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+        else
+            binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
+
         viewModel.globalTimes.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {

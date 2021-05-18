@@ -5,12 +5,12 @@ class Fields(val id: Int) {
 
     var score = 0
 
-    fun percentOfAnswer(): Double {
+   /* fun percentOfAnswer(): Double {
         return if (userSequenceCulture.size > 1)
             (score * 100.0) / (userSequenceCulture.size - 1)
         else
             0.0
-    }
+    }*/
 
 }
 

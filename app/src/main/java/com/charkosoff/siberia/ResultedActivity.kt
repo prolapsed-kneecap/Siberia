@@ -19,9 +19,10 @@ class ResultedActivity : AppCompatActivity() {
         res.text = ""
         var summ = 0.0
         ListOfFields.fields.forEach {
-            summ+=it.percentOfAnswer()
+            summ+=it.score*20
         }
         Data.currentCulture = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")
+
         val star1 = findViewById<ImageView>(R.id.star1)
         val star2 = findViewById<ImageView>(R.id.star2)
         val star3 = findViewById<ImageView>(R.id.star3)

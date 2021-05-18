@@ -12,7 +12,7 @@
         android:id="@+id/cardView2"
         android:layout_width="185dp"
         android:layout_height="220dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="200dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,12 +34,11 @@
         android:id="@+id/linearLayout2"
         android:layout_width="185dp"
         android:layout_height="220dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1">
 
@@ -56,7 +55,7 @@
         android:id="@+id/cardView3"
         android:layout_width="185dp"
         android:layout_height="220dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="200dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,12 +77,11 @@
         android:id="@+id/cardView4"
         android:layout_width="185dp"
         android:layout_height="220dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView3"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.1">
 
@@ -96,47 +94,68 @@
 
     </androidx.cardview.widget.CardView>
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/speedFab"
-        android:layout_width="41dp"
-        android:layout_height="48dp"
-        android:backgroundTint="#48624C"
-        android:clickable="true"
-        app:fabCustomSize="42dp"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.634"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnimator"
-        app:layout_constraintVertical_bias="0.514"
-        app:srcCompat="@drawable/ic_baseline_fast_forward_24" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/speedFabPause"
-        android:layout_width="41dp"
-        android:layout_height="48dp"
-        android:backgroundTint="#48624C"
-        android:clickable="true"
-        app:fabCustomSize="42dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/speedFab"
-        app:layout_constraintHorizontal_bias="0.673"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnimator"
-        app:layout_constraintVertical_bias="0.514"
-        app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            app:singleSelection="true"
+            android:id="@+id/toogleButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+            <Button
+                android:id="@+id/speedFabSlow"
+                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#48624C"
+                android:clickable="true"
+                app:icon="@drawable/ic_baseline_pause_24" />
+
+                <Button
+                android:id="@+id/speedFabPause"
+                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#48624C"
+                android:clickable="true"
+                app:icon="@drawable/ic_baseline_play_arrow_24" />
+
+            <Button
+                android:id="@+id/speedFabFast"
+                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#48624C"
+                android:clickable="true"
+                app:icon="@drawable/ic_baseline_fast_forward_24" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+    </LinearLayout>
+
+
 
     <ViewAnimator
         android:id="@+id/viewAnimator"
         android:layout_width="399dp"
         android:layout_height="67dp"
 
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3"
-        app:layout_constraintVertical_bias="0.25">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/monthTextView"
@@ -144,8 +163,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:text="Май"
- android:textColor="#48624C"
-
+            android:textColor="#48624C"
             android:textSize="48dp" />
     </ViewAnimator>
 
@@ -153,16 +171,14 @@
         android:id="@+id/settings_buttons"
         android:layout_width="41dp"
         android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#48624C"
         android:scaleType="centerCrop"
         android:src="@android:drawable/ic_menu_help"
         app:fabCustomSize="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.964"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.967" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/eventTextViewForTests"

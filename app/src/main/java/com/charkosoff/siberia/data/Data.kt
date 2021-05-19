@@ -12,8 +12,8 @@ object Data {
     var currentCulture : MutableList<String> = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")
     val culturesToShow = arrayListOf("Овёс", "Пшеница", "Ячмень", "Горох", "Фасоль")
     var globalTimerIsRunning = false
-    var globalTimerWasStarted = false
     var globalTimerIsStopped = false
+    var globalTimerWasStarted = false
 }
 object PlayButton {
     var isSpeeded=false

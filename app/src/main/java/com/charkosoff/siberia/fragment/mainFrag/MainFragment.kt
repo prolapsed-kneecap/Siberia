@@ -60,37 +60,70 @@ class MainFragment : Fragment() {
         animationOut.duration = 10000
         animationIn.duration = 10000
 
-        binding.speedFabPause.setOnClickListener {
-            if(!Data.globalTimerWasStarted)
-                viewModel.loadGlobalTime()
-                Data.globalTimerWasStarted = true
-            if(Data.globalTimerIsRunning) {
-                binding.speedFabPause.setImageResource(R.drawable.ic_baseline_play_arrow_24)
-                Data.globalTimerIsRunning = false
-                Data.globalTimerIsStopped = true
-                binding.speedFab.isEnabled = false
-            }
-            else {
-                binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
-                Data.globalTimerIsRunning = true
-                Data.globalTimerIsStopped = false
-                binding.speedFab.isEnabled = true
+        binding.toogleButtons.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            when(checkedId){
+                0->{
+                    Data.globalTimerIsStopped=true
+                    Data.globalTimerIsRunning=false
+                }
+                1->{
+                    if (!Data.globalTimerWasStarted) {
+                        viewModel.loadGlobalTime()
+                        Data.globalTimerWasStarted=true
+                    }
+                    Data.globalTimerIsRunning=true
+                    Data.globalTimerIsStopped=false
+                }
+                2->{
+                    if (!Data.globalTimerWasStarted){
+                        viewModel.loadGlobalTime()
+                        Data.globalTimerWasStarted=true
+                    }
+                    Data.globalTimerIsRunning=true
+                    Data.globalTimerIsStopped=false
+                    PlayButton.isSpeeded=true
+                }
             }
         }
+
+        /*binding.speedFabPause.setOnClickListener {
+            if (!Data.globalTimerWasStarted) {
+                viewModel.loadGlobalTime()
+                binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
+                Data.globalTimerWasStarted = true
+                Data.globalTimerIsRunning = true
+            }
+            else{
+                if (Data.globalTimerIsRunning) {
+                    binding.speedFabPause.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+                    Data.globalTimerIsRunning = false
+                    Data.globalTimerIsStopped = true
+                    binding.speedFab.isEnabled = false
+                } else {
+                    binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
+                    Data.globalTimerIsRunning = true
+                    Data.globalTimerIsStopped = false
+                    binding.speedFab.isEnabled = true
+                }
+            }
+        }*/
+
 
         animator.inAnimation = animationIn
         animator.outAnimation = animationOut
 
-        if(!Data.globalTimerIsStopped)
+        /*if (!Data.globalTimerIsRunning) {
             binding.speedFabPause.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+            binding.speedFab.isEnabled = false
+        }
         else
             binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
-        if(PlayButton.isSpeeded)
+        if (PlayButton.isSpeeded)
             binding.speedFab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
         else
-            binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
+            binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)*/
 
-        viewModel.globalTimes.observe(viewLifecycleOwner) {
+        viewModel.globalTimes.observe(viewLifecycleOwner){
             when (it) {
                 is Resource.Loading -> {
                     currentTime = it.data!!
@@ -113,16 +146,17 @@ class MainFragment : Fragment() {
             val dialog = builder.create()
             dialog.show()
             dialog.setCancelable(true)*/
-            view.findNavController().navigate(R.id.action_navigation_main_fragment_to_questionFragment)
+            view.findNavController()
+                .navigate(R.id.action_navigation_main_fragment_to_questionFragment)
         }
 
-        binding.speedFab.setOnClickListener {
+/*        binding.speedFab.setOnClickListener{
             PlayButton.isSpeeded = !PlayButton.isSpeeded
             if (PlayButton.isSpeeded)
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
             else
                 binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
-        }
+        }*/
 
         setCultureRes()
 
@@ -186,10 +220,16 @@ class MainFragment : Fragment() {
                     )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),
-                    TapTarget.forView(binding.monthTextView, "Здесь отображается текущий месяц года")
+                    TapTarget.forView(
+                        binding.monthTextView,
+                        "Здесь отображается текущий месяц года"
+                    )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main),
-                    TapTarget.forView(binding.settingsButtons, "Здесь вы найдете справку по игре и достижения!")
+                    TapTarget.forView(
+                        binding.settingsButtons,
+                        "Здесь вы найдете справку по игре и достижения!"
+                    )
                         .cancelable(false).transparentTarget(true).targetRadius(70)
                         .tintTarget(false).outerCircleColor(R.color.second_main)
                 ).listener(object : TapTargetSequence.Listener {

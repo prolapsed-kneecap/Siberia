@@ -3,8 +3,10 @@
     <style name="Theme.Siberia" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
 
-        <item name="colorPrimary">@color/main_text</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">#042401</item>
+        <item name="colorPrimaryDark">@color/teal_800</item>
+        <item name="colorAccent">@color/dark_green</item>
+        <item name="colorPrimaryVariant">@color/dark_green</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -12,7 +14,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="fontFamily">@font/montserrat</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">#F9F2E5</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/dark_green</item>
         <!-- Customize your theme here. -->
 
     </style>

@@ -115,7 +115,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
             <Button
-                android:id="@+id/speedFabSlow"
+                android:id="@+id/speedFabPause"
                 style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
                 app:icon="@drawable/ic_baseline_pause_24" />
 
                 <Button
-                android:id="@+id/speedFabPause"
+                android:id="@+id/speedFabSlow"
                 style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

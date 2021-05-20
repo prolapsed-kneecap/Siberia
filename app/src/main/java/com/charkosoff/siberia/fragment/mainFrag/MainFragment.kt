@@ -23,7 +23,6 @@ import com.charkosoff.siberia.utils.Resource
 import com.charkosoff.siberia.utils.StatusUtils
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -60,13 +59,13 @@ class MainFragment : Fragment() {
         animationOut.duration = 10000
         animationIn.duration = 10000
 
-        binding.toogleButtons.addOnButtonCheckedListener { group, checkedId, isChecked ->
+        binding.toogleButtons.addOnButtonCheckedListener{ group, checkedId, isChecked ->
             when(checkedId){
-                0->{
+                R.id.speedFabPause->{
                     Data.globalTimerIsStopped=true
                     Data.globalTimerIsRunning=false
                 }
-                1->{
+                R.id.speedFabSlow->{
                     if (!Data.globalTimerWasStarted) {
                         viewModel.loadGlobalTime()
                         Data.globalTimerWasStarted=true
@@ -74,7 +73,7 @@ class MainFragment : Fragment() {
                     Data.globalTimerIsRunning=true
                     Data.globalTimerIsStopped=false
                 }
-                2->{
+                R.id.speedFabFast->{
                     if (!Data.globalTimerWasStarted){
                         viewModel.loadGlobalTime()
                         Data.globalTimerWasStarted=true

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.Event.EventMaster
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.classes.ListOfFields
 import com.charkosoff.siberia.classes.TechnicsList
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentTechsBinding
@@ -128,9 +129,11 @@ class TechsFragment : Fragment() {
 
                 btnAccept.setOnClickListener() {
                     dialog.dismiss()
-                    Toast.makeText(context, "Культура посажена! Вы получили ${(4..10).random()} баллов!", Toast.LENGTH_SHORT)
+                    val scorePlus=(4..10).random()
+                    Toast.makeText(context, "Культура посажена! Вы получили $scorePlus баллов!", Toast.LENGTH_SHORT)
                         .show()
                     Data.currentTech = selectedTech
+                    ListOfFields.fields[Data.currentId].score+=scorePlus
                     itemView.findNavController().navigate(
                         R.id.action_navigation_tech_fragment_to_navigation_main_fragment,
                         arguments

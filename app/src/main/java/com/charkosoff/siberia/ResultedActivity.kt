@@ -19,7 +19,7 @@ class ResultedActivity : AppCompatActivity() {
         res.text = ""
         var summ = 0.0
         ListOfFields.fields.forEach {
-            summ+=it.score*20
+            summ+=it.score
         }
         Data.currentCulture = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")
 
@@ -40,6 +40,6 @@ class ResultedActivity : AppCompatActivity() {
         if (summ.toInt()>=30){star1.setColorFilter(null); resultTextView.text = "Вы набрали "+(summ.toInt()).toString()+" баллов из 100! \n Стоит потренироваться ещё!"/*; FilterStart(star1)*/}
         if (summ.toInt()>=50){star2.setColorFilter(null); resultTextView.text = "Вы набрали "+(summ.toInt()).toString()+" баллов из 100! \n Вы молодец, но нужно больше практики."/*; FilterStart(star2)*/}
         if (summ.toInt()>=90){star3.setColorFilter(null); resultTextView.text = "Вы набрали "+(summ.toInt()).toString()+" баллов из 100! \n Вы большой молодец!"/*; FilterStart(star3)*/}
-        if (summ.toInt()>=100){resultTextView.text = "Вы набрали 100 баллов из 100 \n Идеально!"}
+        if (summ.toInt()>=100){resultTextView.text = "Вы набрали "+(summ.toInt()).toString()+ " баллов из 100! \n Идеально!"}
     }
 }

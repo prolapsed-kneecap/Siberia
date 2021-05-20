@@ -1,12 +1,11 @@
-package com.charkosoff.siberia
+package com.charkosoff.siberia.fragment.result
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-
+import com.charkosoff.siberia.R
 
 
 class ResultetedFragment : Fragment() {

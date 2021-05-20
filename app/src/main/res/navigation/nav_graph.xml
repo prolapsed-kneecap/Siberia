@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/resulteted"
-        android:name="com.charkosoff.siberia.ResultetedFragment"
+        android:name="com.charkosoff.siberia.fragment.result.ResultetedFragment"
         tools:layout="@layout/activity_resulted"
         android:label="Resulteted">
         <deepLink

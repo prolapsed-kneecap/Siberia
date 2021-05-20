@@ -105,7 +105,7 @@ class CultureFragment : Fragment() {
                     if (check.howIsGoodChoice(selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 2],
                         selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 1])) {
                         Log.i(TAG, "Правильно наследовал")
-                        selectedField.score++
+                        selectedField.score+=20
                     } else
                     {
                         Log.i(TAG, "неправильно наследовал")

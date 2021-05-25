@@ -7,6 +7,7 @@
     <fragment
         android:id="@+id/navigation_registration_fragment"
         android:name="com.charkosoff.siberia.fragment.RegistrationFragment"
+        android:label="авыаыва"
         tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_navigation_registration_fragment_to_navigation_main_fragment"
@@ -83,6 +84,7 @@
     <fragment
         android:id="@+id/navigation_fertilizers_fragment"
         android:name="com.charkosoff.siberia.fragment.FertilizersFragment"
+        android:label="Выберите удобрение"
         tools:layout="@layout/fragment_fertilizers">
         <action
             android:id="@+id/action_navigation_fertilizers_fragment_to_navigation_viewpager_fragment"
@@ -93,15 +95,14 @@
         android:id="@+id/resulteted"
         android:name="com.charkosoff.siberia.ResultetedFragment"
         tools:layout="@layout/activity_resulted"
-        android:label="Resulteted">
+        android:label="Ваши результаты">
         <deepLink
             android:id="@+id/deepLink"
             app:uri="resultFragment" />
     </fragment>
     <fragment
         android:id="@+id/webSettingsFragment"
-        android:name="com.charkosoff.siberia.WebSettingsFragment"
-        android:label="WebSettingsFragment" />
+        android:name="com.charkosoff.siberia.WebSettingsFragment" />
     <fragment
         android:id="@+id/achievementsFragment"
         android:name="com.charkosoff.siberia.AchievementsFragment"
@@ -110,7 +111,7 @@
     <fragment
         android:id="@+id/questionFragment"
         android:name="com.charkosoff.siberia.QuestionFragment"
-        android:label="QuestionFragment"
+        android:label="Дополнительно"
         tools:layout="@layout/fragment_question">
         <action
             android:id="@+id/action_questionFragment_to_achievementsFragment"

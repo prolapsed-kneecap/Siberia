@@ -86,42 +86,12 @@ class MainFragment : Fragment() {
             }
         }
 
-        /*binding.speedFabPause.setOnClickListener {
-            if (!Data.globalTimerWasStarted) {
-                viewModel.loadGlobalTime()
-                binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
-                Data.globalTimerWasStarted = true
-                Data.globalTimerIsRunning = true
-            }
-            else{
-                if (Data.globalTimerIsRunning) {
-                    binding.speedFabPause.setImageResource(R.drawable.ic_baseline_play_arrow_24)
-                    Data.globalTimerIsRunning = false
-                    Data.globalTimerIsStopped = true
-                    binding.speedFab.isEnabled = false
-                } else {
-                    binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
-                    Data.globalTimerIsRunning = true
-                    Data.globalTimerIsStopped = false
-                    binding.speedFab.isEnabled = true
-                }
-            }
-        }*/
+
 
 
         animator.inAnimation = animationIn
         animator.outAnimation = animationOut
 
-        /*if (!Data.globalTimerIsRunning) {
-            binding.speedFabPause.setImageResource(R.drawable.ic_baseline_play_arrow_24)
-            binding.speedFab.isEnabled = false
-        }
-        else
-            binding.speedFabPause.setImageResource(R.drawable.ic_baseline_pause_24)
-        if (PlayButton.isSpeeded)
-            binding.speedFab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
-        else
-            binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)*/
 
         viewModel.globalTimes.observe(viewLifecycleOwner){
             when (it) {

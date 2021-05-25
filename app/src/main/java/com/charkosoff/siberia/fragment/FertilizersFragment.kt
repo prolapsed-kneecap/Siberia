@@ -13,6 +13,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.ScoreChange
+import com.charkosoff.siberia.ScoreChanges
 import com.charkosoff.siberia.classes.FertilizerList
 import com.charkosoff.siberia.data.Data
 import com.charkosoff.siberia.databinding.FragmentFertilizersBinding
@@ -102,14 +104,17 @@ class FertilizersFragment : Fragment() {
                         "Вы использовалие удобрение на паровое поле! Молодцы, 0 баллов!",
                         Toast.LENGTH_SHORT
                     ).show()
-                else
+                else {
+                    val scorePlus = (5..10).random()
+                    ScoreChanges.scoreChanges.add(ScoreChange.ADD_RIGHT_FERTILIZE)
+
                     Toast.makeText(
                         context,
-                        "Удобрение использовано!\n Вы получили ${(0..10).random()} баллов!",
+                        "Удобрение использовано!\n Вы получили $scorePlus баллов!",
                         Toast.LENGTH_SHORT
                     )
                         .show()
-
+                }
                 itemView.findNavController()
                     .navigate(R.id.action_navigation_fertilizers_fragment_to_navigation_viewpager_fragment)
             }

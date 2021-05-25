@@ -128,8 +128,7 @@ class TechsFragment : Fragment() {
 
                 btnAccept.setOnClickListener() {
                     dialog.dismiss()
-                    Toast.makeText(context, "Культура посажена! Вы получили ${(4..10).random()} баллов!", Toast.LENGTH_SHORT)
-                        .show()
+
                     Data.currentTech = selectedTech
                     itemView.findNavController().navigate(
                         R.id.action_navigation_tech_fragment_to_navigation_main_fragment,

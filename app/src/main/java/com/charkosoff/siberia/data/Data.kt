@@ -14,6 +14,7 @@ object Data {
     var globalTimerIsRunning = false
     var globalTimerIsStopped = false
     var globalTimerWasStarted = false
+    var currentCheckedToogle = 0
 }
 object PlayButton {
     var isSpeeded=false

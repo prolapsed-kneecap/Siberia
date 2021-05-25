@@ -62,19 +62,21 @@ class MainFragment : Fragment() {
 
         binding.toogleButtons.addOnButtonCheckedListener { group, checkedId, isChecked ->
             when(checkedId){
-                0->{
+                R.id.speedFabPause->{
                     Data.globalTimerIsStopped=true
                     Data.globalTimerIsRunning=false
+                    Data.currentCheckedToogle = R.id.speedFabPause
                 }
-                1->{
+                R.id.speedFabSlow->{
                     if (!Data.globalTimerWasStarted) {
                         viewModel.loadGlobalTime()
                         Data.globalTimerWasStarted=true
                     }
                     Data.globalTimerIsRunning=true
                     Data.globalTimerIsStopped=false
+                    Data.currentCheckedToogle = R.id.speedFabSlow
                 }
-                2->{
+                R.id.speedFabFast->{
                     if (!Data.globalTimerWasStarted){
                         viewModel.loadGlobalTime()
                         Data.globalTimerWasStarted=true
@@ -82,9 +84,12 @@ class MainFragment : Fragment() {
                     Data.globalTimerIsRunning=true
                     Data.globalTimerIsStopped=false
                     PlayButton.isSpeeded=true
+                    Data.currentCheckedToogle = R.id.speedFabFast
                 }
             }
         }
+
+        binding.toogleButtons.check(Data.currentCheckedToogle)
 
 
 

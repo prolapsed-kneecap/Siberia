@@ -17,7 +17,7 @@ class Repository {
     private var speed : Long = 500L
     private var stop : Long = 35000L
     private var currentTime = 0L
-    private val timeUpdater = 1000L
+    private val timeUpdater = 4000L
 
     private var globalStop:Long = 120000L
     private var globalCurrentTime = 0L
@@ -50,9 +50,9 @@ class Repository {
         val startTime=prevTime
         while (globalCurrentTime+startTime < globalStop){
             speed = if(PlayButton.isSpeeded)
-                1000L
+                20000L
             else
-                500L
+                4000L
             if (Data.globalTimerIsStopped)
                 speed = 0L
             if (System.currentTimeMillis() - prevTime > timeUpdater)   {

@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.charkosoff.siberia.CultureMaster
 import com.charkosoff.siberia.R
+import com.charkosoff.siberia.ScoreChange
+import com.charkosoff.siberia.ScoreChanges
 import com.charkosoff.siberia.classes.ListOfFields
 import com.charkosoff.siberia.classes.Plants
 import com.charkosoff.siberia.data.Data
@@ -105,7 +107,10 @@ class CultureFragment : Fragment() {
                     if (check.howIsGoodChoice(selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 2],
                         selectedField.userSequenceCulture[selectedField.userSequenceCulture.size - 1])) {
                         Log.i(TAG, "Правильно наследовал")
-                        selectedField.score++
+
+                        ScoreChanges.scoreChanges.add(ScoreChange.ADD_RIGHT_CULTURE)
+
+                        selectedField.score+=20
                     } else
                     {
                         Log.i(TAG, "неправильно наследовал")

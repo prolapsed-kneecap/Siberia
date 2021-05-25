@@ -24,13 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:gravity="center_horizontal"
-
             android:text="Глубина заделки,см"
             android:textColor="#48624C"
             android:textSize="20dp" />
 
         <SeekBar
-
             android:id="@+id/seekBar"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
@@ -42,36 +40,32 @@
             android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:ignore="MissingConstraints">
+            android:orientation="horizontal">
 
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="1"
-                android:textColor="#48624C"
-                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="111dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="   2"
-                android:textSize="18dp"
-                android:textColor="#48624C" />
+                android:gravity="start"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="2" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" 3"
-                android:textSize="18dp"
-                android:textColor="#48624C" />
+                android:gravity="end"
+                android:text="3" />
         </LinearLayout>
 
     </LinearLayout>
@@ -81,12 +75,8 @@
         android:layout_width="163dp"
         android:layout_height="58dp"
         android:layout_marginTop="140dp"
-        android:backgroundTint="@color/white"
-
+        android:backgroundTint="@color/second_main"
         android:text="подтвердить"
-        android:textColor="#48624C"
-
-
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

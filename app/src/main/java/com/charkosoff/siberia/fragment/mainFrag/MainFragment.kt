@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
@@ -24,6 +25,7 @@ import com.charkosoff.siberia.utils.StatusUtils
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -52,8 +54,6 @@ class MainFragment : Fragment() {
         binding.field3.setOnClickListener { moveToField(view, 2) }
         binding.field4.setOnClickListener { moveToField(view, 3) }
 
-        val animator = binding.viewAnimator
-
         val animationIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left)
         val animationOut = AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right)
 
@@ -62,19 +62,22 @@ class MainFragment : Fragment() {
 
         binding.toogleButtons.addOnButtonCheckedListener { group, checkedId, isChecked ->
             when(checkedId){
-                0->{
+                R.id.speedFabPause->{
                     Data.globalTimerIsStopped=true
                     Data.globalTimerIsRunning=false
+                    binding.timeProgressBar.visibility = View.GONE
                 }
-                1->{
+                R.id.speedFabSlow->{
                     if (!Data.globalTimerWasStarted) {
                         viewModel.loadGlobalTime()
                         Data.globalTimerWasStarted=true
                     }
                     Data.globalTimerIsRunning=true
                     Data.globalTimerIsStopped=false
+                    binding.timeProgressBar.visibility = View.VISIBLE
                 }
-                2->{
+                R.id.speedFabFast->{
+                    binding.timeProgressBar.visibility = View.VISIBLE
                     if (!Data.globalTimerWasStarted){
                         viewModel.loadGlobalTime()
                         Data.globalTimerWasStarted=true
@@ -85,12 +88,6 @@ class MainFragment : Fragment() {
                 }
             }
         }
-
-
-
-
-        animator.inAnimation = animationIn
-        animator.outAnimation = animationOut
 
 
         viewModel.globalTimes.observe(viewLifecycleOwner){
@@ -111,28 +108,14 @@ class MainFragment : Fragment() {
         }
 
         binding.settingsButtons.setOnClickListener{
-            /*val builder = MaterialAlertDialogBuilder(requireContext())
-            builder.setView(R.layout.fragment_question)
-            val dialog = builder.create()
-            dialog.show()
-            dialog.setCancelable(true)*/
             view.findNavController()
                 .navigate(R.id.action_navigation_main_fragment_to_questionFragment)
         }
-
-/*        binding.speedFab.setOnClickListener{
-            PlayButton.isSpeeded = !PlayButton.isSpeeded
-            if (PlayButton.isSpeeded)
-                binding.speedFab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
-            else
-                binding.speedFab.setImageResource(R.drawable.ic_baseline_fast_forward_24)
-        }*/
 
         setCultureRes()
 
         return view
     }
-
 
     private fun moveToField(view: View, id: Int) {
 
@@ -213,7 +196,6 @@ class MainFragment : Fragment() {
                     override fun onSequenceCanceled(lastTarget: TapTarget) {
                     }
                 }).start()
-
         }
     }
 }

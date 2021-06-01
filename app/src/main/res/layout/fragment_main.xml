@@ -115,7 +115,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
             <Button
-                android:id="@+id/speedFabSlow"
+                android:id="@+id/speedFabPause"
                 style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
                 app:icon="@drawable/ic_baseline_pause_24" />
 
                 <Button
-                android:id="@+id/speedFabPause"
+                android:id="@+id/speedFabSlow"
                 style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -144,28 +144,28 @@
     </LinearLayout>
 
 
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/timeProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/monthTextView"
+        app:layout_constraintEnd_toStartOf="@+id/monthTextView"
+        app:layout_constraintTop_toTopOf="@+id/monthTextView" />
 
-    <ViewAnimator
-        android:id="@+id/viewAnimator"
-        android:layout_width="399dp"
-        android:layout_height="67dp"
-
+    <TextView
+        android:id="@+id/monthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Май"
+        android:textColor="#48624C"
+        android:textSize="48dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/monthTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:text="Май"
-            android:textColor="#48624C"
-            android:textSize="48dp" />
-    </ViewAnimator>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/settings_buttons"

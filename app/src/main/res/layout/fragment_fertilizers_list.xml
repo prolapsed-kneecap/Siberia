@@ -32,13 +32,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="*Имя ثمتوافغلاف*"
+        android:text="*Имя*"
         android:textStyle="bold"
+        android:textColor="#48624C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fertilizersCardView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="#48624C"
         android:id="@+id/description"
         android:layout_width="250dp"
         android:layout_height="wrap_content"

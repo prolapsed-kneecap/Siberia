@@ -4,23 +4,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:background="@color/back"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="20dp"
+        android:background="@drawable/score_background"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal">
 
         <TextView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="*Правильность*"/>
+            android:text="*Правильность*"
+            android:layout_marginLeft="10dp"/>
         <TextView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/check"
+            app:layout_constraintRight_toLeftOf="@id/descTextView"
             android:id="@+id/plusTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,12 +38,17 @@
             android:layout_marginLeft="50dp"
             android:text="*Получено/Вычтено очков*"/>
         <TextView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/plusTextView"
+            app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/descTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="25dp"
-            android:text="*Описание*"/>
+            android:text="*Описание*"
+            android:layout_marginRight="50dp"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

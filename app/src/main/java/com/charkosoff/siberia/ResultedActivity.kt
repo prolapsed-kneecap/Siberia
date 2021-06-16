@@ -23,6 +23,10 @@ class ResultedActivity : AppCompatActivity() {
 
         var summ = 0
 
+        ScoreChanges.scoreChanges.forEach {
+            summ+=it.plus
+        }
+
         Data.currentCulture = mutableListOf("Паровое поле","Паровое поле","Паровое поле","Паровое поле")
 
         val star1 = findViewById<ImageView>(R.id.star1)
